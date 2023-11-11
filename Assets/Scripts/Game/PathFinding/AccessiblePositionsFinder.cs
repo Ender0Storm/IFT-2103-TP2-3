@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace pathFinding
+namespace Game.pathFinding
 {
     public class AccessiblePositionsFinder
     {

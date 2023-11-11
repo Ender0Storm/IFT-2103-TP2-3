@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using pathFinding;
+using Game.pathFinding;
+using Game.PlayerInformation;
 using UnityEngine;
 
-namespace enemy
+namespace Game.enemy
 {
-    public class MovementManager : MonoBehaviour
+    public class EnemyMovementManager : MonoBehaviour
     {
         private List<Tile> _path;
         private PathFinding _pathFinding;
@@ -15,11 +16,18 @@ namespace enemy
         private float _directionY;
         public GameObject town;
         private float _nextPositionX;
+        public int damage;
         private float _nextPositionY;
+
+        private GameObject health;
+
+        private Player player;
+        
 
         public void Start()
         {
             town = GameObject.Find("Town");
+            player = town.GetComponent<Player>();
             GetPath();
             SetDirection();
         }
@@ -33,12 +41,12 @@ namespace enemy
                 && transform.position.x <= _nextPositionX+0.05
                 && transform.position.y <= _nextPositionY+0.05)
             {
-                Debug.Log(_nextPositionX + " "+ _nextPositionY);
                 transform.position = new Vector2(_nextPositionX, _nextPositionY);
                 if (indexPosition == _path.Count - 1)
                 {
-                    Debug.Log("FINISH");
-                    Destroy(this);
+                    player.LoseHealthPoints(20);
+                    Destroy(gameObject);
+                    return;
                 }
                 indexPosition++;
                 SetDirection();

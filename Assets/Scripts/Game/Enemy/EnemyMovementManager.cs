@@ -9,42 +9,37 @@ namespace Game.enemy
     {
         private List<Tile> _path;
         private PathFinding _pathFinding;
-        public float speed;
         private Tile _nextTile;
-        public int indexPosition;
-        private float _directionX;
-        private float _directionY;
-        public GameObject town;
-        private float _nextPositionX;
-        public int damage;
-        private float _nextPositionY;
+        [SerializeField]
+        private int indexPosition;
+        private Vector2 _direction;
+        private Vector2 _nextPosition;
 
-        private GameObject health;
-
+        private Enemy enemyScript;
         private Player player;
         
 
         public void Start()
         {
-            town = GameObject.Find("Town");
-            player = town.GetComponent<Player>();
+            enemyScript = GetComponent<Enemy>();
+            player = GameObject.Find("Town").GetComponent<Player>();
             GetPath();
             SetDirection();
         }
 
         public void Update()
         {
-            transform.position = new Vector2(transform.position.x + _directionX, transform.position.y + _directionY);
+            transform.position = new Vector2(transform.position.x + _direction.x * Time.deltaTime, transform.position.y + _direction.y * Time.deltaTime);
 
-            if (transform.position.x >= _nextPositionX-0.05 
-                && transform.position.y >= _nextPositionY-0.05
-                && transform.position.x <= _nextPositionX+0.05
-                && transform.position.y <= _nextPositionY+0.05)
+            if (transform.position.x >= _nextPosition.x - 0.05 
+                && transform.position.y >= _nextPosition.y - 0.05
+                && transform.position.x <= _nextPosition.x + 0.05
+                && transform.position.y <= _nextPosition.y + 0.05)
             {
-                transform.position = new Vector2(_nextPositionX, _nextPositionY);
+                transform.position = new Vector2(_nextPosition.x, _nextPosition.y);
                 if (indexPosition == _path.Count - 1)
                 {
-                    player.LoseHealthPoints(20);
+                    player.LoseHealthPoints(enemyScript.damage);
                     Destroy(gameObject);
                     return;
                 }
@@ -79,8 +74,8 @@ namespace Game.enemy
         {
             Tile finish = new Tile
             {
-                X = (int)town.transform.position.x,
-                Y = (int)town.transform.position.y,
+                X = (int)player.transform.position.x,
+                Y = (int)player.transform.position.y,
             };
             return finish;
         }
@@ -88,10 +83,9 @@ namespace Game.enemy
         private void SetDirection()
         {
             _nextTile = _path[indexPosition];
-            _nextPositionX = _nextTile.X + 0.5f;
-            _nextPositionY = _nextTile.Y + 0.5f;
-            _directionX = (_nextPositionX - transform.position.x) / speed;
-            _directionY = (_nextPositionY - transform.position.y) / speed;
+            _nextPosition.x = _nextTile.X + 0.5f;
+            _nextPosition.y = _nextTile.Y + 0.5f;
+            _direction = (_nextPosition - (Vector2)transform.position).normalized * enemyScript.speed;
         }
     }
 }

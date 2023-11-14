@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     [SerializeField]
-    private int cost;
+    protected int cost;
     [SerializeField]
-    private int size;
+    protected int size;
 
     public Vector2 centerOnGrid(Vector2 point)
     {

@@ -13,6 +13,8 @@ public class SimpleTower : Tower
 
     [SerializeField]
     private LayerMask enemyMask;
+    [SerializeField]
+    private GameObject projectilePrefab;
 
     private float cooldownRemaining;
 
@@ -25,14 +27,23 @@ public class SimpleTower : Tower
     // Update is called once per frame
     void Update()
     {
+        Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyMask);
         if (cooldownRemaining > 0)
         {
             cooldownRemaining = Mathf.Max(cooldownRemaining - Time.deltaTime, 0);
         }
 
-        if (cooldownRemaining == 0)
+        if (cooldownRemaining == 0 && enemiesInRange.Length > 0)
         {
-            Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyMask);
+            Fire(enemiesInRange[0].gameObject);
+            cooldownRemaining = attackCooldown;
         }
+    }
+
+    private void Fire(GameObject target)
+    {
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        BasicProjectile projectileScript = projectile.GetComponent<BasicProjectile>();
+        projectileScript.Setup(target, attackDamage);
     }
 }

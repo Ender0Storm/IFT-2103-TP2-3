@@ -9,7 +9,7 @@ public abstract class Tower : MonoBehaviour
     [SerializeField]
     protected int size;
 
-    public Vector2 centerOnGrid(Vector2 point)
+    public Vector2 CenterOnGrid(Vector2 point)
     {
         if (size % 2 == 1) point -= Vector2.one / 2;
 
@@ -18,5 +18,15 @@ public abstract class Tower : MonoBehaviour
 
         if (size % 2 == 1) point += Vector2.one / 2;
         return point;
+    }
+
+    public int GetCost()
+    {
+        return cost;
+    }
+
+    public int GetSize()
+    {
+        return size;
     }
 }

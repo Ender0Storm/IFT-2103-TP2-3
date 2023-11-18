@@ -21,6 +21,7 @@ namespace Game
         public void Start()
         {
             enemiesAlive = new List<GameObject>();
+            finishedSummoning = true;
         }
 
         public void Update()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Tower : MonoBehaviour
+public class Tower : MonoBehaviour
 {
     [SerializeField]
     protected int cost;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HighlightChecks : MonoBehaviour
 {
-    private bool _colliding;
+    private bool _buildable;
 
     private SpriteRenderer _spriteRenderer;
 
@@ -20,14 +20,15 @@ public class HighlightChecks : MonoBehaviour
 
     private void Update()
     {
-        _colliding = Physics2D.OverlapBox(transform.position, new Vector2(transform.localScale.x - 0.05f, transform.localScale.y - 0.05f), 0) != null;
+        _buildable = Physics2D.OverlapBox(transform.position, new Vector2(transform.localScale.x - 0.05f, transform.localScale.y - 0.05f), 0) == null;
+        // TODO: add a check for blocking the path
 
-        if (_colliding) _spriteRenderer.color = _blockedColor;
-        else _spriteRenderer.color = _normalColor;
+        if (_buildable) _spriteRenderer.color = _normalColor;
+        else _spriteRenderer.color = _blockedColor;
     }
 
     public bool CheckIfClear()
     {
-        return !_colliding;
+        return _buildable;
     }
 }

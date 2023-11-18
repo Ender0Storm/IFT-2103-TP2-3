@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +9,8 @@ public class BuildController : MonoBehaviour
     private int _currency;
     [SerializeField]
     private ToggleGroup _choices;
+    [SerializeField]
+    private WaveManager _waveManager;
     private ChosenTower _chosenTower;
 
     [SerializeField]
@@ -30,7 +31,7 @@ public class BuildController : MonoBehaviour
             _hoverHighlight.transform.localScale = new Vector3(size, size, 1);
             _hoverHighlight.transform.position = tower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (Input.GetMouseButtonDown(0) && _currency >= tower.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear())
+            if (Input.GetMouseButtonDown(0) && _currency >= tower.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild())
             {
                 Instantiate(_chosenTower.GetPrefab(), tower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity, _towerParent);
                 _currency -= tower.GetCost();

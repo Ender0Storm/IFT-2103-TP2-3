@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class ressourceDisplay : MonoBehaviour
+public class RessourceDisplay : MonoBehaviour
 {
     [SerializeField]
-    private TMP_Text ressourceText;
+    private TMPro.TMP_Text _ressourceText;
     [SerializeField]
-    private BuildController buildController;
+    private BuildController _buildController;
 
     // Update is called once per frame
     void Update()
     {
-        ressourceText.text = "Money: " + buildController.GetCurrency().ToString();
+        _ressourceText.text = "Money: " + _buildController.GetCurrency().ToString();
     }
 }

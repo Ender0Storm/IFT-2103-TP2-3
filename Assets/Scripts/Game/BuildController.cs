@@ -42,4 +42,9 @@ public class BuildController : MonoBehaviour
             _hoverHighlight.SetActive(false);
         }
     }
+
+    public int GetCurrency()
+    {
+        return _currency;
+    }
 }

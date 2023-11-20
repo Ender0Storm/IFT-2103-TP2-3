@@ -1,9 +1,29 @@
+<<<<<<< Updated upstream
 ﻿using Unity.VisualScripting;
+=======
+using Game;
+>>>>>>> Stashed changes
 using UnityEngine;
 
 namespace Game.enemy
 {
+<<<<<<< Updated upstream
     public class Enemy : MonoBehaviour
+=======
+    public int damage;
+    public int health;
+    public int speed;
+    private Player player;
+
+    public void Start()
+    {
+        GameObject town = GameObject.Find("Town");
+        player = town.GetComponentInChildren<Player>();
+        speed = player.levelDifficulty == "easy" ? 2 : 8;
+    }
+
+    public void DealDamage(int damage)
+>>>>>>> Stashed changes
     {
 
         private Vector2 spawnPosition;

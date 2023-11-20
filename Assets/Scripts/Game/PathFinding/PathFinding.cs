@@ -33,6 +33,7 @@ namespace Game.pathFinding
 
         public List<Tile> FindPath()
         {
+            Start();
             while (_activeTiles.Any())
             {
                 var checkTile = _activeTiles.OrderBy(x => x.CostDistance).First();
@@ -73,7 +74,7 @@ namespace Game.pathFinding
                 }
             }
             Debug.Log("No Path Found!");
-            return null;
+            return _foundPath;
         }
     }
 }

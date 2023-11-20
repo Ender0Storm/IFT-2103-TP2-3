@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Game.pathFinding;
-using Game.PlayerInformation;
 using UnityEngine;
 
 namespace Game.enemy
@@ -36,10 +35,17 @@ namespace Game.enemy
         {
             transform.position = new Vector2(transform.position.x + _directionX, transform.position.y + _directionY);
 
+<<<<<<< Updated upstream
             if (transform.position.x >= _nextPositionX-0.05 
                 && transform.position.y >= _nextPositionY-0.05
                 && transform.position.x <= _nextPositionX+0.05
                 && transform.position.y <= _nextPositionY+0.05)
+=======
+            if (transform.position.x >= _nextPosition.x - 0.1 
+                && transform.position.y >= _nextPosition.y - 0.1
+                && transform.position.x <= _nextPosition.x + 0.1
+                && transform.position.y <= _nextPosition.y + 0.1)
+>>>>>>> Stashed changes
             {
                 transform.position = new Vector2(_nextPositionX, _nextPositionY);
                 if (indexPosition == _path.Count - 1)
@@ -69,7 +75,7 @@ namespace Game.enemy
             Tile start = new Tile
             {
                 X = (int) transform.position.x,
-                Y = (int) transform.position.y,
+                Y = (int) transform.position.y
             };
             
             return start;
@@ -79,8 +85,13 @@ namespace Game.enemy
         {
             Tile finish = new Tile
             {
+<<<<<<< Updated upstream
                 X = (int)town.transform.position.x,
                 Y = (int)town.transform.position.y,
+=======
+                X = (int)player.transform.position.x,
+                Y = (int)player.transform.position.y
+>>>>>>> Stashed changes
             };
             return finish;
         }

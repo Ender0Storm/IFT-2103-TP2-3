@@ -1,4 +1,5 @@
-﻿using Game.PlayerInformation;
+﻿using Game.Menu;
+using Game.PlayerInformation;
 using UnityEngine;
 
 namespace Game
@@ -10,10 +11,13 @@ namespace Game
         public float currentHealth;
 
         public HealthBar healthBar;
+        public string levelDifficulty;
 
         public void Start()
         {
             healthBar.SetMaxHealth(maxHealth);
+            levelDifficulty = Navigation.SelectedDifficulty;
+            Debug.Log(levelDifficulty);
         }
 
         public void LoseHealthPoints(float health)

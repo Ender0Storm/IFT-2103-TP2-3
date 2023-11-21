@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game.pathFinding
@@ -11,7 +12,6 @@ namespace Game.pathFinding
         private List<Tile> _activeTiles;
         private List<Tile> _visitedTiles;
         private List<Tile> _foundPath;
-        public int i = 0;
         private AccessiblePositionsFinder _accessiblePositionsFinder;
 
         public PathFinding(Tile start, Tile finish)
@@ -41,17 +41,10 @@ namespace Game.pathFinding
                 if (checkTile.X == _finish.X && checkTile.Y == _finish.Y)
                 {
                     var tile = checkTile;
-                    Debug.Log("Retracing steps backwards...");
                     while (tile.X != _start.X || tile.Y != _start.Y)
                     {
                         _foundPath.Insert(0, tile);
                         tile = tile.Parent;
-                    }
-                    i = 0;
-                    foreach(var tt in _foundPath)
-                    {
-                        i++;
-                        Debug.Log(i + " " + tt.X + " " + tt.Y + " distance : " + tt.Distance + "cost : " + tt.Cost);
                     }
                     return _foundPath;
                 }

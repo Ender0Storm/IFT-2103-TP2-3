@@ -10,7 +10,7 @@ namespace Game.pathFinding
         private SpriteRenderer _spriteRenderer;
         private CollisionManager _collisionManager;
         private List<Tile> _accessibleTiles;
-        private const float TileRange = 1f;
+        private const float TileRange = 0.5f;
 
         public List<Tile> GetAccessibleTiles(Tile currentTile, Tile targetTile)
         {

@@ -28,7 +28,7 @@ namespace Game
 
         public void Update()
         {
-            if (Input.GetKeyDown("space") && _finishedSummoning)
+            if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
             {
                 StartCoroutine(SummonWave(_enemyPrefab, 5, 1.5f));
             }

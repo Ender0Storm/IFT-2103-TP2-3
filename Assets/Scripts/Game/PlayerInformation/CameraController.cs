@@ -28,10 +28,13 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 cameraInputs = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        if (!PauseMenu.isPaused)
+        {
+            Vector2 cameraInputs = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
 
-        Vector2 newCameraPos = cameraInputs * _cameraSpeed * Time.deltaTime + (Vector2)_mainCamera.transform.position;
-        _mainCamera.transform.position = RestrainCamera(newCameraPos);
+            Vector2 newCameraPos = cameraInputs * _cameraSpeed * Time.deltaTime + (Vector2)_mainCamera.transform.position;
+            _mainCamera.transform.position = RestrainCamera(newCameraPos);
+        }
     }
 
     private Vector3 RestrainCamera(Vector2 newCameraPos)

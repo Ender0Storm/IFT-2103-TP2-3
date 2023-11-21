@@ -31,7 +31,7 @@ public class BuildController : MonoBehaviour
             _hoverHighlight.transform.localScale = new Vector3(size, size, 1);
             _hoverHighlight.transform.position = tower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (Input.GetMouseButtonDown(0) && _currency >= tower.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild())
+            if (Input.GetMouseButtonDown(0) && _currency >= tower.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused)
             {
                 Instantiate(_chosenTower.GetPrefab(), tower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity, _towerParent);
                 _currency -= tower.GetCost();

@@ -67,7 +67,7 @@ namespace Game.pathFinding
                     if (_activeTiles.Any(x => x.X == walkableTile.X && x.Y == walkableTile.Y))
                     {
                         var existingTile = _activeTiles.First(x => x.X == walkableTile.X && x.Y == walkableTile.Y);
-                        if (existingTile.CostDistance > checkTile.CostDistance)
+                        if (existingTile.CostDistance > walkableTile.CostDistance)
                         {
                             _activeTiles.Remove(existingTile);
                             _activeTiles.Add(walkableTile);

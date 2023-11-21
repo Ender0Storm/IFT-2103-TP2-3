@@ -1,7 +1,6 @@
-﻿using Game.enemy;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using Game.pathFinding;
 using UnityEngine;
 
 namespace Game
@@ -12,6 +11,11 @@ namespace Game
         private GameObject _enemyPrefab;
         [SerializeField]
         private Transform _portalTransform;
+
+        private Vector2 town;
+        private Vector2 portal;
+        private Tile start;
+        private Tile finish;
 
         private List<GameObject> _enemiesAlive;
         private int _waveCount;
@@ -24,13 +28,27 @@ namespace Game
             _enemiesAlive = new List<GameObject>();
             _finishedSummoning = true;
             _waveCount = 0;
+            town = GameObject.Find("Town").transform.position;
+            portal = GameObject.Find("Spawn Portal").transform.position;
+            start = new Tile
+            {
+                X = portal.x,
+                Y = portal.y
+            };
+            finish = new Tile
+            {
+                X = town.x,
+                Y = town.y
+            };
         }
 
         public void Update()
         {
             if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
             {
-                StartCoroutine(SummonWave(_enemyPrefab, 1, 1.5f));
+                PathFinding pathFinding = new PathFinding(start, finish);
+                List<Tile> path = pathFinding.FindPath();
+                StartCoroutine(SummonWave(_enemyPrefab, 1, 1.5f, path));
             }
         }
 
@@ -39,7 +57,7 @@ namespace Game
             _enemiesAlive.RemoveAll(enemy => enemy == null);
         }
 
-        private IEnumerator SummonWave(GameObject waveEnemyPrefab, int enemyCount, float enemySpawnInterval)
+        private IEnumerator SummonWave(GameObject waveEnemyPrefab, int enemyCount, float enemySpawnInterval, List<Tile> path)
         {
             _finishedSummoning = false;
             _waveCount += 1;
@@ -53,6 +71,7 @@ namespace Game
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.damage = 20;
                 enemyScript.health = 40;
+                enemyScript.path = path;
 
                 yield return new WaitForSeconds(enemySpawnInterval);
             }

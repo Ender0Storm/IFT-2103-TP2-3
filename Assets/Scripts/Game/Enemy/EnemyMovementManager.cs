@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Game.pathFinding;
-using Game.PlayerInformation;
 using UnityEngine;
 
 namespace Game.enemy
@@ -32,10 +31,10 @@ namespace Game.enemy
         {
             transform.position = new Vector2(transform.position.x + _direction.x * Time.deltaTime, transform.position.y + _direction.y * Time.deltaTime);
 
-            if (transform.position.x >= _nextPosition.x - 0.05 
-                && transform.position.y >= _nextPosition.y - 0.05
-                && transform.position.x <= _nextPosition.x + 0.05
-                && transform.position.y <= _nextPosition.y + 0.05)
+            if (transform.position.x >= _nextPosition.x - 0.2 
+                && transform.position.y >= _nextPosition.y - 0.2
+                && transform.position.x <= _nextPosition.x + 0.2
+                && transform.position.y <= _nextPosition.y + 0.2)
             {
                 transform.position = new Vector2(_nextPosition.x, _nextPosition.y);
                 if (indexPosition == _path.Count - 1)

@@ -30,7 +30,7 @@ namespace Game
         {
             if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
             {
-                StartCoroutine(SummonWave(_enemyPrefab, 5, 1.5f));
+                StartCoroutine(SummonWave(_enemyPrefab, 1, 1.5f));
             }
         }
 

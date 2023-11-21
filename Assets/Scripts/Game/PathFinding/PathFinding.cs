@@ -11,6 +11,7 @@ namespace Game.pathFinding
         private List<Tile> _activeTiles;
         private List<Tile> _visitedTiles;
         private List<Tile> _foundPath;
+        public int i = 0;
         private AccessiblePositionsFinder _accessiblePositionsFinder;
 
         public PathFinding(Tile start, Tile finish)
@@ -45,6 +46,12 @@ namespace Game.pathFinding
                     {
                         _foundPath.Insert(0, tile);
                         tile = tile.Parent;
+                    }
+                    i = 0;
+                    foreach(var tt in _foundPath)
+                    {
+                        i++;
+                        Debug.Log(i + " " + tt.X + " " + tt.Y + " distance : " + tt.Distance + "cost : " + tt.Cost);
                     }
                     return _foundPath;
                 }

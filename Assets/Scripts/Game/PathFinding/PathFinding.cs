@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
-
 namespace Game.pathFinding
 {
     public class PathFinding
@@ -72,7 +69,6 @@ namespace Game.pathFinding
                     }
                 }
             }
-            Debug.Log("No Path Found!");
             return null;
         }
     }

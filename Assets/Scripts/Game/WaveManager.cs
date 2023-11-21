@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -48,7 +49,10 @@ namespace Game
         {
             if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
             {
-                StartCoroutine(SummonWave(_enemyPrefab, 1, 1.5f));
+                StartCoroutine(GetPath(path =>
+                {
+                    StartCoroutine(SummonWave(_enemyPrefab, 1, 1.5f, path));
+                }));
             }
         }
 
@@ -57,10 +61,8 @@ namespace Game
             _enemiesAlive.RemoveAll(enemy => enemy == null);
         }
 
-        private IEnumerator SummonWave(GameObject waveEnemyPrefab, int enemyCount, float enemySpawnInterval)
+        private IEnumerator SummonWave(GameObject waveEnemyPrefab, int enemyCount, float enemySpawnInterval, List<Tile> path)
         {
-            PathFinding pathFinding = new PathFinding(start, finish);
-            List<Tile> path = pathFinding.FindPath();
             _finishedSummoning = false;
             _waveCount += 1;
 
@@ -79,6 +81,16 @@ namespace Game
             }
 
             _finishedSummoning = true;
+        }
+
+        private IEnumerator GetPath(Action<List<Tile>> callback)
+        {
+            PathFinding pathFinding = new PathFinding(start, finish);
+            List<Tile> path = pathFinding.FindPath();
+            
+            callback(path);
+
+            yield return new WaitForSeconds(2);;
         }
 
         public bool CanBuild()

@@ -23,6 +23,7 @@ namespace Game.enemy
         {
             enemyScript = GetComponent<Enemy>();
             player = GameObject.Find("Town").GetComponent<Player>();
+            enemyScript.speed = player.difficulty == "hard" ? 2 : 6;
             GetPath();
             SetDirection();
         }

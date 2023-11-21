@@ -6,18 +6,13 @@ namespace Game.Menu
 {
     public class Navigation : MonoBehaviour
     {
-        private GameObject _startButton;
-        private GameObject _singlePlayerButton;
-        private GameObject _multiplayerButton;
-        private GameObject _optionsButton;
-        private GameObject _back21Button;
         private DifficultySelection _difficultySelection;
         
         private GameObject _menuPage1;
         private GameObject _menuPage2;
         private GameObject _optionsPage;
         private GameObject _singlePlayerSettingsPage;
-        private string _difficulty;
+        public static string Difficulty;
         void Start()
         {
             _menuPage1 = GameObject.Find("MenuPage1");
@@ -26,12 +21,6 @@ namespace Game.Menu
             _singlePlayerSettingsPage = GameObject.Find("SingleplayerSettingsPage");
             _difficultySelection =
                 _singlePlayerSettingsPage.GetComponentInChildren<DifficultySelection>();
-            
-            _startButton = GameObject.Find("Start");
-            _singlePlayerButton = GameObject.Find("Singleplayer");
-            _multiplayerButton = GameObject.Find("Multiplayer");
-            _optionsButton = GameObject.Find("Options");
-            _back21Button = GameObject.Find("Back");
             MenuInit();
         }
 
@@ -88,16 +77,16 @@ namespace Game.Menu
 
         public void SinglePlayerSettingsPageToSinglePlayer()
         {
-            _difficulty = _difficultySelection._selectedDifficulty;
-            if (_difficulty != "none")
+            Difficulty = _difficultySelection._selectedDifficulty;
+            if (Difficulty != "none")
             {
                 SceneManager.LoadScene("SinglePlayer Scene");
             }
         }
 
-        public void ResetColor()
+        private void ResetColor()
         {
-            foreach(Image element in gameObject.GetComponentsInChildren<Image>())
+            foreach(var element in gameObject.GetComponentsInChildren<Image>())
             {
                 element.color = new Color(255,255,255);
             }

@@ -221,7 +221,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6018909472435783249}
         m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
-        m_MethodName: MenuPage2ToMenuPage1
+        m_MethodName: OptionsPageToMenuPage2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -582,7 +582,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6018909472435783249}
         m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
-        m_MethodName: MenuPage2ToMenuPage1
+        m_MethodName: SinglePlayerSettingsPageToMenuPage2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1341,6 +1341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1099746576}
+  - component: {fileID: 1099746577}
   m_Layer: 0
   m_Name: SingleplayerSettingsPage
   m_TagString: Untagged
@@ -1368,6 +1369,19 @@ Transform:
   - {fileID: 611979741}
   m_Father: {fileID: 4182987637597729105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1099746577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099746575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf231940d3fd4ed697e9dba01cc621f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedDifficulty: 
 --- !u!1 &1126469199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,9 +1776,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6018909472435783249}
-        m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
-        m_MethodName: MenuPage2ToMenuPage1
+      - m_Target: {fileID: 1099746577}
+        m_TargetAssemblyTypeName: Game.Menu.DifficultySelection, Assembly-CSharp
+        m_MethodName: EasyDifficultySelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1910,7 +1924,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6018909472435783249}
         m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
-        m_MethodName: MenuPage2ToMenuPage1
+        m_MethodName: SinglePlayerSettingsPageToSinglePlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2054,9 +2068,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6018909472435783249}
-        m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
-        m_MethodName: MenuPage2ToMenuPage1
+      - m_Target: {fileID: 1099746577}
+        m_TargetAssemblyTypeName: Game.Menu.DifficultySelection, Assembly-CSharp
+        m_MethodName: HardDifficultySelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2657,13 +2671,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6018909472435783248}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 6018909472435783249}
+        m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
+        m_MethodName: MenuPage2ToOptionsPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3294,7 +3308,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6018909472435783249}
         m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
-        m_MethodName: MenuPage2ToSinglePlayer
+        m_MethodName: MenuPage2SinglePlayerSettingsPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

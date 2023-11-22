@@ -50,7 +50,7 @@ MonoBehaviour:
   cost: 25
   size: 2
   attackDamage: 5
-  attackCooldown: 0.5
+  attackCooldown: 0.75
   attackRange: 5
   enemyMask:
     serializedVersion: 2

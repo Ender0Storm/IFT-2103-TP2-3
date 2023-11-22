@@ -8,12 +8,27 @@ using UnityEngine;
 
 namespace Game
 {
+    [Serializable]
+    public struct WaveInfo
+    {
+        public GameObject enemyPrefab;
+        public int enemyCount;
+        public float enemyInterval;
+    }
+
     public class WaveManager : MonoBehaviour
     {
+        [Header("Wave info")]
         [SerializeField]
-        private GameObject _enemyPrefab;
+        private List<WaveInfo> _waves;
+        [SerializeField]
+        private float strengthMod;
+
+        [Header("Other")]
         [SerializeField]
         private Transform _portalTransform;
+        [SerializeField]
+        private float hardmodeCurrencyFactor;
 
         private Vector2 town;
         private Vector2 portal;
@@ -49,11 +64,16 @@ namespace Game
         {
             if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
             {
-                StartCoroutine(GetPath(path =>
-                {
-                    StartCoroutine(SummonWave(_enemyPrefab, 1, 1.5f, path));
-                }));
+                StartWave();
             }
+        }
+
+        public void StartWave()
+        {
+            StartCoroutine(GetPath(path =>
+                {
+                    StartCoroutine(SummonWave(path));
+                }));
         }
 
         private void CleanList()
@@ -61,25 +81,27 @@ namespace Game
             _enemiesAlive.RemoveAll(enemy => enemy == null);
         }
 
-        private IEnumerator SummonWave(GameObject waveEnemyPrefab, int enemyCount, float enemySpawnInterval, List<Tile> path)
+        private IEnumerator SummonWave(List<Tile> path)
         {
             _finishedSummoning = false;
-            _waveCount += 1;
 
-            for (int i = 0; i < enemyCount; i++)
+            int modWave = _waveCount % _waves.Count;
+            int waveStrength = _waveCount / _waves.Count;
+
+            for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {
-                GameObject enemy = Instantiate(waveEnemyPrefab, _portalTransform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _portalTransform.position, Quaternion.identity);
                 _enemiesAlive.Add(enemy);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 Player player = GameObject.Find("Town").GetComponent<Player>();
-                enemyScript.damage = 20;
-                enemyScript.health = 40;
-                enemyScript.speed = player.difficulty == "hard" ? 2 : 6;
+                enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));
+                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? hardmodeCurrencyFactor : 1) * (waveStrength + 1));
                 enemyScript.path = path;
 
-                yield return new WaitForSeconds(enemySpawnInterval);
+                yield return new WaitForSeconds(_waves[modWave].enemyInterval);
             }
 
+            _waveCount += 1;
             _finishedSummoning = true;
         }
 

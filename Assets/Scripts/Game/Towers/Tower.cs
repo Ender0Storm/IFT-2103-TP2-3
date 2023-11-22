@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     protected int cost;
     [SerializeField]
     protected int size;
+    protected BuildController owner;
 
     public Vector2 CenterOnGrid(Vector2 point)
     {
@@ -28,5 +29,10 @@ public class Tower : MonoBehaviour
     public int GetSize()
     {
         return size;
+    }
+
+    public void SetOwner(BuildController owner)
+    {
+        this.owner = owner;
     }
 }

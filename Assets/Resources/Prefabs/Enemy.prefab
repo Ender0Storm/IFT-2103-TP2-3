@@ -102,6 +102,7 @@ MonoBehaviour:
   damage: 20
   health: 30
   speed: 2
+  currencyDrop: 4
 --- !u!114 &6950957506936543834
 MonoBehaviour:
   m_ObjectHideFlags: 0

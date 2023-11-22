@@ -24,17 +24,18 @@ public class BuildController : MonoBehaviour
         if (_choices.AnyTogglesOn() && !EventSystem.current.IsPointerOverGameObject())
         {
             _chosenTower = _choices.GetFirstActiveToggle().GetComponent<ChosenTower>();
-            Tower tower = _chosenTower.GetTower();
-            int size = tower.GetSize();
+            Tower towerScript = _chosenTower.GetTower();
+            int size = towerScript.GetSize();
 
             _hoverHighlight.SetActive(true);
             _hoverHighlight.transform.localScale = new Vector3(size, size, 1);
-            _hoverHighlight.transform.position = tower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            _hoverHighlight.transform.position = towerScript.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (Input.GetMouseButtonDown(0) && _currency >= tower.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused)
+            if (Input.GetMouseButtonDown(0) && _currency >= towerScript.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused)
             {
-                Instantiate(_chosenTower.GetPrefab(), tower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity, _towerParent);
-                _currency -= tower.GetCost();
+                GameObject tower = Instantiate(_chosenTower.GetPrefab(), towerScript.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity, _towerParent);
+                tower.GetComponent<Tower>().SetOwner(this);
+                _currency -= towerScript.GetCost();
             }
         }
         else
@@ -46,5 +47,10 @@ public class BuildController : MonoBehaviour
     public int GetCurrency()
     {
         return _currency;
+    }
+
+    public void AddCurrency(int ammount)
+    {
+        _currency += ammount;
     }
 }

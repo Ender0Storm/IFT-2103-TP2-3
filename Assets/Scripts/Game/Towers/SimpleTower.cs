@@ -43,7 +43,7 @@ public class SimpleTower : Tower
     private void Fire(GameObject target)
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        BasicProjectile projectileScript = projectile.GetComponent<BasicProjectile>();
-        projectileScript.Setup(target, attackDamage);
+        Projectile projectileScript = projectile.GetComponent<Projectile>();
+        projectileScript.Setup(target, owner, attackDamage);
     }
 }

@@ -12,12 +12,10 @@ public class CanonProjectile : Projectile
     // Update is called once per frame
     void Update()
     {
-        if (trackedTarget == null)
+        if (trackedTarget != null)
         {
-            Destroy(gameObject);
-            return;
+            target = trackedTarget.position;
         }
-        target = trackedTarget.position;
 
         Vector3 direction = target - (Vector2)transform.position;
         transform.position += direction * projectileSpeed * Time.deltaTime;

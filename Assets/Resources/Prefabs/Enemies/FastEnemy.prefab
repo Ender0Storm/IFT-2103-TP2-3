@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   health: 20
-  speed: 6
+  speed: 5
   currencyDrop: 5
 --- !u!114 &6950957506936543834
 MonoBehaviour:

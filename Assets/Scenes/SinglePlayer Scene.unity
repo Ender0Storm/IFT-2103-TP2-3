@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44ec3268917c4441a3591a5250b8a57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currency: 100
+  _currency: 80
   _choices: {fileID: 406090725}
   _waveManager: {fileID: 1113374442}
   _hoverHighlight: {fileID: 562552662}
@@ -2173,8 +2173,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85963a1ee5f4690aa4d853989db0e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+  _waves:
+  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+    enemyCount: 5
+    enemyInterval: 1.2
+  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+    enemyCount: 8
+    enemyInterval: 0.8
+  - enemyPrefab: {fileID: 8570363033055055484, guid: b92aa3542697e9e40a274aba6b2c118f, type: 3}
+    enemyCount: 6
+    enemyInterval: 1
+  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+    enemyCount: 12
+    enemyInterval: 1.5
+  - enemyPrefab: {fileID: 8570363033055055484, guid: e54d5eeac8da4ac4e8c10ba317e6b18d, type: 3}
+    enemyCount: 6
+    enemyInterval: 2
+  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+    enemyCount: 10
+    enemyInterval: 1
+  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+    enemyCount: 10
+    enemyInterval: 0.4
+  - enemyPrefab: {fileID: 8570363033055055484, guid: b92aa3542697e9e40a274aba6b2c118f, type: 3}
+    enemyCount: 8
+    enemyInterval: 1
+  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+    enemyCount: 15
+    enemyInterval: 1.5
+  - enemyPrefab: {fileID: 8570363033055055484, guid: bc37c2aa44c9cda419e063459747e89c, type: 3}
+    enemyCount: 1
+    enemyInterval: 1
+  strengthMod: 2
   _portalTransform: {fileID: 850102748}
+  hardmodeCurrencyFactor: 0.8
 --- !u!1 &1124114616
 GameObject:
   m_ObjectHideFlags: 0

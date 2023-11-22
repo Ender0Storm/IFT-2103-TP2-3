@@ -1,4 +1,5 @@
-﻿using  System.Collections.Generic;
+﻿using System;
+using  System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace Game.pathFinding
         private SpriteRenderer _spriteRenderer;
         private CollisionManager _collisionManager;
         private List<Tile> _accessibleTiles;
-        private const float TileRange = 0.5f;
+        private const float TileRange = 1f;
 
         public List<Tile> GetAccessibleTiles(Tile currentTile, Tile targetTile)
         {
@@ -54,25 +55,25 @@ namespace Game.pathFinding
                 _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y + TileRange)) //E
             {
                 diagonalTiles.Add(new Tile
-                    { X = currentTile.X + TileRange, Y = currentTile.Y + TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange }); //N-E
+                    { X = currentTile.X + TileRange, Y = currentTile.Y + TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange*(float)Math.Sqrt(2)}); //N-E
             }
             if (_accessibleTiles.Any(x => x.X == currentTile.X + TileRange && x.Y == currentTile.Y) && //N
                 _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y - TileRange)) //W
             {
                 diagonalTiles.Add(new Tile
-                    { X = currentTile.X + TileRange, Y = currentTile.Y - TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange }); //N-W
+                    { X = currentTile.X + TileRange, Y = currentTile.Y - TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange*(float)Math.Sqrt(2)}); //N-W
             }
             if (_accessibleTiles.Any(x => x.X == currentTile.X - TileRange && x.Y == currentTile.Y) && //S
                 _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y + TileRange)) //E
             {
                 diagonalTiles.Add(new Tile
-                    { X = currentTile.X - TileRange, Y = currentTile.Y + TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange }); //S-E
+                    { X = currentTile.X - TileRange, Y = currentTile.Y + TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange*(float)Math.Sqrt(2)}); //S-E
             }
             if (_accessibleTiles.Any(x => x.X == currentTile.X - TileRange && x.Y == currentTile.Y) && //S
                 _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y - TileRange)) //W
             {
                 diagonalTiles.Add(new Tile
-                    { X = currentTile.X - TileRange, Y = currentTile.Y - TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange }); //S-W
+                    { X = currentTile.X - TileRange, Y = currentTile.Y - TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange*(float)Math.Sqrt(2)}); //S-W
             }
             
             foreach(var tile in diagonalTiles)

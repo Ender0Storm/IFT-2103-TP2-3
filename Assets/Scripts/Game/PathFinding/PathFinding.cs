@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-
 namespace Game.pathFinding
 {
     public class PathFinding
@@ -40,7 +38,6 @@ namespace Game.pathFinding
                 if (checkTile.X == _finish.X && checkTile.Y == _finish.Y)
                 {
                     var tile = checkTile;
-                    Debug.Log("Retracing steps backwards...");
                     while (tile.X != _start.X || tile.Y != _start.Y)
                     {
                         _foundPath.Insert(0, tile);
@@ -60,7 +57,7 @@ namespace Game.pathFinding
                     if (_activeTiles.Any(x => x.X == walkableTile.X && x.Y == walkableTile.Y))
                     {
                         var existingTile = _activeTiles.First(x => x.X == walkableTile.X && x.Y == walkableTile.Y);
-                        if (existingTile.CostDistance > checkTile.CostDistance)
+                        if (existingTile.CostDistance > walkableTile.CostDistance)
                         {
                             _activeTiles.Remove(existingTile);
                             _activeTiles.Add(walkableTile);
@@ -72,7 +69,6 @@ namespace Game.pathFinding
                     }
                 }
             }
-            Debug.Log("No Path Found!");
             return null;
         }
     }

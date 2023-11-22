@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Game.pathFinding;
-using Game.PlayerInformation;
 using UnityEngine;
 
 namespace Game.enemy
@@ -23,18 +22,17 @@ namespace Game.enemy
         {
             enemyScript = GetComponent<Enemy>();
             player = GameObject.Find("Town").GetComponent<Player>();
-            GetPath();
+            _path = enemyScript.path;
             SetDirection();
         }
 
         public void Update()
         {
             transform.position = new Vector2(transform.position.x + _direction.x * Time.deltaTime, transform.position.y + _direction.y * Time.deltaTime);
-
-            if (transform.position.x >= _nextPosition.x - 0.05 
-                && transform.position.y >= _nextPosition.y - 0.05
-                && transform.position.x <= _nextPosition.x + 0.05
-                && transform.position.y <= _nextPosition.y + 0.05)
+            if (transform.position.x >= _nextPosition.x - 0.1 
+                && transform.position.y >= _nextPosition.y - 0.1
+                && transform.position.x <= _nextPosition.x + 0.1
+                && transform.position.y <= _nextPosition.y + 0.1)
             {
                 transform.position = new Vector2(_nextPosition.x, _nextPosition.y);
                 if (indexPosition == _path.Count - 1)
@@ -46,38 +44,6 @@ namespace Game.enemy
                 indexPosition++;
                 SetDirection();
             }
-        }
-
-        private void GetPath()
-        {
-            Tile start = SetStartTile();
-            Tile finish = SetFinishTile();
-            start.SetDistance(finish.X, finish.Y);
-            
-            _pathFinding = new PathFinding(start, finish);
-            
-            _path = _pathFinding.FindPath();
-        }
-
-        private Tile SetStartTile()
-        {
-            Tile start = new Tile
-            {
-                X = (int) transform.position.x,
-                Y = (int) transform.position.y,
-            };
-            
-            return start;
-        }
-
-        private Tile SetFinishTile()
-        {
-            Tile finish = new Tile
-            {
-                X = (int)player.transform.position.x,
-                Y = (int)player.transform.position.y,
-            };
-            return finish;
         }
 
         private void SetDirection()

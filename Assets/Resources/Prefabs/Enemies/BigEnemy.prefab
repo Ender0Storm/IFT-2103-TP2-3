@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6950957506936543834}
   - component: {fileID: 1769048382464643071}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: BigEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.15361942, b: 0, a: 1}
+  m_Color: {r: 0.5754717, g: 0.27885786, b: 0.22530259, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  health: 30
+  health: 50
   speed: 2
-  currencyDrop: 4
+  currencyDrop: 10
 --- !u!114 &6950957506936543834
 MonoBehaviour:
   m_ObjectHideFlags: 0

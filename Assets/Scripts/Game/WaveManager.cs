@@ -64,11 +64,16 @@ namespace Game
         {
             if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
             {
-                StartCoroutine(GetPath(path =>
+                StartWave();
+            }
+        }
+
+        public void StartWave()
+        {
+            StartCoroutine(GetPath(path =>
                 {
                     StartCoroutine(SummonWave(path));
                 }));
-            }
         }
 
         private void CleanList()
@@ -90,7 +95,7 @@ namespace Game
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 Player player = GameObject.Find("Town").GetComponent<Player>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));
-                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? hardmodeCurrencyFactor : 1) * Mathf.Pow(strengthMod, waveStrength));
+                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? hardmodeCurrencyFactor : 1) * (waveStrength + 1));
                 enemyScript.path = path;
 
                 yield return new WaitForSeconds(_waves[modWave].enemyInterval);

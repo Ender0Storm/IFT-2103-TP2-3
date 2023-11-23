@@ -1,36 +1,42 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+
 namespace Game.pathFinding
 {
-    public class PathFinding
+    public class PathFinding : MonoBehaviour
     {
-        private readonly Tile _start;
-        private readonly Tile _finish;
+        private Tile _start;
+        private Tile _finish;
+        [SerializeField]
+        private Transform _startPosition;
+        [SerializeField]
+        private Transform _finishPosition;
         private List<Tile> _activeTiles;
         private List<Tile> _visitedTiles;
         private List<Tile> _foundPath;
         private AccessiblePositionsFinder _accessiblePositionsFinder;
-
-        public PathFinding(Tile start, Tile finish)
-        {
-            _start = start;
-            _finish = finish;
-            Start();
-        }
+        [SerializeField] 
+        public LayerMask _layerObstacles;
         
         public void Start()
         {
-            _accessiblePositionsFinder = new AccessiblePositionsFinder();
+            _start = new Tile { X = _startPosition.position.x, Y = _startPosition.position.y };
+            _finish = new Tile { X = _finishPosition.position.x, Y = _finishPosition.position.y };
             
+            _accessiblePositionsFinder = new AccessiblePositionsFinder();
+        }
+
+        public List<Tile> FindPath()
+        {
             _foundPath = new List<Tile>();
             _activeTiles = new List<Tile>();
             _visitedTiles = new List<Tile>();
             
             _activeTiles.Add(_start);
-        }
-
-        public List<Tile> FindPath()
-        {
+            
+            _accessiblePositionsFinder.SetupTiles(_layerObstacles);
+            
             while (_activeTiles.Any())
             {
                 var checkTile = _activeTiles.OrderBy(x => x.CostDistance).First();
@@ -69,6 +75,7 @@ namespace Game.pathFinding
                     }
                 }
             }
+            Debug.Log("Path not found");
             return null;
         }
     }

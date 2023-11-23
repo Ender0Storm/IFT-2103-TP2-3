@@ -30,34 +30,18 @@ namespace Game
         [SerializeField]
         private float hardmodeCurrencyFactor;
 
-        private Vector2 town;
-        private Vector2 portal;
-        private Tile start;
-        private Tile finish;
-
         private List<GameObject> _enemiesAlive;
         private int _waveCount;
+        private PathFinding _pathFinding;
 
         private bool _finishedSummoning;
-
-
+        
         public void Start()
         {
             _enemiesAlive = new List<GameObject>();
             _finishedSummoning = true;
             _waveCount = 0;
-            town = GameObject.Find("Town").transform.position;
-            portal = GameObject.Find("Spawn Portal").transform.position;
-            start = new Tile
-            {
-                X = portal.x,
-                Y = portal.y
-            };
-            finish = new Tile
-            {
-                X = town.x,
-                Y = town.y
-            };
+            _pathFinding = gameObject.GetComponent<PathFinding>();
         }
 
         public void Update()
@@ -70,10 +54,8 @@ namespace Game
 
         public void StartWave()
         {
-            StartCoroutine(GetPath(path =>
-                {
-                    StartCoroutine(SummonWave(path));
-                }));
+            List<Tile> path = _pathFinding.FindPath();
+            StartCoroutine(SummonWave(path));
         }
 
         private void CleanList()
@@ -103,16 +85,6 @@ namespace Game
 
             _waveCount += 1;
             _finishedSummoning = true;
-        }
-
-        private IEnumerator GetPath(Action<List<Tile>> callback)
-        {
-            PathFinding pathFinding = new PathFinding(start, finish);
-            List<Tile> path = pathFinding.FindPath();
-            
-            callback(path);
-
-            yield return new WaitForSeconds(2);;
         }
 
         public bool CanBuild()

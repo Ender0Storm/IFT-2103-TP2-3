@@ -34,17 +34,7 @@ namespace Game.pathFinding
                 new Tile { X = currentTile.X - TileRange, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + TileRange }, //West
             };
             
-            foreach(var tile in cardinalTiles)
-            {
-                if (!_collisionManager.IsSquareColliding(tile, TileRange) &&
-                    tile.X > _spriteRenderer.bounds.min.x &&
-                    tile.X < _spriteRenderer.bounds.max.x &&
-                    tile.Y > _spriteRenderer.bounds.min.y &&
-                    tile.Y < _spriteRenderer.bounds.max.y)
-                {
-                    _accessibleTiles.Add(tile);
-                }
-            }
+            AddValidTiles(cardinalTiles);
         }
 
         private void DiagonalPositions(Tile currentTile)
@@ -76,7 +66,12 @@ namespace Game.pathFinding
                     { X = currentTile.X - TileRange, Y = currentTile.Y - TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange*(float)Math.Sqrt(2)}); //S-W
             }
             
-            foreach(var tile in diagonalTiles)
+            AddValidTiles(diagonalTiles);
+        }
+
+        private void AddValidTiles(List<Tile> tiles)
+        {
+            foreach(var tile in tiles)
             {
                 if (!_collisionManager.IsSquareColliding(tile, TileRange) &&
                     tile.X > _spriteRenderer.bounds.min.x &&

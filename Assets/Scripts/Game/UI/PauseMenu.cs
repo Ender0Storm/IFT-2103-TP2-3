@@ -14,6 +14,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private GameObject _endMenuUI;
 
+    [SerializeField]
+    private TMPro.TMP_Text _scoreText;
+
     // Update is called once per frame
     void Update()
     {
@@ -47,17 +50,20 @@ public class PauseMenu : MonoBehaviour
     public void EndGame(int waveReached)
     {
         _endMenuUI.SetActive(true);
+        _scoreText.text = $"You reached wave {waveReached}!";
         Time.timeScale = 0f;
         isPaused = true;
     }
 
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(MENU_SCENE_ID);
     }
 
     public void ReloadGame()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(GAME_SCENE_ID);
     }
 

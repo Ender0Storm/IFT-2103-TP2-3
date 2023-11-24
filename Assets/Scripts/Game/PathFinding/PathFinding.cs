@@ -16,7 +16,7 @@ namespace Game.pathFinding
         private List<Tile> _visitedTiles;
         private List<Tile> _foundPath;
         private AccessiblePositionsFinder _accessiblePositionsFinder;
-        [SerializeField] 
+        [SerializeField]
         public LayerMask _layerObstacles;
         
         public void Start()

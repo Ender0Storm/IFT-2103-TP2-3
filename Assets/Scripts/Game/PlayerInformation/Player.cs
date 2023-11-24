@@ -6,44 +6,52 @@ namespace Game
 {
     public class Player : MonoBehaviour
     {
-        public float maxHealth;
+        [SerializeField]
+        private float _maxHealth;
 
-        public float currentHealth;
+        [SerializeField]
+        private float _currentHealth;
 
-        public HealthBar healthBar;
+        [SerializeField]
+        private HealthBar _healthBar;
         public string difficulty;
+
+        [SerializeField]
+        private PauseMenu _pauseMenu;
+        [SerializeField]
+        private WaveManager _waveManager;
 
         public void Start()
         {
-            healthBar.SetMaxHealth(maxHealth);
+            _healthBar.SetMaxHealth(_maxHealth);
             difficulty = Navigation.Difficulty;
         }
 
         public void LoseHealthPoints(float health)
         {
-            if (currentHealth - health < 0)
+            if (_currentHealth - health <= 0)
             {
-                currentHealth = 0;
-                Debug.Log("GAME OVER");
+                _currentHealth = 0;
+                _pauseMenu.EndGame(_waveManager.GetWave());
             }
             else
             {
-                currentHealth -= health;
+                _currentHealth -= health;
             }
-            healthBar.SetHealth(currentHealth);
+            _healthBar.SetHealth(_currentHealth);
         }
 
         public void WinHealthPoints(float health)
         {
-            if (currentHealth + health > maxHealth)
+            if (_currentHealth + health > _maxHealth)
             {
-                currentHealth = maxHealth;
+                _currentHealth = _maxHealth;
             }
             else
             {
-                currentHealth += health;
+                _currentHealth += health;
             }
-            healthBar.SetHealth(currentHealth);
+            _healthBar.SetHealth(_currentHealth);
         }
     }
 }

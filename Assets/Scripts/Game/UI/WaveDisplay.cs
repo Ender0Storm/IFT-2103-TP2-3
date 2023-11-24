@@ -13,6 +13,6 @@ public class WaveDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _waveText.text = "Wave: " + _waveManager.GetWave().ToString();
+        _waveText.text = $"Wave: {_waveManager.GetWave()}";
     }
 }

@@ -6,6 +6,8 @@ namespace Game.enemy
 {
     public class EnemyMovementManager : MonoBehaviour
     {
+        private const float PRECISION = 0.05f;
+
         private List<Tile> _path;
         private PathFinding _pathFinding;
         private Tile _nextTile;
@@ -23,18 +25,18 @@ namespace Game.enemy
             enemyScript = GetComponent<Enemy>();
             player = GameObject.Find("Town").GetComponent<Player>();
             _path = enemyScript.path;
-            SetDirection();
         }
 
         public void Update()
         {
+            SetDirection();
             transform.position = new Vector2(transform.position.x + _direction.x * Time.deltaTime, transform.position.y + _direction.y * Time.deltaTime);
-            if (transform.position.x >= _nextPosition.x - 0.1 
-                && transform.position.y >= _nextPosition.y - 0.1
-                && transform.position.x <= _nextPosition.x + 0.1
-                && transform.position.y <= _nextPosition.y + 0.1)
+
+            if (transform.position.x >= _nextPosition.x - PRECISION
+                && transform.position.y >= _nextPosition.y - PRECISION
+                && transform.position.x <= _nextPosition.x + PRECISION
+                && transform.position.y <= _nextPosition.y + PRECISION)
             {
-                transform.position = new Vector2(_nextPosition.x, _nextPosition.y);
                 if (indexPosition == _path.Count - 1)
                 {
                     player.LoseHealthPoints(enemyScript.damage);
@@ -42,15 +44,13 @@ namespace Game.enemy
                     return;
                 }
                 indexPosition++;
-                SetDirection();
             }
         }
 
         private void SetDirection()
         {
             _nextTile = _path[indexPosition];
-            _nextPosition.x = _nextTile.X + 0.5f;
-            _nextPosition.y = _nextTile.Y + 0.5f;
+            _nextPosition = _nextTile.GetCenter();
             _direction = (_nextPosition - (Vector2)transform.position).normalized * enemyScript.speed;
         }
     }

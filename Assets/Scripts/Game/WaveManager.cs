@@ -46,7 +46,7 @@ namespace Game
 
         public void Update()
         {
-            if (Input.GetKeyDown("space") && _finishedSummoning && !PauseMenu.isPaused)
+            if (Input.GetKeyDown("space") && CanBuild() && !PauseMenu.isPaused)
             {
                 StartWave();
             }

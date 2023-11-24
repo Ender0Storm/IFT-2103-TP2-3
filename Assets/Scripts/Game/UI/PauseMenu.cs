@@ -57,13 +57,13 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        Time.timeScale = 1f;
+        Resume();
         SceneManager.LoadScene(MENU_SCENE_ID);
     }
 
     public void ReloadGame()
     {
-        Time.timeScale = 1f;
+        Resume();
         SceneManager.LoadScene(GAME_SCENE_ID);
     }
 

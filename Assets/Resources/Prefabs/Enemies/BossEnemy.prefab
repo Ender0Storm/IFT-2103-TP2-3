@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 40
-  health: 200
-  speed: 1.5
+  health: 500
+  speed: 1
   currencyDrop: 30
 --- !u!114 &6950957506936543834
 MonoBehaviour:

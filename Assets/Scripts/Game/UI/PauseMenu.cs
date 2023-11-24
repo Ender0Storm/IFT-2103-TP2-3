@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private const int MENU_SCENE_ID = 0;
+    private const int GAME_SCENE_ID = 1;
     public static bool isPaused;
 
     [SerializeField]
     private GameObject _pauseMenuUI;
+    [SerializeField]
+    private GameObject _endMenuUI;
 
     // Update is called once per frame
     void Update()
@@ -41,9 +44,21 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
     }
 
+    public void EndGame(int waveReached)
+    {
+        _endMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+    }
+
     public void LoadMenu()
     {
         SceneManager.LoadScene(MENU_SCENE_ID);
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(GAME_SCENE_ID);
     }
 
     public void QuitGame()

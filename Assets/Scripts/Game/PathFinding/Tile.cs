@@ -5,12 +5,24 @@ namespace Game
 {
     public class Tile
     {
-        public float X;
-        public float Y;
+        public int X;
+        public int Y;
         public float Cost;
         public float Distance;
         public float CostDistance => Cost + Distance;
         public Tile Parent;
+
+        public Tile(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public Tile(Vector2 vector)
+        {
+            X = Mathf.FloorToInt(vector.x);
+            Y = Mathf.FloorToInt(vector.y);
+        }
     
         public void SetDistance(float targetX, float targetY)
         {

@@ -21,8 +21,8 @@ namespace Game.pathFinding
         
         public void Start()
         {
-            _start = new Tile { X = _startPosition.position.x, Y = _startPosition.position.y };
-            _finish = new Tile { X = _finishPosition.position.x, Y = _finishPosition.position.y };
+            _start = new Tile(_startPosition.position);
+            _finish = new Tile(_finishPosition.position);
             
             _accessiblePositionsFinder = new AccessiblePositionsFinder();
         }

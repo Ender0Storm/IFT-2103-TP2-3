@@ -30,7 +30,7 @@ namespace Game.enemy
         public void Update()
         {
             SetDirection();
-            transform.position = new Vector2(transform.position.x + _direction.x * Time.deltaTime, transform.position.y + _direction.y * Time.deltaTime);
+            transform.position = (Vector2)transform.position + _direction * Time.deltaTime;
 
             if (transform.position.x >= _nextPosition.x - PRECISION
                 && transform.position.y >= _nextPosition.y - PRECISION

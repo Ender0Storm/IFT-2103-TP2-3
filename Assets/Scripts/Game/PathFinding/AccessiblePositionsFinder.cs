@@ -7,11 +7,9 @@ namespace Game.pathFinding
 {
     public class AccessiblePositionsFinder
     {
-        private SpriteRenderer _spriteRenderer;
         private List<Tile> _accessibleTiles;
         private List<Tile> _allTiles;
         private const int TileRange = 1;
-        private LayerMask _obstacles;
 
         public List<Tile> GetAccessibleTiles(Tile currentTile, Tile targetTile)
         {

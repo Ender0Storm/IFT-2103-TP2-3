@@ -8,14 +8,13 @@ namespace Game.pathFinding
     public class AccessiblePositionsFinder
     {
         private SpriteRenderer _spriteRenderer;
-        private CollisionManager _collisionManager;
         private List<Tile> _accessibleTiles;
+        private List<Tile> _allTiles;
         private const float TileRange = 1f;
+        private LayerMask _obstacles;
 
         public List<Tile> GetAccessibleTiles(Tile currentTile, Tile targetTile)
         {
-            _spriteRenderer = GetMapLimits();
-            _collisionManager = new CollisionManager();
             _accessibleTiles = new List<Tile>();
             
             CardinalPositions(currentTile);
@@ -33,8 +32,14 @@ namespace Game.pathFinding
                 new Tile { X = currentTile.X + TileRange, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + TileRange }, //East
                 new Tile { X = currentTile.X - TileRange, Y = currentTile.Y, Parent = currentTile, Cost = currentTile.Cost + TileRange }, //West
             };
-            
-            AddValidTiles(cardinalTiles);
+
+            foreach (var tile in cardinalTiles)
+            {
+                if (_allTiles.Any(x => x.X == tile.X && x.Y == tile.Y))
+                {
+                    _accessibleTiles.Add(tile);
+                }
+            }
         }
 
         private void DiagonalPositions(Tile currentTile)
@@ -66,28 +71,34 @@ namespace Game.pathFinding
                     { X = currentTile.X - TileRange, Y = currentTile.Y - TileRange, Parent = currentTile, Cost = currentTile.Cost + TileRange*(float)Math.Sqrt(2)}); //S-W
             }
             
-            AddValidTiles(diagonalTiles);
-        }
-
-        private void AddValidTiles(List<Tile> tiles)
-        {
-            foreach(var tile in tiles)
+            foreach (var tile in diagonalTiles)
             {
-                if (!_collisionManager.IsSquareColliding(tile, TileRange) &&
-                    tile.X > _spriteRenderer.bounds.min.x &&
-                    tile.X < _spriteRenderer.bounds.max.x &&
-                    tile.Y > _spriteRenderer.bounds.min.y &&
-                    tile.Y < _spriteRenderer.bounds.max.y)
+                if (_allTiles.Any(x => x.X == tile.X && x.Y == tile.Y))
                 {
                     _accessibleTiles.Add(tile);
                 }
             }
         }
 
-        private static SpriteRenderer GetMapLimits()
+        public void SetupTiles(LayerMask layerObstacles)
         {
             var ground = GameObject.Find("Ground");
-            return ground.GetComponent<SpriteRenderer>();
+            SpriteRenderer groundLimits = ground.GetComponent<SpriteRenderer>();
+            _allTiles = new List<Tile>();
+            for (var i = groundLimits.bounds.min.x; i <= groundLimits.bounds.max.x; i++)
+            {
+                for (var j = groundLimits.bounds.min.y; j <= groundLimits.bounds.max.y; j++)
+                {
+                    Tile tile = new Tile
+                    {
+                        X = i, Y = j
+                    };
+                    if (!Physics2D.OverlapPoint(new Vector2(tile.X+0.5f, tile.Y+0.5f),layerObstacles))
+                    {
+                        _allTiles.Add(tile);
+                    }
+                }
+            }
         }
     }
 }

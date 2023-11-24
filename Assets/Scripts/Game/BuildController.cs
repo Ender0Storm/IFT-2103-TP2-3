@@ -1,4 +1,5 @@
 using Game;
+using Game.pathFinding;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

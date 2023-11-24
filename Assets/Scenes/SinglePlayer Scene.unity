@@ -1843,6 +1843,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraSpeed: 12
+  _scrollSpeed: 5
+  _cameraMinSize: 3
 --- !u!114 &719817240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,16 +2704,16 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 8570363033055055484, guid: e54d5eeac8da4ac4e8c10ba317e6b18d, type: 3}
     enemyCount: 6
     enemyInterval: 2
-  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+  - enemyPrefab: {fileID: 8570363033055055484, guid: e7cc9638954e4174197f40302c4bf089, type: 3}
     enemyCount: 10
     enemyInterval: 1
-  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+  - enemyPrefab: {fileID: 8570363033055055484, guid: e7cc9638954e4174197f40302c4bf089, type: 3}
     enemyCount: 10
     enemyInterval: 0.4
-  - enemyPrefab: {fileID: 8570363033055055484, guid: b92aa3542697e9e40a274aba6b2c118f, type: 3}
+  - enemyPrefab: {fileID: 8570363033055055484, guid: c96696e6b9c48c748be18bfa53f06148, type: 3}
     enemyCount: 8
     enemyInterval: 1
-  - enemyPrefab: {fileID: 8570363033055055484, guid: 500e0cf82f86e50429fa425140b8dd29, type: 3}
+  - enemyPrefab: {fileID: 8570363033055055484, guid: e7cc9638954e4174197f40302c4bf089, type: 3}
     enemyCount: 15
     enemyInterval: 1.5
   - enemyPrefab: {fileID: 8570363033055055484, guid: bc37c2aa44c9cda419e063459747e89c, type: 3}

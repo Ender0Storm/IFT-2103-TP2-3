@@ -9,22 +9,21 @@ namespace Game.enemy
         private const float PRECISION = 0.05f;
 
         private List<Tile> _path;
-        private PathFinding _pathFinding;
         private Tile _nextTile;
         [SerializeField]
-        private int indexPosition;
+        private int _indexPosition;
         private Vector2 _direction;
         private Vector2 _nextPosition;
 
-        private Enemy enemyScript;
-        private Player player;
+        private Enemy _enemyScript;
+        private Player _player;
         
 
         public void Start()
         {
-            enemyScript = GetComponent<Enemy>();
-            player = GameObject.Find("Town").GetComponent<Player>();
-            _path = enemyScript.path;
+            _enemyScript = GetComponent<Enemy>();
+            _player = GameObject.Find("Town").GetComponent<Player>();
+            _path = _enemyScript.path;
         }
 
         public void Update()
@@ -37,21 +36,26 @@ namespace Game.enemy
                 && transform.position.x <= _nextPosition.x + PRECISION
                 && transform.position.y <= _nextPosition.y + PRECISION)
             {
-                if (indexPosition == _path.Count - 1)
+                if (_indexPosition == _path.Count - 1)
                 {
-                    player.LoseHealthPoints(enemyScript.damage);
+                    _player.LoseHealthPoints(_enemyScript.damage);
                     Destroy(gameObject);
                     return;
                 }
-                indexPosition++;
+                _indexPosition++;
             }
         }
 
         private void SetDirection()
         {
-            _nextTile = _path[indexPosition];
+            _nextTile = _path[_indexPosition];
             _nextPosition = _nextTile.GetCenter();
-            _direction = (_nextPosition - (Vector2)transform.position).normalized * enemyScript.speed;
+            _direction = (_nextPosition - (Vector2)transform.position).normalized * _enemyScript.speed;
+        }
+
+        public float GetProgress()
+        {
+            return _indexPosition + 1 - Mathf.Clamp01(((Vector2)transform.position - _nextPosition).sqrMagnitude);
         }
     }
 }

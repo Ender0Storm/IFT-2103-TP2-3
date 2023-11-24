@@ -1,3 +1,4 @@
+using Game.enemy;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,9 +36,30 @@ public class SimpleTower : Tower
 
         if (cooldownRemaining == 0 && enemiesInRange.Length > 0)
         {
-            Fire(enemiesInRange[0].gameObject);
+            Fire(GetFarthestEnemy(enemiesInRange));
             cooldownRemaining = attackCooldown;
         }
+    }
+
+    private GameObject GetFarthestEnemy(Collider2D[] enemies)
+    {
+        if (enemies.Length == 0) { return null; }
+
+        GameObject farthestEnemy = enemies[0].gameObject;
+        float farthestDistance = farthestEnemy.GetComponent<EnemyMovementManager>().GetProgress();
+        for (int i = 1; i < enemies.Length; i++)
+        {
+            GameObject newEnemy = enemies[i].gameObject;
+            float newDistance = newEnemy.GetComponent<EnemyMovementManager>().GetProgress();
+
+            if (newDistance > farthestDistance)
+            {
+                farthestEnemy = newEnemy;
+                farthestDistance = newDistance;
+            }
+        }
+
+        return farthestEnemy;
     }
 
     private void Fire(GameObject target)

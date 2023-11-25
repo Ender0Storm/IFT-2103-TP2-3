@@ -19,6 +19,12 @@ public class BuildController : MonoBehaviour
     [SerializeField]
     private Transform _towerParent;
 
+    private PathFinding _pathFinding;
+
+    public void Start()
+    {
+        _pathFinding = _waveManager.GetComponent<PathFinding>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -35,8 +41,15 @@ public class BuildController : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && _currency >= towerScript.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused)
             {
                 GameObject tower = Instantiate(_chosenTower.GetPrefab(), towerScript.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity, _towerParent);
-                tower.GetComponent<Tower>().SetOwner(this);
-                _currency -= towerScript.GetCost();
+                if (_pathFinding.FindPath() != null)
+                {
+                    tower.GetComponent<Tower>().SetOwner(this);
+                    _currency -= towerScript.GetCost();
+                }
+                else
+                {
+                    Destroy(tower);
+                }
             }
         }
         else

@@ -49,9 +49,18 @@ public class PauseMenu : MonoBehaviour
     public void EndGame(int waveReached)
     {
         _endMenuUI.SetActive(true);
-        _scoreText.text = $"You reached wave {waveReached}!";
         Time.timeScale = 0f;
         isPaused = true;
+
+        if (Globals.IsMultiplayer)
+        {
+            _scoreText.text = $"You lost at wave {waveReached}!";
+            // Signal other player
+        }
+        else
+        {
+            _scoreText.text = $"You reached wave {waveReached}!";
+        }
     }
 
     public void LoadMenu()

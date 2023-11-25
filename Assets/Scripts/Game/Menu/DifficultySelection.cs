@@ -13,7 +13,7 @@ namespace Game.Menu
         {
             _easyButton = GameObject.Find("Easy");
             _hardButton = GameObject.Find("Hard");
-            _selectedDifficulty = "none";
+            _selectedDifficulty = "easy";
         }
 
         public void HardDifficultySelection()

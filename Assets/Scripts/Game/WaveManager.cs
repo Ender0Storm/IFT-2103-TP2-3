@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Menu;
 using Game.pathFinding;
 using UnityEngine;
 
@@ -76,7 +77,7 @@ namespace Game
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 Player player = GameObject.Find("Player Profile").GetComponent<Player>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));
-                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? _hardCurrencyRatio : 1) * (waveStrength + 1));
+                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (Navigation.difficulty == "hard" ? _hardCurrencyRatio : 1) * (waveStrength + 1));
                 enemyScript.path = path;
 
                 yield return new WaitForSeconds(_waves[modWave].enemyInterval);

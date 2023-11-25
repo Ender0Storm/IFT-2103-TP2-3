@@ -49,9 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 25
   size: 2
-  attackDamage: 5
-  attackCooldown: 0.75
-  attackRange: 5
+  attackDamage: 6
+  attackCooldown: 0.65
+  attackRange: 6
   enemyMask:
     serializedVersion: 2
     m_Bits: 64

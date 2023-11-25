@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   health: 40
-  speed: 5
+  speed: 2.5
   currencyDrop: 3
   _lifeBar: {fileID: 9168084715167199311}
 --- !u!114 &6950957506936543834

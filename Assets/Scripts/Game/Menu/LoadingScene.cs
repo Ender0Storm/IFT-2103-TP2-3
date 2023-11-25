@@ -11,23 +11,14 @@ namespace Game.Menu
         public Image loadingBarFill;
         public GameObject menu;
         public Slider slider;
-        private DifficultySelection _difficultySelection;
-        
-        public static string Difficulty;
 
         public void LoadScene(int scene)
         {
-            _difficultySelection = GameObject.Find("SingleplayerPage").GetComponent<DifficultySelection>();
-            Difficulty = _difficultySelection.GetSelectedDifficulty();
-            if (Difficulty != "none")
-            {
-                StartCoroutine(LoadSceneAsync(scene));
-            }
+            StartCoroutine(LoadSceneAsync(scene));
         }
 
         IEnumerator LoadSceneAsync(int sceneId)
         {
-            menu.SetActive(false);
             loadingScreen.SetActive(true);
             slider.value = 0.3f;
             yield return new WaitForSeconds(0.5f);

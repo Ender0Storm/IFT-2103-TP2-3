@@ -16,8 +16,6 @@ namespace Game
 
         [SerializeField]
         private HealthBar _healthBar;
-        
-        public string difficulty;
 
         [SerializeField]
         private PauseMenu _pauseMenu;
@@ -26,9 +24,9 @@ namespace Game
 
         public void Start()
         {
-            difficulty = Navigation.difficulty;
+            Globals.IsMultiplayer = !string.IsNullOrEmpty(Navigation.joinIP);
 
-            _maxHealth = _maxHealth * (difficulty == "hard" ? _hardHealthRatio : 1);
+            _maxHealth = _maxHealth * (Navigation.difficulty == "hard" ? _hardHealthRatio : 1);
             _currentHealth = _maxHealth;
         }
 

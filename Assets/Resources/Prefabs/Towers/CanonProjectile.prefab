@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3039fa14009347b4d9d52ef963318c24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 8
+  projectileSpeed: 9
   projectileSize: 0.4
   splashRange: 1.5
   enemyMask:

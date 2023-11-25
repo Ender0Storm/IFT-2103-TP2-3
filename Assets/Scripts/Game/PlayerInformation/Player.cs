@@ -13,7 +13,9 @@ namespace Game
         private float _currentHealth;
 
         [SerializeField]
-        private HealthBar _healthBar;
+        private GameObject _healthBar;
+
+        private HealthBar _healthBarScript;
         public string difficulty;
 
         [SerializeField]
@@ -23,7 +25,8 @@ namespace Game
 
         public void Start()
         {
-            _healthBar.SetMaxHealth(_maxHealth);
+            _healthBarScript = _healthBar.GetComponent<HealthBar>();
+            _healthBarScript.SetMaxHealth(_maxHealth);
             difficulty = Navigation.difficulty;
         }
 
@@ -38,7 +41,7 @@ namespace Game
             {
                 _currentHealth -= health;
             }
-            _healthBar.SetHealth(_currentHealth);
+            _healthBarScript.SetHealth(_currentHealth);
         }
 
         public void WinHealthPoints(float health)
@@ -51,7 +54,7 @@ namespace Game
             {
                 _currentHealth += health;
             }
-            _healthBar.SetHealth(_currentHealth);
+            _healthBarScript.SetHealth(_currentHealth);
         }
     }
 }

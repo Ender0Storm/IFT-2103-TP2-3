@@ -24,7 +24,7 @@ namespace Game
         public void Start()
         {
             _healthBar.SetMaxHealth(_maxHealth);
-            difficulty = Navigation.Difficulty;
+            difficulty = Navigation.difficulty;
         }
 
         public void LoseHealthPoints(float health)

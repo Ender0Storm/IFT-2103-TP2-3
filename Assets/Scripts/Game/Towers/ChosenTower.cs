@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChosenTower : MonoBehaviour
 {
     [SerializeField]
     private GameObject _towerPrefab;
+    [SerializeField]
+    private Text _textCost;
 
     private Tower _tower;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         _tower = _towerPrefab.GetComponent<Tower>();
+        _textCost.text = _tower.GetCost() + " coins";
     }
 
     public Tower GetTower()

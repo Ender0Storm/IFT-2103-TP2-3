@@ -1,6 +1,4 @@
-﻿using System.Net;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,99 +6,72 @@ namespace Game.Menu
 {
     public class Navigation : MonoBehaviour
     {
-        public const int MENU_SCENE_INDEX = 0;
-        public const int SINGLEPLAYER_SCENE_INDEX = 1;
-        public const int MULTIPLAYER_SCENE_INDEX = 2;
-
         private DifficultySelection _difficultySelection;
-
-        [SerializeField]
-        private GameObject _entryPage;
-        [SerializeField]
-        private GameObject _menuPage;
-        [SerializeField]
+        
+        private GameObject _menuPage1;
+        private GameObject _menuPage2;
         private GameObject _optionsPage;
-        [SerializeField]
-        private GameObject _singleplayerPage;
-        [SerializeField]
-        private GameObject _multiplayerPage;
-        public static string difficulty;
-        public static string joinIP;
-
+        private GameObject _singlePlayerSettingsPage;
+        public static string Difficulty;
         void Start()
         {
+            _menuPage1 = GameObject.Find("MenuPage1");
+            _menuPage2 = GameObject.Find("MenuPage2");
+            _optionsPage = GameObject.Find("OptionsPage");
+            _singlePlayerSettingsPage = GameObject.Find("SingleplayerSettingsPage");
             _difficultySelection =
-                _singleplayerPage.GetComponentInChildren<DifficultySelection>();
-            GoEntryPage();
+                _singlePlayerSettingsPage.GetComponentInChildren<DifficultySelection>();
+            MenuInit();
         }
 
-        public void GoEntryPage()
+        private void MenuInit()
         {
-            DeactivateAllPages();
-            _entryPage.SetActive(true);
+            _menuPage1.SetActive(true);
+            _menuPage2.SetActive(false);
+            _optionsPage.SetActive(false);
+            _singlePlayerSettingsPage.SetActive(false);
         }
         
-        public void GoMenuPage()
+        public void MenuPage1ToMenuPage2()
         {
-            DeactivateAllPages();
-            _menuPage.SetActive(true);
+            _menuPage1.SetActive(false);
+            _menuPage2.SetActive(true);
+            ResetColor();
+        }
+
+        public void MenuPage2ToMenuPage1()
+        {
+            _menuPage2.SetActive(false);
+            _menuPage1.SetActive(true);
+            ResetColor();
         }
         
-        public void GoOptionsPage()
+        public void MenuPage2ToOptionsPage()
         {
-            DeactivateAllPages();
+            _menuPage2.SetActive(false);
             _optionsPage.SetActive(true);
+            ResetColor();
         }
         
-        public void GoSingleplayerPage()
+        public void OptionsPageToMenuPage2()
         {
-            DeactivateAllPages();
-            _singleplayerPage.SetActive(true);
+            _optionsPage.SetActive(false);
+            _menuPage2.SetActive(true);
+            ResetColor();
         }
-
-        public void GoMultiplayerPage()
+        
+        public void MenuPage2SinglePlayerSettingsPage()
         {
-            DeactivateAllPages();
-            _multiplayerPage.SetActive(true);
+            _menuPage2.SetActive(false);
+            _singlePlayerSettingsPage.SetActive(true);
+            ResetColor();
         }
-
-        public void StartSingleplayerGame()
+        
+        public void SinglePlayerSettingsPageToMenuPage2()
         {
             _singlePlayerSettingsPage.SetActive(false);
             _menuPage2.SetActive(true);
             _difficultySelection.SetSelectedDifficulty("none");
-            ResetColor();
-        }
-
-        public void StartMultiplayerHost()
-        {
-            joinIP = "";
-            SceneManager.LoadScene(MULTIPLAYER_SCENE_INDEX);
-        }
-
-        public void StartMultiplayerJoin()
-        {
-            string input = _multiplayerPage.GetComponentInChildren<TMP_InputField>().text;
-            if (input.Length >= 7)
-            {
-                joinIP = input;
-                SceneManager.LoadScene(MULTIPLAYER_SCENE_INDEX);
-            }
-        }
-
-        public void Quit()
-        {
-            Application.Quit();
-        }
-
-        private void DeactivateAllPages()
-        {
-            _entryPage.SetActive(false);
-            _menuPage.SetActive(false);
-            _optionsPage.SetActive(false);
-            _singleplayerPage.SetActive(false);
-            _multiplayerPage.SetActive(false);
-            _difficultySelection._selectedDifficulty = "none";
             ResetColor();
         }
 

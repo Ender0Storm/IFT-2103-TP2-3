@@ -24,6 +24,14 @@ namespace Game.enemy
             _enemyScript = GetComponent<Enemy>();
             _player = GameObject.Find("Town").GetComponent<Player>();
             _path = _enemyScript.path;
+            if (_player.difficulty == "hard")
+            {
+                _enemyScript.speed = 4;
+            }
+            else
+            {
+                _enemyScript.speed = 2;
+            }
         }
 
         public void Update()
@@ -38,8 +46,8 @@ namespace Game.enemy
             {
                 if (_indexPosition == _path.Count - 1)
                 {
-                    _player.LoseHealthPoints(_enemyScript.damage);
                     Destroy(gameObject);
+                    _player.LoseHealthPoints(_enemyScript.damage);
                     return;
                 }
                 _indexPosition++;

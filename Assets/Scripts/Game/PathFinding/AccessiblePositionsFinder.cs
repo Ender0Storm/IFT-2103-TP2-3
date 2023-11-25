@@ -65,7 +65,7 @@ namespace Game.pathFinding
             }
             if (_accessibleTiles.Any(x => x.X == currentTile.X - TileRange && x.Y == currentTile.Y) && //S
                 _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y - TileRange)) //W
-            {
+            { 
                 diagonalTiles.Add(new Tile(currentTile.X - TileRange, currentTile.Y - TileRange)
                     { Parent = currentTile, Cost = diagonalCost }); //S-W
             }

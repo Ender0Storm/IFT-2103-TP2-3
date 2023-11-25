@@ -71,17 +71,8 @@ namespace Game.Menu
         {
             _singlePlayerSettingsPage.SetActive(false);
             _menuPage2.SetActive(true);
-            _difficultySelection._selectedDifficulty = "none";
+            _difficultySelection.SetSelectedDifficulty("none");
             ResetColor();
-        }
-
-        public void SinglePlayerSettingsPageToSinglePlayer()
-        {
-            Difficulty = _difficultySelection._selectedDifficulty;
-            if (Difficulty != "none")
-            {
-                SceneManager.LoadScene("SinglePlayer Scene");
-            }
         }
 
         private void ResetColor()

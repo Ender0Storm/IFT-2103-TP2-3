@@ -4020,7 +4020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1589788245}
-  hp: {fileID: 0}
+  hp: {fileID: 812449033}
 --- !u!114 &1589788245
 MonoBehaviour:
   m_ObjectHideFlags: 0

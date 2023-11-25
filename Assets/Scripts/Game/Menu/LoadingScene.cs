@@ -17,7 +17,7 @@ namespace Game.Menu
 
         public void LoadScene(int scene)
         {
-            _difficultySelection = GameObject.Find("SingleplayerSettingsPage").GetComponent<DifficultySelection>();
+            _difficultySelection = GameObject.Find("SingleplayerPage").GetComponent<DifficultySelection>();
             Difficulty = _difficultySelection.GetSelectedDifficulty();
             if (Difficulty != "none")
             {

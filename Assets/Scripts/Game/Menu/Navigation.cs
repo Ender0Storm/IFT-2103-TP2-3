@@ -96,7 +96,7 @@ namespace Game.Menu
 
         private void DeactivateAllPages()
         {
-            _entryPage.SetActive(true);
+            _entryPage.SetActive(false);
             _menuPage.SetActive(false);
             _optionsPage.SetActive(false);
             _singleplayerPage.SetActive(false);

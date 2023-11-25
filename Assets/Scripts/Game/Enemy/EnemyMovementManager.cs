@@ -22,7 +22,7 @@ namespace Game.enemy
         public void Start()
         {
             _enemyScript = GetComponent<Enemy>();
-            _player = GameObject.Find("Town").GetComponent<Player>();
+            _player = GameObject.Find("Player Profile").GetComponent<Player>();
             _path = _enemyScript.path;
         }
 

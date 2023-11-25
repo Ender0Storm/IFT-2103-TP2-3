@@ -1794,9 +1794,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719817238}
-  - component: {fileID: 719817237}
   - component: {fileID: 719817239}
   - component: {fileID: 719817240}
+  - component: {fileID: 719817241}
   m_Layer: 0
   m_Name: Player Profile
   m_TagString: Player
@@ -1804,20 +1804,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &719817237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 719817236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ed32c37ed23e54c9bc40e2ea0d75e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 1589788245}
-  hp: {fileID: 0}
 --- !u!4 &719817238
 Transform:
   m_ObjectHideFlags: 0
@@ -1865,6 +1851,24 @@ MonoBehaviour:
   _waveManager: {fileID: 1113374442}
   _hoverHighlight: {fileID: 562552662}
   _towerParent: {fileID: 95344763}
+--- !u!114 &719817241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719817236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d81591591a54d839c1bbc017dd3f95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentHealth: 100
+  _healthBar: {fileID: 1589788242}
+  difficulty: 
+  _pauseMenu: {fileID: 2017893089}
+  _waveManager: {fileID: 1113374442}
 --- !u!1 &766487777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,7 +3785,6 @@ GameObject:
   - component: {fileID: 1465773383}
   - component: {fileID: 1465773384}
   - component: {fileID: 1465773386}
-  - component: {fileID: 1465773385}
   m_Layer: 7
   m_Name: Town
   m_TagString: Untagged
@@ -3856,24 +3859,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1465773385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465773382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d81591591a54d839c1bbc017dd3f95c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
-  _healthBar: {fileID: 719817237}
-  difficulty: 
-  _pauseMenu: {fileID: 2017893089}
-  _waveManager: {fileID: 1113374442}
 --- !u!61 &1465773386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4182,7 +4167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1589788245}
-  hp: {fileID: 0}
+  hp: {fileID: 812449031}
 --- !u!114 &1589788245
 MonoBehaviour:
   m_ObjectHideFlags: 0

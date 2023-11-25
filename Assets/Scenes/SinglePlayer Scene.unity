@@ -1863,9 +1863,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d81591591a54d839c1bbc017dd3f95c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
-  _healthBar: {fileID: 1589788242}
+  _maxHealth: 20
+  _hardHealthRatio: 0.5
+  _healthBar: {fileID: 1589788244}
   difficulty: 
   _pauseMenu: {fileID: 2017893089}
   _waveManager: {fileID: 1113374442}
@@ -2888,7 +2888,7 @@ MonoBehaviour:
     enemyInterval: 1
   strengthMod: 3
   _portalTransform: {fileID: 850102748}
-  hardmodeCurrencyFactor: 0.8
+  _hardCurrencyRatio: 0.8
 --- !u!114 &1113374443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4166,8 +4166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ed32c37ed23e54c9bc40e2ea0d75e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1589788245}
-  hp: {fileID: 812449031}
+  _slider: {fileID: 1589788245}
+  _hpText: {fileID: 812449033}
 --- !u!114 &1589788245
 MonoBehaviour:
   m_ObjectHideFlags: 0

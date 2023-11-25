@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using Game.pathFinding;
 using UnityEngine;
 
@@ -28,7 +26,8 @@ namespace Game
         [SerializeField]
         private Transform _portalTransform;
         [SerializeField]
-        private float hardmodeCurrencyFactor;
+        [Range(0f, 1f)]
+        private float _hardCurrencyRatio;
 
         private List<GameObject> _enemiesAlive;
         private int _waveCount;
@@ -77,7 +76,7 @@ namespace Game
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 Player player = GameObject.Find("Player Profile").GetComponent<Player>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));
-                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? hardmodeCurrencyFactor : 1) * (waveStrength + 1));
+                enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? _hardCurrencyRatio : 1) * (waveStrength + 1));
                 enemyScript.path = path;
 
                 yield return new WaitForSeconds(_waves[modWave].enemyInterval);

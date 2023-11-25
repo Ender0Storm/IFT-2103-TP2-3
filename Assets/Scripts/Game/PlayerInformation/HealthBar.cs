@@ -5,26 +5,16 @@ namespace Game.PlayerInformation
 {
     public class HealthBar : MonoBehaviour
     {
-        public Slider slider;
-        public GameObject hp;
+        [SerializeField]
+        private Slider _slider;
+        [SerializeField]
         private Text _hpText;
 
-        void Start()
+        public void SetHealth(float maxHealth, float currentHealth)
         {
-            _hpText = hp.GetComponent<Text>();
-        }
-        public void SetMaxHealth(float health)
-        {
-            slider.maxValue = health;
-            slider.value = health;
-            _hpText.text = "100 / " + health;
-
-        }
-
-        public void SetHealth(float health)
-        {
-            slider.value = health;
-            _hpText.text = health + " / 100";
+            _slider.maxValue = maxHealth;
+            _slider.value = currentHealth;
+            _hpText.text = $"{currentHealth} / {maxHealth}";
         }
     }
 }

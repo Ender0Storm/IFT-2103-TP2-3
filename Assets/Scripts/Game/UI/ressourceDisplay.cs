@@ -12,6 +12,6 @@ public class RessourceDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _ressourceText.text = $"Money: {_buildController.GetCurrency()}";
+        _ressourceText.text = $"Coins: {_buildController.GetCurrency()}";
     }
 }

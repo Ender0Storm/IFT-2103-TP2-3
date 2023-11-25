@@ -24,14 +24,6 @@ namespace Game.enemy
             _enemyScript = GetComponent<Enemy>();
             _player = GameObject.Find("Town").GetComponent<Player>();
             _path = _enemyScript.path;
-            if (_player.difficulty == "hard")
-            {
-                _enemyScript.speed = 4;
-            }
-            else
-            {
-                _enemyScript.speed = 2;
-            }
         }
 
         public void Update()

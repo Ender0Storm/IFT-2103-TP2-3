@@ -1,3 +1,4 @@
+using Game.Menu;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private const int MENU_SCENE_ID = 0;
-    private const int GAME_SCENE_ID = 1;
     public static bool isPaused;
 
     [SerializeField]
@@ -58,13 +57,13 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
-        SceneManager.LoadScene(MENU_SCENE_ID);
+        SceneManager.LoadScene(Navigation.MENU_SCENE_INDEX);
     }
 
     public void ReloadGame()
     {
         Resume();
-        SceneManager.LoadScene(GAME_SCENE_ID);
+        SceneManager.LoadScene(Navigation.SINGLEPLAYER_SCENE_INDEX);
     }
 
     public void QuitGame()

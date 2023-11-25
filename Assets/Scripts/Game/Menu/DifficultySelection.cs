@@ -5,7 +5,7 @@ namespace Game.Menu
 {
     public class DifficultySelection : MonoBehaviour
     {
-        public string _selectedDifficulty;
+        private string _selectedDifficulty;
         private GameObject _easyButton;
         private GameObject _hardButton;
 
@@ -28,6 +28,16 @@ namespace Game.Menu
             _selectedDifficulty = "easy";
             _hardButton.GetComponentInChildren<Image>().color = new Color(255, 255 , 255);
             _easyButton.GetComponentInChildren<Image>().color = new Color(0, 250, 0);
+        }
+
+        public string GetSelectedDifficulty()
+        {
+            return _selectedDifficulty;
+        }
+
+        public void SetSelectedDifficulty(string value)
+        {
+            _selectedDifficulty = value;
         }
     }
 }

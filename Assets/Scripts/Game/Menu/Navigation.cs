@@ -66,13 +66,12 @@ namespace Game.Menu
 
         public void StartSingleplayerGame()
         {
-            difficulty = _difficultySelection._selectedDifficulty;
-            if (difficulty != "none")
-            {
-                SceneManager.LoadScene(SINGLEPLAYER_SCENE_INDEX);
-            }
+            _singleplayerPage.SetActive(false);
+            _menuPage.SetActive(true);
+            _difficultySelection.SetSelectedDifficulty("none");
+            ResetColor();
         }
-
+        
         public void StartMultiplayerHost()
         {
             joinIP = "";
@@ -101,7 +100,7 @@ namespace Game.Menu
             _optionsPage.SetActive(false);
             _singleplayerPage.SetActive(false);
             _multiplayerPage.SetActive(false);
-            _difficultySelection._selectedDifficulty = "none";
+            _difficultySelection.SetSelectedDifficulty("none");
             ResetColor();
         }
 

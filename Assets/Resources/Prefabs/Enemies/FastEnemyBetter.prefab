@@ -102,7 +102,7 @@ MonoBehaviour:
   damage: 10
   health: 30
   speed: 4
-  currencyDrop: 5
+  currencyDrop: 4
 --- !u!114 &6950957506936543834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82fdeddc0c04b6da70bf59f6ca437a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indexPosition: 0
+  _indexPosition: 0
 --- !u!58 &1769048382464643071
 CircleCollider2D:
   m_ObjectHideFlags: 0

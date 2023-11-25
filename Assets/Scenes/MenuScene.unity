@@ -3187,7 +3187,7 @@ RectTransform:
   m_Father: {fileID: 79117099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -0.00018310547, y: -0.00036621094}
   m_SizeDelta: {x: -0.00039672852, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3628,10 +3628,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1672412634}
-        m_TargetAssemblyTypeName: Game.Menu.LoadingScene, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
+      - m_Target: {fileID: 6018909472435783249}
+        m_TargetAssemblyTypeName: Game.Menu.Navigation, Assembly-CSharp
+        m_MethodName: StartSingleplayerGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3871,7 +3871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2070219641
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3879,21 +3879,21 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070219640}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 158486407}
   - {fileID: 1280496964}
   - {fileID: 79117099}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4182987637597729105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 441, y: 248}
+  m_SizeDelta: {x: 882, y: 496}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2070219642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4867,6 +4867,7 @@ RectTransform:
   - {fileID: 1629911571}
   - {fileID: 1099746576}
   - {fileID: 1031499714}
+  - {fileID: 2070219641}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5259,11 +5260,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1cce00c7c5414d94a5e7b4c79c36e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _loadingScene: {fileID: 1672412634}
   _entryPage: {fileID: 285252307}
   _menuPage: {fileID: 1126469199}
   _optionsPage: {fileID: 1629911570}
   _singleplayerPage: {fileID: 1099746575}
   _multiplayerPage: {fileID: 1031499713}
+  _loadingScreen: {fileID: 2070219640}
 --- !u!114 &6104027355179864955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5725,5 +5728,4 @@ SceneRoots:
   - {fileID: 820246286}
   - {fileID: 289229828}
   - {fileID: 4182987637597729105}
-  - {fileID: 2070219641}
   - {fileID: 1672412635}

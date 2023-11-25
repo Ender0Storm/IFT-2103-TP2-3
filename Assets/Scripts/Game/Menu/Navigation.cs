@@ -13,6 +13,8 @@ namespace Game.Menu
         public const int MULTIPLAYER_SCENE_INDEX = 2;
 
         private DifficultySelection _difficultySelection;
+        [SerializeField]
+        private LoadingScene _loadingScene;
 
         [SerializeField]
         private GameObject _entryPage;
@@ -24,11 +26,15 @@ namespace Game.Menu
         private GameObject _singleplayerPage;
         [SerializeField]
         private GameObject _multiplayerPage;
+        [SerializeField]
+        private GameObject _loadingScreen;
         public static string difficulty;
         public static string joinIP;
 
         void Start()
         {
+            difficulty = "";
+            joinIP = "";
             _difficultySelection =
                 _singleplayerPage.GetComponentInChildren<DifficultySelection>();
             GoEntryPage();
@@ -66,25 +72,26 @@ namespace Game.Menu
 
         public void StartSingleplayerGame()
         {
-            _singleplayerPage.SetActive(false);
-            _menuPage.SetActive(true);
-            _difficultySelection.SetSelectedDifficulty("none");
-            ResetColor();
+            DeactivateAllPages();
+            difficulty = _difficultySelection.GetSelectedDifficulty();
+            _loadingScene.LoadScene(SINGLEPLAYER_SCENE_INDEX);
         }
         
         public void StartMultiplayerHost()
         {
-            joinIP = "";
-            SceneManager.LoadScene(MULTIPLAYER_SCENE_INDEX);
+            DeactivateAllPages();
+            joinIP = "localhost";
+            _loadingScene.LoadScene(MULTIPLAYER_SCENE_INDEX);
         }
 
         public void StartMultiplayerJoin()
         {
+            DeactivateAllPages();
             string input = _multiplayerPage.GetComponentInChildren<TMP_InputField>().text;
             if (input.Length >= 7)
             {
                 joinIP = input;
-                SceneManager.LoadScene(MULTIPLAYER_SCENE_INDEX);
+                _loadingScene.LoadScene(MULTIPLAYER_SCENE_INDEX);
             }
         }
 
@@ -100,7 +107,7 @@ namespace Game.Menu
             _optionsPage.SetActive(false);
             _singleplayerPage.SetActive(false);
             _multiplayerPage.SetActive(false);
-            _difficultySelection.SetSelectedDifficulty("none");
+            _loadingScreen.SetActive(false);
             ResetColor();
         }
 

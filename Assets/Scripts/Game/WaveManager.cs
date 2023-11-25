@@ -75,7 +75,7 @@ namespace Game
                 GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _portalTransform.position, Quaternion.identity);
                 _enemiesAlive.Add(enemy);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
-                Player player = GameObject.Find("Town").GetComponent<Player>();
+                Player player = GameObject.Find("Player Profile").GetComponent<Player>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));
                 enemyScript.currencyDrop = Mathf.CeilToInt(enemyScript.currencyDrop * (player.difficulty == "hard" ? hardmodeCurrencyFactor : 1) * (waveStrength + 1));
                 enemyScript.path = path;

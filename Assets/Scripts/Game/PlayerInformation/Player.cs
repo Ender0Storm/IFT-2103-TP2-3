@@ -14,8 +14,8 @@ namespace Game
 
         [SerializeField]
         private GameObject _healthBar;
-
         private HealthBar _healthBarScript;
+        
         public string difficulty;
 
         [SerializeField]
@@ -40,19 +40,6 @@ namespace Game
             else
             {
                 _currentHealth -= health;
-            }
-            _healthBarScript.SetHealth(_currentHealth);
-        }
-
-        public void WinHealthPoints(float health)
-        {
-            if (_currentHealth + health > _maxHealth)
-            {
-                _currentHealth = _maxHealth;
-            }
-            else
-            {
-                _currentHealth += health;
             }
             _healthBarScript.SetHealth(_currentHealth);
         }

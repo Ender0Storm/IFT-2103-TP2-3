@@ -28,7 +28,7 @@ public class Enemy : NetworkBehaviour
         
         if (health <= 0)
         {
-            damageDealer.AddCurrency(currencyDrop);
+            if (damageDealer != null) damageDealer.AddCurrency(currencyDrop);
             Destroy(gameObject);
         }
     }

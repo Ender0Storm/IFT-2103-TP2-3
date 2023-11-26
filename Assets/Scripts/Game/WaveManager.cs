@@ -37,7 +37,6 @@ namespace Game
         private List<GameObject> _enemiesAlive;
         private int _waveCount;
         protected PathFinding _pathFinding;
-        private PathFinding _pathFinding;
         private ControlsManager _controlsManager;
 
         private bool _finishedSummoning;

@@ -1,21 +1,23 @@
-﻿  using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Menu
 {
-    public class ControlsManager : MonoBehaviour
+    public class ControlsInputManager : MonoBehaviour
     {
-        private Dictionary<string, string> _controlsMap;
+        public static Dictionary<string, KeyCode> _controlsMap;
 
+        public static ControlsInputManager Instance { get; private set; }
+        
         [SerializeField]
         private GameObject menu;
 
         private Navigation _navigation;
         
         [SerializeField] 
-        private GameObject selectionControl;
+        private GameObject selectControl;
         [SerializeField]
         private GameObject upControl;
         [SerializeField]
@@ -25,32 +27,39 @@ namespace Game.Menu
         [SerializeField]
         private GameObject leftControl;
         [SerializeField]
+        private GameObject spaceControl;
+        [SerializeField]
         private GameObject escapeControl;
         
-        private readonly string DEFAULT_KEY = "";
+        private const KeyCode DEFAULT_KEY = KeyCode.None;
+        private static bool mapCreated = false;
 
-        private Text _selectionText;
+        private Text _selectText;
         private Text _upText;
         private Text _downText;
         private Text _rightText;
         private Text _leftText;
+        private Text _spaceText;
         private Text _escapeText;
-
-        public void Start()
+        
+        void Start()
         {
             _navigation = menu.GetComponent<Navigation>();
             
-            _selectionText = selectionControl.GetComponentInChildren<Text>();
+            _selectText = selectControl.GetComponentInChildren<Text>();
             _upText = upControl.GetComponentInChildren<Text>();
             _downText = downControl.GetComponentInChildren<Text>();
             _rightText = rightControl.GetComponentInChildren<Text>();
             _leftText = leftControl.GetComponentInChildren<Text>();
+            _spaceText = spaceControl.GetComponentInChildren<Text>();
             _escapeText = escapeControl.GetComponentInChildren<Text>();
-
-            _controlsMap = new Dictionary<string, string>();
+            
+            ControlsStorage.CreateMap();
+            
+            _controlsMap = ControlsStorage._controlsMap;
         }
 
-        public void SetKey(string actionKey, string keyCode)
+        public void SetKey(string actionKey, KeyCode keyCode)
         {
             CheckKeyExists(keyCode);
             if (_controlsMap.ContainsKey(actionKey))
@@ -64,7 +73,7 @@ namespace Game.Menu
             
         }
 
-        private void CheckKeyExists(string keyPressed)
+        private void CheckKeyExists(KeyCode keyPressed)
         {
             foreach (string key in _controlsMap.Keys.ToList())
             {
@@ -81,9 +90,9 @@ namespace Game.Menu
         {
             switch (actionCode)
             {
-                case "selection":
+                case "select":
                 {
-                    _selectionText.text = "";
+                    _selectText.text = "";
                     break;
                 }
                 case "up":
@@ -106,6 +115,11 @@ namespace Game.Menu
                     _leftText.text = "";
                     break;
                 }
+                case "space":
+                {
+                    _spaceText.text = "";
+                    break;
+                }
                 case "escape":
                 {
                     _escapeText.text = "";
@@ -117,11 +131,12 @@ namespace Game.Menu
         public void SaveControls()
         {
             bool validInputs = true;
-            foreach (string key in _controlsMap.Keys)
+            Debug.Log(_controlsMap.Keys.ToList().ToString());
+            foreach (string key in _controlsMap.Keys.ToList())
             {
-                if (_controlsMap[key] == "")
+                Debug.Log(key);
+                if (_controlsMap[key] == KeyCode.None)
                 {
-                    Debug.Log("Une touche n'a pas été renseignée.");
                     validInputs = false;
                     break;
                 }
@@ -129,6 +144,7 @@ namespace Game.Menu
 
             if (validInputs)
             {
+                ControlsStorage._controlsMap = _controlsMap;
                 _navigation.GoOptionsPage();
             }
         }

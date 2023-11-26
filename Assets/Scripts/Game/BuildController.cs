@@ -1,5 +1,6 @@
 using Game;
 using Game.pathFinding;
+using Game.PlayerInformation;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,12 +19,17 @@ public class BuildController : MonoBehaviour
     private GameObject _hoverHighlight;
     [SerializeField]
     private Transform _towerParent;
+    [SerializeField]
+    private Player player;
+
+    private ControlsManager _controlsManager;
 
     private PathFinding _pathFinding;
 
     public void Start()
     {
         _pathFinding = _waveManager.GetComponent<PathFinding>();
+        _controlsManager = player.GetComponent<ControlsManager>();
     }
     // Update is called once per frame
     void Update()
@@ -38,7 +44,7 @@ public class BuildController : MonoBehaviour
             _hoverHighlight.transform.localScale = new Vector3(size, size, 1);
             _hoverHighlight.transform.position = towerScript.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (Input.GetMouseButtonDown(0) && _currency >= towerScript.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused)
+            if (_controlsManager.IsKeyDown("select") && _currency >= towerScript.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused)
             {
                 GameObject tower = Instantiate(_chosenTower.GetPrefab(), towerScript.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity, _towerParent);
                 if (_pathFinding.FindPath() != null)

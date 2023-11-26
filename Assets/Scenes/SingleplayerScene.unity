@@ -1760,6 +1760,7 @@ GameObject:
   - component: {fileID: 719817239}
   - component: {fileID: 719817240}
   - component: {fileID: 719817241}
+  - component: {fileID: 719817242}
   m_Layer: 0
   m_Name: Player Profile
   m_TagString: Player
@@ -1814,6 +1815,7 @@ MonoBehaviour:
   _waveManager: {fileID: 1113374442}
   _hoverHighlight: {fileID: 170518227}
   _towerParent: {fileID: 95344763}
+  player: {fileID: 719817241}
 --- !u!114 &719817241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1831,6 +1833,18 @@ MonoBehaviour:
   _healthBar: {fileID: 1589788244}
   _pauseMenu: {fileID: 2017893089}
   _waveManager: {fileID: 1113374442}
+--- !u!114 &719817242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719817236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f23a251ca745fcaa427cbae7935c6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &766487777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,6 +2863,7 @@ MonoBehaviour:
     enemyCount: 1
     enemyInterval: 1
   strengthMod: 3
+  player: {fileID: 719817236}
   _portalTransform: {fileID: 850102748}
   _hardCurrencyRatio: 0.65
 --- !u!114 &1113374443
@@ -5411,6 +5426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseMenuUI: {fileID: 986399859}
   _endMenuUI: {fileID: 417577030}
+  player: {fileID: 719817236}
   _scoreText: {fileID: 674653796}
 --- !u!1 &2021147829
 GameObject:

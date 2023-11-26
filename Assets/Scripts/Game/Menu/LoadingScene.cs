@@ -8,8 +8,6 @@ namespace Game.Menu
     public class LoadingScene : MonoBehaviour
     {
         public GameObject loadingScreen;
-        public Image loadingBarFill;
-        public GameObject menu;
         public Slider slider;
 
         public void LoadScene(int scene)

@@ -22,9 +22,9 @@ public class HighlightChecksMP : NetworkBehaviour
 
             BuildControllerMP buildControllerMP = FindFirstObjectByType<BuildControllerMP>();
             buildControllerMP.SetHighlight(gameObject);
-            buildControllerMP.gameObject.GetComponent<CameraController>().PositionPlayer();
 
-            FindFirstObjectByType<WaveManagerMP>().SetMPPositions();
+            WaveManagerMP waveManagerMP = FindFirstObjectByType<WaveManagerMP>();
+            waveManagerMP.SetMPPositions();
 
             GameObject.Find($"BoardP{Globals.PlayerID % 2 + 1}").transform.Find("Ground").GetComponent<Collider2D>().enabled = true;
         }

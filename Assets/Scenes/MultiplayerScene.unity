@@ -1980,7 +1980,7 @@ MonoBehaviour:
   _hardHealthRatio: 0.5
   _healthBar: {fileID: 1589788244}
   _pauseMenu: {fileID: 2017893089}
-  _waveManager: {fileID: 0}
+  _waveManager: {fileID: 1113374444}
 --- !u!114 &719817242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currency: 80
   _choices: {fileID: 406090725}
-  _waveManager: {fileID: 0}
+  _waveManager: {fileID: 1113374444}
   _hoverHighlight: {fileID: 0}
 --- !u!1 &766487777
 GameObject:
@@ -3544,7 +3544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveText: {fileID: 63339565}
-  _waveManager: {fileID: 0}
+  _waveManager: {fileID: 1113374444}
 --- !u!1 &1167547452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,7 +6781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74901ce2a2894844c94c92849ebc7847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveManager: {fileID: 0}
+  waveManager: {fileID: 1113374444}
 --- !u!114 &978540852522688042
 MonoBehaviour:
   m_ObjectHideFlags: 0

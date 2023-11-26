@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.playerInformation;
 using UnityEngine;
 
-public class RessourceDisplay : MonoBehaviour
+namespace Game.ui
 {
-    [SerializeField]
-    private TMPro.TMP_Text _ressourceText;
-    [SerializeField]
-    private BuildController _buildController;
-
-    // Update is called once per frame
-    void Update()
+    public class RessourceDisplay : MonoBehaviour
     {
-        _ressourceText.text = $"Coins: {_buildController.GetCurrency()}";
+        [SerializeField]
+        private TMPro.TMP_Text _ressourceText;
+        [SerializeField]
+        private BuildController _buildController;
+
+        // Update is called once per frame
+        void Update()
+        {
+            _ressourceText.text = $"Coins: {_buildController.GetCurrency()}";
+        }
     }
 }

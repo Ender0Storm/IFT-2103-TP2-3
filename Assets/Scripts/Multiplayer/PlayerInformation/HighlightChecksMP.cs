@@ -1,3 +1,4 @@
+using Game;
 using Game.pathFinding;
 using Unity.Netcode;
 using UnityEngine;

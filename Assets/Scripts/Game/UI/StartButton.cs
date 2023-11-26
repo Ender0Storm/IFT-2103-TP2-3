@@ -1,36 +1,37 @@
-using Game;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour
+namespace Game.ui
 {
-    [SerializeField]
-    private WaveManager waveManager;
-    private Button button;
-
-    // Start is called before the first frame update
-    void Start()
+    public class StartButton : MonoBehaviour
     {
-        button = GetComponent<Button>();
-    }
+        [SerializeField]
+        private WaveManager waveManager;
+        private Button button;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (waveManager.CanBuild())
+        // Start is called before the first frame update
+        void Start()
         {
-            button.interactable = true;
+            button = GetComponent<Button>();
         }
-        else
-        {
-            button.interactable = false;
-        }
-    }
 
-    public void StartWave()
-    {
-        waveManager.StartWave();
+        // Update is called once per frame
+        void Update()
+        {
+            if (waveManager.CanBuild())
+            {
+                button.interactable = true;
+            }
+            else
+            {
+                button.interactable = false;
+            }
+        }
+
+        public void StartWave()
+        {
+            waveManager.StartWave();
+        }
     }
 }
+

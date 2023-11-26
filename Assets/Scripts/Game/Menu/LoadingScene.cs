@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Game.Menu
+namespace Game.menu
 {
     public class LoadingScene : MonoBehaviour
     {

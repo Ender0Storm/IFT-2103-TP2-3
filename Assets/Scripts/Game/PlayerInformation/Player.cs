@@ -1,8 +1,8 @@
-﻿using Game.Menu;
-using Game.PlayerInformation;
+﻿using Game.menu;
+using Game.ui;
 using UnityEngine;
 
-namespace Game
+namespace Game.playerInformation
 {
     public class Player : MonoBehaviour
     {

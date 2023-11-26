@@ -66,4 +66,9 @@ public class CameraController : MonoBehaviour
             _mainCamera.transform.position.z
             );
     }
+
+    public void PositionPlayer()
+    {
+        if (Globals.PlayerID == 2) _mainCamera.transform.position = new Vector3(8, -25, -10);
+    }
 }

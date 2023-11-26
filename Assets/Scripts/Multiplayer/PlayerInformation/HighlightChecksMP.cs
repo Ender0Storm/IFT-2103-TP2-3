@@ -1,4 +1,4 @@
-using Game.pathFinding;
+using Game;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class HighlightChecksMP : NetworkBehaviour
         {
             Globals.PlayerID = IsHost ? 1 : 2;
             FindFirstObjectByType<BuildControllerMP>().SetHighlight(gameObject);
-            FindFirstObjectByType<PathFinding>().SetMPPositions();
+            FindFirstObjectByType<WaveManagerMP>().SetMPPositions();
             GameObject.Find($"BoardP{Globals.PlayerID % 2 + 1}").transform.Find("Ground").GetComponent<Collider2D>().enabled = true;
         }
     }

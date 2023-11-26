@@ -79,7 +79,7 @@ namespace Game.pathFinding
             return null;
         }
 
-        public void SetMPPositions()
+        public void SetMPPositions(Transform board)
         {
             Transform boardTransform = GameObject.Find($"BoardP{Globals.PlayerID}").transform;
             _startPosition = boardTransform.Find("Spawn Portal");

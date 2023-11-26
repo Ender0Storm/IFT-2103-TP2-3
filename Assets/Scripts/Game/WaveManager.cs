@@ -25,14 +25,14 @@ namespace Game
 
         [Header("Other")]
         [SerializeField]
-        private Transform _portalTransform;
+        protected Transform _portalTransform;
         [SerializeField]
         [Range(0f, 1f)]
         private float _hardCurrencyRatio;
 
         private List<GameObject> _enemiesAlive;
         private int _waveCount;
-        private PathFinding _pathFinding;
+        protected PathFinding _pathFinding;
 
         private bool _finishedSummoning;
         

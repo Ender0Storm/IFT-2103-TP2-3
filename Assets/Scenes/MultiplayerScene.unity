@@ -1980,7 +1980,7 @@ MonoBehaviour:
   _hardHealthRatio: 0.5
   _healthBar: {fileID: 1589788244}
   _pauseMenu: {fileID: 2017893089}
-  _waveManager: {fileID: 1113374442}
+  _waveManager: {fileID: 0}
 --- !u!114 &719817242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1995,7 +1995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currency: 80
   _choices: {fileID: 406090725}
-  _waveManager: {fileID: 1113374442}
+  _waveManager: {fileID: 0}
   _hoverHighlight: {fileID: 0}
 --- !u!1 &766487777
 GameObject:
@@ -3372,7 +3372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1113374441}
-  - component: {fileID: 1113374442}
+  - component: {fileID: 1113374444}
   - component: {fileID: 1113374443}
   m_Layer: 0
   m_Name: Wave Manager
@@ -3396,7 +3396,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1113374442
+--- !u!114 &1113374443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3405,7 +3405,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1113374440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85963a1ee5f4690aa4d853989db0e2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 000acfa59bff4755b8aa38ddc23e168c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startPosition: {fileID: 850102748}
+  _finishPosition: {fileID: 1465773383}
+  _layerObstacles:
+    serializedVersion: 2
+    m_Bits: 264
+--- !u!114 &1113374444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113374440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4a969a6b39b2a4f92b3bc6be2a1f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _waves:
@@ -3442,23 +3459,6 @@ MonoBehaviour:
   strengthMod: 3
   _portalTransform: {fileID: 850102748}
   _hardCurrencyRatio: 0.8
---- !u!114 &1113374443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113374440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 000acfa59bff4755b8aa38ddc23e168c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startPosition: {fileID: 850102748}
-  _finishPosition: {fileID: 1465773383}
-  _layerObstacles:
-    serializedVersion: 2
-    m_Bits: 264
 --- !u!1 &1124114616
 GameObject:
   m_ObjectHideFlags: 0
@@ -3544,7 +3544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _waveText: {fileID: 63339565}
-  _waveManager: {fileID: 1113374442}
+  _waveManager: {fileID: 0}
 --- !u!1 &1167547452
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,7 +6781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74901ce2a2894844c94c92849ebc7847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveManager: {fileID: 1113374442}
+  waveManager: {fileID: 0}
 --- !u!114 &978540852522688042
 MonoBehaviour:
   m_ObjectHideFlags: 0

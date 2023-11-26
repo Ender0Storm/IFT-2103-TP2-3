@@ -1,100 +1,102 @@
-using Game.Menu;
-using System.Collections;
-using System.Collections.Generic;
-using Game.PlayerInformation;
+using Game.menu;
+using Game.playerInformation;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+namespace Game.ui
 {
-    public static bool isPaused;
-
-    [SerializeField]
-    private GameObject _pauseMenuUI;
-    [SerializeField]
-    private GameObject _endMenuUI;
-
-    [SerializeField]
-    private GameObject player;
-
-    private ControlsManager _controlsManager;
-
-    [SerializeField]
-    private TMPro.TMP_Text _scoreText;
-
-    void Start()
+    public class PauseMenu : MonoBehaviour
     {
-        _controlsManager = player.GetComponent<ControlsManager>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        public static bool isPaused;
+    
+        [SerializeField]
+        private GameObject _pauseMenuUI;
+        [SerializeField]
+        private GameObject _endMenuUI;
+    
+        [SerializeField]
+        private GameObject player;
+    
+        private ControlsManager _controlsManager;
+    
+        [SerializeField]
+        private TMPro.TMP_Text _scoreText;
+    
+        void Start()
         {
-            if (isPaused)
+            _controlsManager = player.GetComponent<ControlsManager>();
+        }
+        // Update is called once per frame
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Resume();
+                if (isPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+        }
+    
+        public void Resume()
+        {
+            _pauseMenuUI.SetActive(false);
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
+    
+        private void Pause()
+        {
+            _pauseMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+        }
+    
+        public void EndGame(int waveReached)
+        {
+            _endMenuUI.SetActive(true);
+            Time.timeScale = 0f;
+            isPaused = true;
+    
+            if (Globals.IsMultiplayer)
+            {
+                _scoreText.text = $"You lost at wave {waveReached}!";
+                _endMenuUI.transform.Find("Try Again Button").gameObject.SetActive(false);
+                // Signal other player
             }
             else
             {
-                Pause();
+                _scoreText.text = $"You reached wave {waveReached}!";
             }
         }
-    }
-
-    public void Resume()
-    {
-        _pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-    }
-
-    private void Pause()
-    {
-        _pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-    }
-
-    public void EndGame(int waveReached)
-    {
-        _endMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-
-        if (Globals.IsMultiplayer)
+    
+        public void LoadMenu()
         {
-            _scoreText.text = $"You lost at wave {waveReached}!";
-            _endMenuUI.transform.Find("Try Again Button").gameObject.SetActive(false);
-            // Signal other player
+            Resume();
+            if (Globals.IsMultiplayer)
+            {
+                NetworkManager.Singleton.Shutdown();
+                Destroy(NetworkManager.Singleton.gameObject);
+            }
+    
+            SceneManager.LoadScene(Navigation.MENU_SCENE_INDEX);
         }
-        else
+    
+        public void ReloadGame()
         {
-            _scoreText.text = $"You reached wave {waveReached}!";
+            Resume();
+            SceneManager.LoadScene(Navigation.SINGLEPLAYER_SCENE_INDEX);
         }
-    }
-
-    public void LoadMenu()
-    {
-        Resume();
-        if (Globals.IsMultiplayer)
+    
+        public void QuitGame()
         {
-            NetworkManager.Singleton.Shutdown();
-            Destroy(NetworkManager.Singleton.gameObject);
+            Application.Quit();
         }
-
-        SceneManager.LoadScene(Navigation.MENU_SCENE_INDEX);
-    }
-
-    public void ReloadGame()
-    {
-        Resume();
-        SceneManager.LoadScene(Navigation.SINGLEPLAYER_SCENE_INDEX);
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
+

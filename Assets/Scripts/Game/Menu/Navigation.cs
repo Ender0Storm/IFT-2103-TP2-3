@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Menu
+namespace Game.menu
 {
     public class Navigation : MonoBehaviour
     {

@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class ChosenTower : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _towerPrefab;
+    protected GameObject _towerPrefab;
     [SerializeField]
-    private Text _textCost;
+    protected Text _textCost;
 
     private Tower _tower;
     
     void Start()
     {
         _tower = _towerPrefab.GetComponent<Tower>();
-        _textCost.text = _tower.GetCost() + " coins";
+        _textCost.text = $"{GetCost()} coins";
     }
 
     public Tower GetTower()
@@ -24,5 +24,20 @@ public class ChosenTower : MonoBehaviour
     public GameObject GetPrefab()
     {
         return _towerPrefab;
+    }
+
+    public virtual int GetSize()
+    {
+        return _tower.GetSize();
+    }
+
+    public virtual int GetCost()
+    {
+        return _tower.GetCost();
+    }
+
+    public virtual Vector2 CenterOnGrid(Vector2 vector)
+    {
+        return _tower.CenterOnGrid(vector);
     }
 }

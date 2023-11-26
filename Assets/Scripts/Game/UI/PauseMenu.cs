@@ -1,6 +1,7 @@
 using Game.Menu;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -55,6 +56,7 @@ public class PauseMenu : MonoBehaviour
         if (Globals.IsMultiplayer)
         {
             _scoreText.text = $"You lost at wave {waveReached}!";
+            _endMenuUI.transform.Find("Try Again Button").gameObject.SetActive(false);
             // Signal other player
         }
         else
@@ -66,6 +68,12 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         Resume();
+        if (Globals.IsMultiplayer)
+        {
+            NetworkManager.Singleton.Shutdown();
+            Destroy(NetworkManager.Singleton.gameObject);
+        }
+
         SceneManager.LoadScene(Navigation.MENU_SCENE_INDEX);
     }
 

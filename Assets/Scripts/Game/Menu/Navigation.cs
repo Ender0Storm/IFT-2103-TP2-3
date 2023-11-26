@@ -92,10 +92,10 @@ namespace Game.Menu
 
         public void StartMultiplayerJoin()
         {
-            DeactivateAllPages();
             string input = _multiplayerPage.GetComponentInChildren<TMP_InputField>().text;
             if (input.Length >= 7)
             {
+                DeactivateAllPages();
                 joinIP = input;
                 _loadingScene.LoadScene(MULTIPLAYER_SCENE_INDEX);
             }

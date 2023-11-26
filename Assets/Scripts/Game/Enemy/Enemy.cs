@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using Game;
 using Game.enemy;
 using Game.PlayerInformation;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : NetworkBehaviour
 {
     public int damage;
     public int health;
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
         
         if (health <= 0)
         {
-            damageDealer.AddCurrency(currencyDrop);
+            if (damageDealer != null) damageDealer.AddCurrency(currencyDrop);
             Destroy(gameObject);
         }
     }

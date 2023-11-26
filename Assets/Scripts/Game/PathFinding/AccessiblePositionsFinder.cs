@@ -81,7 +81,7 @@ namespace Game.pathFinding
 
         public void SetupTiles(LayerMask layerObstacles)
         {
-            var ground = GameObject.Find("Ground");
+            var ground = Globals.IsMultiplayer ? GameObject.Find($"BoardP{Globals.PlayerID}").transform.Find("Ground") : GameObject.Find("Ground").transform;
             SpriteRenderer groundLimits = ground.GetComponent<SpriteRenderer>();
             _allTiles = new List<Tile>();
             for (int i = Mathf.CeilToInt(groundLimits.bounds.min.x); i <= groundLimits.bounds.max.x; i++)

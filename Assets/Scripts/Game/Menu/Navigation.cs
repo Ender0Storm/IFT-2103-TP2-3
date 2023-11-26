@@ -1,7 +1,5 @@
-﻿using System.Net;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.Menu
@@ -15,7 +13,7 @@ namespace Game.Menu
         private DifficultySelection _difficultySelection;
         [SerializeField]
         private LoadingScene _loadingScene;
-
+        
         [SerializeField]
         private GameObject _entryPage;
         [SerializeField]
@@ -26,6 +24,8 @@ namespace Game.Menu
         private GameObject _singleplayerPage;
         [SerializeField]
         private GameObject _multiplayerPage;
+        [SerializeField]
+        private GameObject _controlsPage;
         [SerializeField]
         private GameObject _loadingScreen;
         public static string difficulty;
@@ -56,6 +56,12 @@ namespace Game.Menu
         {
             DeactivateAllPages();
             _optionsPage.SetActive(true);
+        }
+
+        public void GoControlsPage()
+        {
+            DeactivateAllPages();
+            _controlsPage.SetActive(true);
         }
         
         public void GoSingleplayerPage()
@@ -107,6 +113,7 @@ namespace Game.Menu
             _optionsPage.SetActive(false);
             _singleplayerPage.SetActive(false);
             _multiplayerPage.SetActive(false);
+            _controlsPage.SetActive(false);
             _loadingScreen.SetActive(false);
             ResetColor();
         }

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Game.Menu;
+using Game.menu;
 using UnityEngine;
 
-namespace Game.PlayerInformation
+namespace Game.playerInformation
 {
     public class ControlsManager : MonoBehaviour
     {

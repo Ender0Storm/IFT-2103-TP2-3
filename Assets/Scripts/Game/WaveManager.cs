@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Game.Menu;
+using Game.enemy;
+using Game.menu;
 using Game.pathFinding;
-using Game.PlayerInformation;
+using Game.playerInformation;
+using Game.ui;
 using UnityEngine;
 
 namespace Game

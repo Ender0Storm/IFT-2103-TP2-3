@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SetWorldBounds : MonoBehaviour
+namespace Game.playerInformation
 {
-    void Awake()
+    public class SetWorldBounds : MonoBehaviour
     {
-        Bounds bounds = new Bounds(transform.position, transform.localScale);
-        Globals.WorldBounds = bounds;
+        void Awake()
+        {
+            Bounds bounds = new Bounds(transform.position, transform.localScale);
+            Globals.WorldBounds = bounds;
+        }
     }
 }
+

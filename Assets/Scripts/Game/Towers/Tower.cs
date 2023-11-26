@@ -1,39 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.playerInformation;
 using Unity.Netcode;
 using UnityEngine;
 
-public class Tower : NetworkBehaviour
+namespace Game.towers
 {
-    [SerializeField]
-    protected int cost;
-    [SerializeField]
-    protected int size;
-    protected BuildController owner;
-
-    public Vector2 CenterOnGrid(Vector2 point)
+    public class Tower : NetworkBehaviour
     {
-        if (size % 2 == 1) point -= Vector2.one / 2;
+        [SerializeField]
+        protected int cost;
+        [SerializeField]
+        protected int size;
+        protected BuildController owner;
 
-        point.x = Mathf.Round(point.x);
-        point.y = Mathf.Round(point.y);
+        public Vector2 CenterOnGrid(Vector2 point)
+        {
+            if (size % 2 == 1) point -= Vector2.one / 2;
 
-        if (size % 2 == 1) point += Vector2.one / 2;
-        return point;
-    }
+            point.x = Mathf.Round(point.x);
+            point.y = Mathf.Round(point.y);
 
-    public int GetCost()
-    {
-        return cost;
-    }
+            if (size % 2 == 1) point += Vector2.one / 2;
+            return point;
+        }
 
-    public int GetSize()
-    {
-        return size;
-    }
+        public int GetCost()
+        {
+            return cost;
+        }
 
-    public void SetOwner(BuildController owner)
-    {
-        this.owner = owner;
+        public int GetSize()
+        {
+            return size;
+        }
+
+        public void SetOwner(BuildController owner)
+        {
+            this.owner = owner;
+        }
     }
 }
+

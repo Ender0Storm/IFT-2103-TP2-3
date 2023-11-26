@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Menu
+namespace Game.menu
 {
     public class ControlsInputManager : MonoBehaviour
     {
@@ -41,7 +41,13 @@ namespace Game.Menu
         private Text _leftText;
         private Text _spaceText;
         private Text _escapeText;
-        
+
+        void Awake()
+        {
+            ControlsStorage.CreateMap();
+            
+            _controlsMap = ControlsStorage._controlsMap;
+        }
         void Start()
         {
             _navigation = menu.GetComponent<Navigation>();
@@ -53,10 +59,6 @@ namespace Game.Menu
             _leftText = leftControl.GetComponentInChildren<Text>();
             _spaceText = spaceControl.GetComponentInChildren<Text>();
             _escapeText = escapeControl.GetComponentInChildren<Text>();
-            
-            ControlsStorage.CreateMap();
-            
-            _controlsMap = ControlsStorage._controlsMap;
         }
 
         public void SetKey(string actionKey, KeyCode keyCode)

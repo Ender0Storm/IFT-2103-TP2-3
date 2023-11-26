@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.pathFinding;
+using Game.playerInformation;
 using UnityEngine;
 
 namespace Game.enemy

@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Menu;
 using Game.pathFinding;
+using Game.PlayerInformation;
 using UnityEngine;
 
 namespace Game
@@ -23,6 +24,9 @@ namespace Game
         [SerializeField]
         private float strengthMod;
 
+        [SerializeField]
+        private GameObject player;
+
         [Header("Other")]
         [SerializeField]
         protected Transform _portalTransform;
@@ -33,11 +37,14 @@ namespace Game
         private List<GameObject> _enemiesAlive;
         private int _waveCount;
         protected PathFinding _pathFinding;
+        private PathFinding _pathFinding;
+        private ControlsManager _controlsManager;
 
         private bool _finishedSummoning;
         
         public void Start()
         {
+            _controlsManager = player.GetComponent<ControlsManager>();
             _enemiesAlive = new List<GameObject>();
             _finishedSummoning = true;
             _waveCount = 0;
@@ -46,7 +53,7 @@ namespace Game
 
         public void Update()
         {
-            if (Input.GetKeyDown("space") && CanBuild() && !PauseMenu.isPaused)
+            if (_controlsManager.IsKeyDown("space") && CanBuild() && !PauseMenu.isPaused)
             {
                 StartWave();
             }

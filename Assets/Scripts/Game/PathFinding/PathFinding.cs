@@ -78,5 +78,15 @@ namespace Game.pathFinding
             Debug.Log("Path not found");
             return null;
         }
+
+        public void SetMPPositions()
+        {
+            Transform boardTransform = GameObject.Find($"BoardP{Globals.PlayerID}").transform;
+            _startPosition = boardTransform.Find("Spawn Portal");
+            _finishPosition = boardTransform.Find("Town");
+
+            _start = new Tile(_startPosition.position);
+            _finish = new Tile(_finishPosition.position);
+        }
     }
 }

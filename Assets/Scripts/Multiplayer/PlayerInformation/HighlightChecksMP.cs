@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using Game.pathFinding;
+using Unity.Netcode;
 using UnityEngine;
 
-public class HighlightChecks : MonoBehaviour
+public class HighlightChecksMP : NetworkBehaviour
 {
     private bool _buildable;
 
@@ -13,6 +13,18 @@ public class HighlightChecks : MonoBehaviour
     [SerializeField]
     private Color _blockedColor;
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        if (IsOwner)
+        {
+            Globals.PlayerID = IsHost ? 1 : 2;
+            FindFirstObjectByType<BuildControllerMP>().SetHighlight(gameObject);
+            FindFirstObjectByType<PathFinding>().SetMPPositions();
+            GameObject.Find($"BoardP{Globals.PlayerID % 2 + 1}").transform.Find("Ground").GetComponent<Collider2D>().enabled = true;
+        }
+    }
+
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,7 +33,6 @@ public class HighlightChecks : MonoBehaviour
     private void Update()
     {
         _buildable = Physics2D.OverlapBox(transform.position, new Vector2(transform.localScale.x - 0.05f, transform.localScale.y - 0.05f), 0) == null;
-        // TODO: add a check for blocking the path
 
         if (_buildable) _spriteRenderer.color = _normalColor;
         else _spriteRenderer.color = _blockedColor;

@@ -535,11 +535,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5695376106428136439, guid: 89be50e36b2b8974db178563431384c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5695376106428136439, guid: 89be50e36b2b8974db178563431384c8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5695376106428136439, guid: 89be50e36b2b8974db178563431384c8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1776,7 +1776,7 @@ Transform:
   m_GameObject: {fileID: 719817236}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.090705, y: -4.337786, z: -1.7972814}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1813,7 +1813,6 @@ MonoBehaviour:
   _choices: {fileID: 406090725}
   _waveManager: {fileID: 1113374442}
   _hoverHighlight: {fileID: 170518227}
-  _towerParent: {fileID: 95344763}
 --- !u!114 &719817241
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 461787790780823023}
-  - component: {fileID: 3539389298811554987}
   - component: {fileID: -552260273677907698}
+  - component: {fileID: 1496697386406217876}
+  - component: {fileID: 3539389298811554987}
   m_Layer: 3
   m_Name: Canon
   m_TagString: Untagged
@@ -35,27 +36,6 @@ Transform:
   - {fileID: 1849352259166661479}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3539389298811554987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3767042441664556713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42bbcd0f4e4e7a745bcfc91fa8732bf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: 40
-  size: 2
-  attackDamage: 25
-  attackCooldown: 2.2
-  attackRange: 8
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 64
-  projectilePrefab: {fileID: 823507221646787993, guid: c72512dbb86f809478016c09d5286308, type: 3}
 --- !u!61 &-552260273677907698
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -101,6 +81,47 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1496697386406217876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767042441664556713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
+--- !u!114 &3539389298811554987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767042441664556713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42bbcd0f4e4e7a745bcfc91fa8732bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 40
+  size: 2
+  attackDamage: 25
+  attackCooldown: 2.2
+  attackRange: 8
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 64
+  projectilePrefab: {fileID: 823507221646787993, guid: c72512dbb86f809478016c09d5286308, type: 3}
 --- !u!1 &5405230618574894812
 GameObject:
   m_ObjectHideFlags: 0

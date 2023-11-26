@@ -203,9 +203,10 @@ GameObject:
   m_Component:
   - component: {fileID: 159081148361241414}
   - component: {fileID: 1852552226237332608}
+  - component: {fileID: 1769048382464643071}
+  - component: {fileID: -9123011971722496005}
   - component: {fileID: 2969225984237132220}
   - component: {fileID: 6950957506936543834}
-  - component: {fileID: 1769048382464643071}
   m_Layer: 6
   m_Name: NormalEnemy
   m_TagString: Untagged
@@ -281,36 +282,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2969225984237132220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570363033055055484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04eb874cd454c5249ac16449ca47f06a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  health: 25
-  speed: 2.5
-  currencyDrop: 2
-  _lifeBar: {fileID: 8963081592831752321}
---- !u!114 &6950957506936543834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570363033055055484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e82fdeddc0c04b6da70bf59f6ca437a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _indexPosition: 0
 --- !u!58 &1769048382464643071
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -346,6 +317,56 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-9123011971722496005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570363033055055484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 0
+--- !u!114 &2969225984237132220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570363033055055484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04eb874cd454c5249ac16449ca47f06a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  health: 25
+  speed: 2.5
+  currencyDrop: 2
+  _lifeBar: {fileID: 8963081592831752321}
+--- !u!114 &6950957506936543834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570363033055055484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82fdeddc0c04b6da70bf59f6ca437a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _indexPosition: 0
 --- !u!1 &8963081592831752321
 GameObject:
   m_ObjectHideFlags: 0

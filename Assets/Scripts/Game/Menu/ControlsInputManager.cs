@@ -128,10 +128,8 @@ namespace Game.menu
         public void SaveControls()
         {
             bool validInputs = true;
-            Debug.Log(_controlsMap.Keys.ToList().ToString());
             foreach (string key in _controlsMap.Keys.ToList())
             {
-                Debug.Log(key);
                 if (_controlsMap[key] == KeyCode.None)
                 {
                     validInputs = false;

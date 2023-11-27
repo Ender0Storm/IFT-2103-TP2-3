@@ -16,21 +16,15 @@ namespace Game.ui
         private GameObject _endMenuUI;
     
         [SerializeField]
-        private GameObject player;
-    
         private ControlsManager _controlsManager;
     
         [SerializeField]
         private TMPro.TMP_Text _scoreText;
     
-        void Start()
-        {
-            _controlsManager = player.GetComponent<ControlsManager>();
-        }
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (_controlsManager.IsKeyDown("escape"))
             {
                 if (isPaused)
                 {

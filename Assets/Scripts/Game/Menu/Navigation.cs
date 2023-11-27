@@ -12,7 +12,7 @@ namespace Game.menu
 
         private DifficultySelection _difficultySelection;
         [SerializeField]
-        private LoadingScene _loadingScene;
+        private SceneLoader _sceneLoader;
         
         [SerializeField]
         private GameObject _entryPage;
@@ -80,14 +80,14 @@ namespace Game.menu
         {
             DeactivateAllPages();
             difficulty = _difficultySelection.GetSelectedDifficulty();
-            _loadingScene.LoadScene(SINGLEPLAYER_SCENE_INDEX);
+            _sceneLoader.LoadScene(SINGLEPLAYER_SCENE_INDEX);
         }
         
         public void StartMultiplayerHost()
         {
             DeactivateAllPages();
             joinIP = "localhost";
-            _loadingScene.LoadScene(MULTIPLAYER_SCENE_INDEX);
+            _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
         }
 
         public void StartMultiplayerJoin()
@@ -97,7 +97,7 @@ namespace Game.menu
             {
                 DeactivateAllPages();
                 joinIP = input;
-                _loadingScene.LoadScene(MULTIPLAYER_SCENE_INDEX);
+                _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
             }
         }
 

@@ -7,8 +7,8 @@ namespace Game.menu
     public class KeyBindingManager : MonoBehaviour
     {
         public Button bindButton;
-        public GameObject controls;
         
+        [SerializeField]
         private ControlsInputManager _controlsInputManager;
         private bool _active = true;
         public string actionKey;
@@ -16,7 +16,6 @@ namespace Game.menu
 
         private void Start()
         {
-            _controlsInputManager = controls.GetComponent<ControlsInputManager>();
             _text = bindButton.GetComponentInChildren<Text>();
             bindButton.onClick.AddListener(StartKeybinding);
             _text.text = ControlsStorage._controlsMap[actionKey].ToString();

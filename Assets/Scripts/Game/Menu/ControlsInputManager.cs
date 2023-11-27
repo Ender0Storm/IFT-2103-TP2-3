@@ -12,8 +12,6 @@ namespace Game.menu
         public static ControlsInputManager Instance { get; private set; }
         
         [SerializeField]
-        private GameObject menu;
-
         private Navigation _navigation;
         
         [SerializeField] 
@@ -32,7 +30,6 @@ namespace Game.menu
         private GameObject escapeControl;
         
         private const KeyCode DEFAULT_KEY = KeyCode.None;
-        private static bool mapCreated = false;
 
         private Text _selectText;
         private Text _upText;
@@ -50,8 +47,6 @@ namespace Game.menu
         }
         void Start()
         {
-            _navigation = menu.GetComponent<Navigation>();
-            
             _selectText = selectControl.GetComponentInChildren<Text>();
             _upText = upControl.GetComponentInChildren<Text>();
             _downText = downControl.GetComponentInChildren<Text>();

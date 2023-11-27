@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Game.menu
 {
-    public class LoadingScene : MonoBehaviour
+    public class SceneLoader : MonoBehaviour
     {
         public GameObject loadingScreen;
         public Slider slider;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7247285309696159224}
   - component: {fileID: 7649790057679634462}
   - component: {fileID: 4438857595305987490}
+  - component: {fileID: -3335800510784931062}
   - component: {fileID: 414931432470034319}
   m_Layer: 0
   m_Name: HighlightMP
@@ -121,6 +122,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _normalColor: {r: 0.41960785, g: 0.61960787, b: 0.6901961, a: 0.28235295}
   _blockedColor: {r: 0.4509804, g: 0.13725491, b: 0.13725491, a: 0.5647059}
+--- !u!114 &-3335800510784931062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120206161194352402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aabec413e683f74385ad94982f90f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &414931432470034319
 MonoBehaviour:
   m_ObjectHideFlags: 0

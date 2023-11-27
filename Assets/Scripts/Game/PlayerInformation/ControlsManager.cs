@@ -12,6 +12,7 @@ namespace Game.playerInformation
         {
             keyMap = ControlsStorage._controlsMap;
         }
+
         public bool IsKeyDown(string keyString)
         {
             KeyCode keyPressed = keyMap[keyString];

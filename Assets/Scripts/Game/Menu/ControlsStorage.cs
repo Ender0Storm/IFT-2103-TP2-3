@@ -5,29 +5,30 @@ namespace Game.menu
 {
     public static class ControlsStorage
     {
-        public static Dictionary<string, KeyCode> _controlsMap;
-        public static bool mapCreated = false;
+        public static Dictionary<string, KeyCode> ControlsMap;
+        private static bool _mapCreated = false;
         
         public static void CreateMap()
         {
-            if (!mapCreated)
+            if (!_mapCreated)
             {
                 GenerateMap();
-                
-                mapCreated = true;
+                _mapCreated = true;
             }
         }
 
-        public static void GenerateMap()
+        private static void GenerateMap()
         {
-            _controlsMap = new Dictionary<string, KeyCode>();
-            _controlsMap.Add("up", KeyCode.Z);
-            _controlsMap.Add("down", KeyCode.S);
-            _controlsMap.Add("right", KeyCode.D);
-            _controlsMap.Add("left", KeyCode.Q);
-            _controlsMap.Add("space", KeyCode.Space);
-            _controlsMap.Add("select", KeyCode.Mouse0);
-            _controlsMap.Add("escape", KeyCode.Escape);
+            ControlsMap = new Dictionary<string, KeyCode>
+            {
+                {"up", KeyCode.Z},
+                {"down", KeyCode.S},
+                {"right", KeyCode.D},
+                {"left", KeyCode.Q},
+                {"space", KeyCode.Space},
+                {"select", KeyCode.Mouse0},
+                {"escape", KeyCode.Escape}
+            };
         }
     }
 }

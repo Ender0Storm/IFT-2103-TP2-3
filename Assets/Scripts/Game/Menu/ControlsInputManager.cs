@@ -7,11 +7,8 @@ namespace Game.menu
 {
     public class ControlsInputManager : MonoBehaviour
     {
-        public static Dictionary<string, KeyCode> _controlsMap;
-
-        public static ControlsInputManager Instance { get; private set; }
+        private Dictionary<string, KeyCode> _controlsMap;
         
-        [SerializeField]
         private Navigation _navigation;
         
         [SerializeField] 
@@ -29,7 +26,7 @@ namespace Game.menu
         [SerializeField]
         private GameObject escapeControl;
         
-        private const KeyCode DEFAULT_KEY = KeyCode.None;
+        private const KeyCode DefaultKey = KeyCode.None;
 
         private Text _selectText;
         private Text _upText;
@@ -39,13 +36,13 @@ namespace Game.menu
         private Text _spaceText;
         private Text _escapeText;
 
-        void Awake()
+        private void Awake()
         {
             ControlsStorage.CreateMap();
             
-            _controlsMap = ControlsStorage._controlsMap;
+            _controlsMap = ControlsStorage.ControlsMap;
         }
-        void Start()
+        private void Start()
         {
             _selectText = selectControl.GetComponentInChildren<Text>();
             _upText = upControl.GetComponentInChildren<Text>();
@@ -54,20 +51,13 @@ namespace Game.menu
             _leftText = leftControl.GetComponentInChildren<Text>();
             _spaceText = spaceControl.GetComponentInChildren<Text>();
             _escapeText = escapeControl.GetComponentInChildren<Text>();
+            _navigation = GetComponent<Navigation>();
         }
 
         public void SetKey(string actionKey, KeyCode keyCode)
         {
             CheckKeyExists(keyCode);
-            if (_controlsMap.ContainsKey(actionKey))
-            {
-                _controlsMap[actionKey] = keyCode;
-            }
-            else
-            {
-                _controlsMap.Add(actionKey, keyCode);
-            }
-            
+            _controlsMap[actionKey] = keyCode;
         }
 
         private void CheckKeyExists(KeyCode keyPressed)
@@ -76,9 +66,8 @@ namespace Game.menu
             {
                 if (_controlsMap[key] == keyPressed)
                 {
-                    _controlsMap[key] = DEFAULT_KEY;
+                    _controlsMap[key] = DefaultKey;
                     ClearKey(key);
-                    
                 }
             }
         }
@@ -139,7 +128,7 @@ namespace Game.menu
 
             if (validInputs)
             {
-                ControlsStorage._controlsMap = _controlsMap;
+                ControlsStorage.ControlsMap = _controlsMap;
                 _navigation.GoOptionsPage();
             }
         }

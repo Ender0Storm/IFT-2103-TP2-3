@@ -10,7 +10,7 @@ namespace Game.playerInformation
         
         public void Start()
         {
-            keyMap = ControlsStorage._controlsMap;
+            keyMap = ControlsStorage.ControlsMap;
         }
 
         public bool IsKeyDown(string keyString)

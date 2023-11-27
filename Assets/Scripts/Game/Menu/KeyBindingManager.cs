@@ -6,19 +6,20 @@ namespace Game.menu
 {
     public class KeyBindingManager : MonoBehaviour
     {
-        public Button bindButton;
-        
         [SerializeField]
-        private ControlsInputManager _controlsInputManager;
+        private ControlsInputManager controlsInputManager;
+        
         private bool _active = true;
-        public string actionKey;
         private Text _text;
+        
+        public Button bindButton;
+        public string actionKey;
 
         private void Start()
         {
             _text = bindButton.GetComponentInChildren<Text>();
             bindButton.onClick.AddListener(StartKeybinding);
-            _text.text = ControlsStorage._controlsMap[actionKey].ToString();
+            _text.text = ControlsStorage.ControlsMap[actionKey].ToString();
         }
 
         private void Update()
@@ -29,7 +30,7 @@ namespace Game.menu
                 {
                     if (Input.GetKeyDown(keyCode))
                     {
-                        _controlsInputManager.SetKey(actionKey, keyCode);
+                        controlsInputManager.SetKey(actionKey, keyCode);
 
                         if (keyCode.ToString().Equals("Mouse0"))
                         {

@@ -77,6 +77,7 @@ namespace Game
 
             int modWave = _waveCount % _waves.Count;
             int waveStrength = _waveCount / _waves.Count;
+            _waveCount += 1;
 
             for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {
@@ -90,7 +91,6 @@ namespace Game
                 yield return new WaitForSeconds(_waves[modWave].enemyInterval);
             }
 
-            _waveCount += 1;
             _finishedSummoning = true;
         }
 

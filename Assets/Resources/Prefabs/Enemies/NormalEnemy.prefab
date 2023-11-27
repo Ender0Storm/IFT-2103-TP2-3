@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  health: 25
+  health: 30
   speed: 2.5
   currencyDrop: 2
   _lifeBar: {fileID: 8963081592831752321}

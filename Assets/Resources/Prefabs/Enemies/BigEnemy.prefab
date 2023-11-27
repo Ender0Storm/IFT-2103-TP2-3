@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseMenuUI: {fileID: 0}
   _endMenuUI: {fileID: 0}
+  player: {fileID: 0}
   _scoreText: {fileID: 0}
 --- !u!1 &8570363033055055484
 GameObject:
@@ -377,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  health: 50
+  health: 70
   speed: 2
   currencyDrop: 5
   _lifeBar: {fileID: 1079463657548970234}

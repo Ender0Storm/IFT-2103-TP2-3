@@ -21,6 +21,7 @@ namespace Game.enemy
             _enemyLifeBar = _lifeBar.GetComponent<EnemyLifeBar>();
             _enemyLifeBar.SetMaxHealth(health);
         }
+        
         public void DealDamage(int damage, BuildController damageDealer)
         {
             health -= damage;

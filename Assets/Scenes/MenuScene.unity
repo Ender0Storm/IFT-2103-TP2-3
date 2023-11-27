@@ -1254,8 +1254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 412020843}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: down
 --- !u!1 &507133661
 GameObject:
@@ -3719,8 +3719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 1074378777}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: select
 --- !u!1 &1099491133
 GameObject:
@@ -3986,8 +3986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 1151667808}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: left
 --- !u!1 &1167894186
 GameObject:
@@ -4136,8 +4136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 1167894189}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: escape
 --- !u!1 &1189427084
 GameObject:
@@ -4598,8 +4598,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 1339360541}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: right
 --- !u!1 &1346113190
 GameObject:
@@ -5083,8 +5083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 1411926222}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: space
 --- !u!114 &1411926221
 MonoBehaviour:
@@ -6328,8 +6328,8 @@ Transform:
   - {fileID: 388785531}
   - {fileID: 507133662}
   - {fileID: 1765600046}
-  - {fileID: 1099491134}
   - {fileID: 59788745}
+  - {fileID: 1099491134}
   - {fileID: 1632228026}
   m_Father: {fileID: 4182987637597729105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6736,8 +6736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdae017b13ec4f54a3017bbe5d81be62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlsInputManager: {fileID: 6018909472435783250}
   bindButton: {fileID: 2037569810}
-  _controlsInputManager: {fileID: 6018909472435783250}
   actionKey: up
 --- !u!1 &2054268202
 GameObject:
@@ -8248,14 +8248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5781f6443a6c44a18927f9a09f57a246, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _navigation: {fileID: 6018909472435783249}
-  selectControl: {fileID: 527449392}
-  upControl: {fileID: 295422381}
-  downControl: {fileID: 388785530}
-  rightControl: {fileID: 507133661}
-  leftControl: {fileID: 1765600045}
-  spaceControl: {fileID: 59788744}
-  escapeControl: {fileID: 1099491133}
+  selectControl: {fileID: 1074378774}
+  upControl: {fileID: 2037569807}
+  downControl: {fileID: 412020840}
+  rightControl: {fileID: 1339360538}
+  leftControl: {fileID: 1151667805}
+  spaceControl: {fileID: 1411926219}
+  escapeControl: {fileID: 1167894186}
 --- !u!114 &6104027355179864955
 MonoBehaviour:
   m_ObjectHideFlags: 0

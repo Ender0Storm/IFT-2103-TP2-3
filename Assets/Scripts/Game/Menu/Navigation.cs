@@ -108,6 +108,7 @@ namespace Game.menu
 
         private void DeactivateAllPages()
         {
+            ResetColor();
             _entryPage.SetActive(false);
             _menuPage.SetActive(false);
             _optionsPage.SetActive(false);
@@ -115,7 +116,6 @@ namespace Game.menu
             _multiplayerPage.SetActive(false);
             _controlsPage.SetActive(false);
             _loadingScreen.SetActive(false);
-            ResetColor();
         }
 
         private void ResetColor()

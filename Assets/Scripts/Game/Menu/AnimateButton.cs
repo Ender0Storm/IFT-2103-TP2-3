@@ -15,7 +15,10 @@ namespace Game.menu
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _image.color = new Color(0,150,0);
+            if (_image.color != new Color(250, 0, 0))
+            {
+                _image.color = new Color(0,150,0);
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)

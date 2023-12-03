@@ -11,11 +11,12 @@ namespace Game.towers
         private float attackCooldown;
         [SerializeField]
         private float attackRange;
-    
         [SerializeField]
         private LayerMask enemyMask;
         [SerializeField]
         private GameObject projectilePrefab;
+        
+        private Animator animator;
     
         private float cooldownRemaining;
     
@@ -23,6 +24,7 @@ namespace Game.towers
         void Start()
         {
             cooldownRemaining = 0;
+            animator = GetComponentInChildren<Animator>();
         }
     
         // Update is called once per frame
@@ -64,6 +66,7 @@ namespace Game.towers
     
         private void Fire(GameObject target)
         {
+            animator.SetTrigger("fire");
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Projectile projectileScript = projectile.GetComponent<Projectile>();
             projectileScript.Setup(target, owner, attackDamage);

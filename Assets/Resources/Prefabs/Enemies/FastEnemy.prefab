@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 5688414118537844178}
   - component: {fileID: 2969225984237132220}
   - component: {fileID: 6950957506936543834}
+  - component: {fileID: 1859257073037564951}
   m_Layer: 6
   m_Name: FastEnemy
   m_TagString: Untagged
@@ -439,6 +440,7 @@ MonoBehaviour:
   health: 25
   speed: 4
   currencyDrop: 3
+  ennemyAnimator: {fileID: 0}
   _lifeBar: {fileID: 4976560602485555127}
 --- !u!114 &6950957506936543834
 MonoBehaviour:
@@ -453,3 +455,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _indexPosition: 0
+--- !u!95 &1859257073037564951
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8570363033055055484}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96ad9d56cb7f28b44affc2561497e017, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

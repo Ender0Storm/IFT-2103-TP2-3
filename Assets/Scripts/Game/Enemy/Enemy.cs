@@ -12,18 +12,21 @@ namespace Game.enemy
         public int health;
         public float speed;
         public int currencyDrop;
+        public Animator enemyAnimator;
         public List<Tile> path;
         [SerializeField] private GameObject _lifeBar;
         private EnemyLifeBar _enemyLifeBar;
 
         public void Start()
         {
+            enemyAnimator = GetComponent<Animator>();
             _enemyLifeBar = _lifeBar.GetComponent<EnemyLifeBar>();
             _enemyLifeBar.SetMaxHealth(health);
         }
         
         public void DealDamage(int damage, BuildController damageDealer)
         {
+            
             health -= damage;
             _enemyLifeBar.SetHealth(health);
         
@@ -31,7 +34,11 @@ namespace Game.enemy
             {
                 if (damageDealer != null) damageDealer.AddCurrency(currencyDrop);
                 Destroy(gameObject);
+                enemyAnimator.SetTrigger("damages");
+                //enemyAnimator.SetBool("dead", true);
             }
+            //enemyAnimator.SetBool("damages", true);
+            enemyAnimator.SetTrigger("damages");
         }
     }
 }

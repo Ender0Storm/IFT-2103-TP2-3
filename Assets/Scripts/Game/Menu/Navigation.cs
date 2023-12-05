@@ -1,4 +1,8 @@
-﻿using TMPro;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,80 +34,117 @@ namespace Game.menu
         private GameObject _loadingScreen;
         public static string difficulty;
         public static string joinIP;
+        private List<Image> buttons;
+        
+        public GameObject transitionView;
+        private Image transitionImage;
 
-        void Start()
+        private void Start()
         {
+            transitionImage = transitionView.GetComponentInChildren<Image>();
+            transitionView.SetActive(false);
             difficulty = "";
             joinIP = "";
-            _difficultySelection =
-                _singleplayerPage.GetComponentInChildren<DifficultySelection>();
-            GoEntryPage();
-        }
-
-        public void GoEntryPage()
-        {
+            _difficultySelection = _singleplayerPage.GetComponentInChildren<DifficultySelection>();
+            
             DeactivateAllPages();
             _entryPage.SetActive(true);
         }
-        
-        public void GoMenuPage()
-        {
-            DeactivateAllPages();
-            _menuPage.SetActive(true);
-        }
-        
-        public void GoOptionsPage()
-        {
-            DeactivateAllPages();
-            _optionsPage.SetActive(true);
-        }
 
-        public void GoControlsPage()
+        public void GoEntryPage(RectTransform button)
         {
-            DeactivateAllPages();
-            _controlsPage.SetActive(true);
-        }
-        
-        public void GoSingleplayerPage()
-        {
-            DeactivateAllPages();
-            _singleplayerPage.SetActive(true);
-        }
-
-        public void GoMultiplayerPage()
-        {
-            DeactivateAllPages();
-            _multiplayerPage.SetActive(true);
-        }
-
-        public void StartSingleplayerGame()
-        {
-            DeactivateAllPages();
-            difficulty = _difficultySelection.GetSelectedDifficulty();
-            _sceneLoader.LoadScene(SINGLEPLAYER_SCENE_INDEX);
-        }
-        
-        public void StartMultiplayerHost()
-        {
-            DeactivateAllPages();
-            joinIP = "localhost";
-            _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
-        }
-
-        public void StartMultiplayerJoin()
-        {
-            string input = _multiplayerPage.GetComponentInChildren<TMP_InputField>().text;
-            if (input.Length >= 7)
+            StartCoroutine(TransitionAnimation(button, () =>
             {
                 DeactivateAllPages();
-                joinIP = input;
-                _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
-            }
+                _entryPage.SetActive(true);
+            }));
+        }
+        
+        public void GoMenuPage(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                _menuPage.SetActive(true);
+            }));
+        }
+        
+        public void GoOptionsPage(RectTransform button = null)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                _optionsPage.SetActive(true);
+            }));
         }
 
-        public void Quit()
+        public void GoControlsPage(RectTransform button)
         {
-            Application.Quit();
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                _controlsPage.SetActive(true);
+            }));
+        }
+        
+        public void GoSingleplayerPage(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                _singleplayerPage.SetActive(true);
+            }));
+        }
+
+        public void GoMultiplayerPage(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                _multiplayerPage.SetActive(true);
+            }));
+        }
+
+        public void StartSingleplayerGame(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                difficulty = _difficultySelection.GetSelectedDifficulty();
+                _sceneLoader.LoadScene(SINGLEPLAYER_SCENE_INDEX);
+            }));
+        }
+        
+        public void StartMultiplayerHost(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                DeactivateAllPages();
+                joinIP = "localhost";
+                _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
+            }));
+        }
+
+        public void StartMultiplayerJoin(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                string input = _multiplayerPage.GetComponentInChildren<TMP_InputField>().text;
+                if (input.Length >= 7)
+                {
+                    DeactivateAllPages();
+                    joinIP = input;
+                    _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
+                }
+            }));
+        }
+
+        public void Quit(RectTransform button)
+        {
+            StartCoroutine(TransitionAnimation(button, () =>
+            {
+                Application.Quit();
+            }));
         }
 
         private void DeactivateAllPages()
@@ -117,12 +158,75 @@ namespace Game.menu
             _controlsPage.SetActive(false);
             _loadingScreen.SetActive(false);
         }
+        
+        private IEnumerator TransitionAnimation(RectTransform button, Action onAnimationsComplete)
+        {
+            // Shrink the button
+            yield return ShrinkAnimation(button);
+
+            // Fade in the screen transition
+            yield return FadeInScreenTransition("in");
+            
+            onAnimationsComplete?.Invoke();
+
+            yield return FadeInScreenTransition("out");
+        }
+        
+        private static IEnumerator ShrinkAnimation(RectTransform button)
+        {
+            if (button == null)
+            {
+                yield break;
+            }
+            
+            Vector2 originalScale = button.sizeDelta;
+            const float duration = 0.1f;
+            var startTime = Time.time;
+
+            while (Time.time < startTime + duration)
+            {
+                button.sizeDelta = Vector2.Lerp(originalScale, originalScale * 0.9f, (Time.time - startTime) / duration);
+                yield return null;
+            }
+            button.sizeDelta = originalScale;
+        }
+        
+        private IEnumerator FadeInScreenTransition(string inOut)
+        {
+            float transitionDuration = 0.5f;
+            float startTime = Time.time;
+            Color startColor = Color.clear;
+            Color targetColor = Color.black;
+
+            transitionView.SetActive(true);
+
+            if (inOut == "in")
+            {
+                while (Time.time < startTime + transitionDuration)
+                {
+                    float t = (Time.time - startTime) / transitionDuration;
+                    transitionImage.color = Color.Lerp(startColor, targetColor, t);
+                    yield return null;
+                }
+            }
+            else
+            {
+                startTime = Time.time;
+                while (Time.time < startTime + transitionDuration)
+                {
+                    float t = (Time.time - startTime) / transitionDuration;
+                    transitionImage.color = Color.Lerp(targetColor, startColor, t);
+                    yield return null;
+                }
+            }
+            transitionView.SetActive(false);
+        }
 
         private void ResetColor()
         {
-            foreach(var element in gameObject.GetComponentsInChildren<Image>())
+            foreach(var button in gameObject.GetComponentsInChildren<Image>().ToList())
             {
-                element.color = new Color(255,255,255);
+                button.color = new Color(255,255,255);
             }
         }
     }

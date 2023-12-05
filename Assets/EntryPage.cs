@@ -10,7 +10,8 @@ public class EntryPage : MonoBehaviour
     public UnityEvent onQuitButtonClick;
 
     public void startButtonClick()
-    {        
+    {
+        Debug.Log("click");
         onStartButtonClick.Invoke();
     }
     public void quitButtonClick()

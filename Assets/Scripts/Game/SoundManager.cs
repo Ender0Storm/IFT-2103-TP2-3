@@ -6,7 +6,10 @@ public static class SoundManager
 {
     public enum Sound
     {
-        BubblingSound
+        MenuMusic,
+        BuildingMusic,
+        WaveMusic,
+        BossWaveMusic
     }
 
     private static Dictionary<Sound, float> soundTimerDict;
@@ -36,7 +39,7 @@ public static class SoundManager
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = masterVolume * soundVolume;
+            audio.volume = masterVolume * musicVolume;
             audio.Play();
             currentMusic = audio;
         }

@@ -15,6 +15,11 @@ public class GameAssets : MonoBehaviour
         }
     }
 
+    public void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public SoundAudioClip[] soundAudioClips;
 
     [System.Serializable]

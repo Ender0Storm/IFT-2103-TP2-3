@@ -11,7 +11,6 @@ public class EntryPage : MonoBehaviour
 
     public void startButtonClick()
     {
-        Debug.Log("click");
         onStartButtonClick.Invoke();
     }
     public void quitButtonClick()

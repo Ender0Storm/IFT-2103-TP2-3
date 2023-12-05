@@ -8,14 +8,6 @@ public class LoadingScreen : MonoBehaviour
 {
     public UnityEvent onValueChanged;
 
-    private Slider loadingBar;
-
-    private void Start()
-    {
-        loadingBar = GameObject.Find("Loading Bar").GetComponent<Slider>();
-    }
-
-
     public void changeValue()
     {
         onValueChanged.Invoke();

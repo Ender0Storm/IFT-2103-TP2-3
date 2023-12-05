@@ -12,7 +12,7 @@ public class LoadingScreen : MonoBehaviour
 
     private void Start()
     {
-        loadingBar = GetComponentInChildren<Slider>();
+        loadingBar = GameObject.Find("Loading Bar").GetComponent<Slider>();
     }
 
 

@@ -193,7 +193,7 @@ namespace Game.menu
         
         private IEnumerator FadeInScreenTransition(string inOut)
         {
-            float transitionDuration = 0.5f;
+            const float transitionDuration = 0.5f;
             float startTime = Time.time;
             Color startColor = Color.clear;
             Color targetColor = Color.black;
@@ -204,18 +204,17 @@ namespace Game.menu
             {
                 while (Time.time < startTime + transitionDuration)
                 {
-                    float t = (Time.time - startTime) / transitionDuration;
-                    transitionImage.color = Color.Lerp(startColor, targetColor, t);
+                    float time = (Time.time - startTime) / transitionDuration;
+                    transitionImage.color = Color.Lerp(startColor, targetColor, time);
                     yield return null;
                 }
             }
             else
             {
-                startTime = Time.time;
                 while (Time.time < startTime + transitionDuration)
                 {
-                    float t = (Time.time - startTime) / transitionDuration;
-                    transitionImage.color = Color.Lerp(targetColor, startColor, t);
+                    float time = (Time.time - startTime) / transitionDuration;
+                    transitionImage.color = Color.Lerp(targetColor, startColor, time);
                     yield return null;
                 }
             }

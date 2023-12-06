@@ -20,7 +20,13 @@ namespace Game.ui
     
         [SerializeField]
         private TMPro.TMP_Text _scoreText;
-    
+
+        private void Start()
+        {
+            _pauseMenuUI.SetActive(false);
+            _endMenuUI.SetActive(false);
+        }
+
         // Update is called once per frame
         void Update()
         {

@@ -2003,6 +2003,10 @@ PrefabInstance:
       propertyPath: _controlsManager
       value: 
       objectReference: {fileID: 719817242}
+    - target: {fileID: 7607555719862953746, guid: f46e4d3b73ac4b141b99409023505e21, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7901748894102328006, guid: f46e4d3b73ac4b141b99409023505e21, type: 3}
       propertyPath: m_IsActive
       value: 1

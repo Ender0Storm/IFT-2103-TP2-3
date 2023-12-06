@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,14 +15,9 @@ namespace Game.Shop
         [SerializeField]
         private GameObject _ennemiesPage;
         [SerializeField]
-        private GameObject _turretsPage;
+        private GameObject _towersPage;
         [SerializeField]
         private GameObject _othersPage;
-        
-        [SerializeField]
-        private GameObject _shopMenuUI;
-        
-        public static string gems;
         private List<Image> buttons;
         public GameObject transitionView;
         private Image transitionImage;
@@ -54,16 +48,16 @@ namespace Game.Shop
             }));
         }
         
-        public void GoTurretsPage(RectTransform button = null)
+        public void GoTowersPage(RectTransform button = null)
         {
             StartCoroutine(TransitionAnimation(button, () =>
             {
                 DeactivateAllPages();
-                _turretsPage.SetActive(true);
+                _towersPage.SetActive(true);
             }));
         }
 
-        public void GoEnnemiesPage(RectTransform button)
+        public void GoEnemiesPage(RectTransform button)
         {
             StartCoroutine(TransitionAnimation(button, () =>
             {
@@ -86,22 +80,23 @@ namespace Game.Shop
             ResetColor();
             _entryPage.SetActive(false);
             _boardPage.SetActive(false);
-            _turretsPage.SetActive(false);
+            _towersPage.SetActive(false);
             _ennemiesPage.SetActive(false);
             _othersPage.SetActive(false);
         }
         
         private IEnumerator TransitionAnimation(RectTransform button, Action onAnimationsComplete)
         {
-            yield return ShrinkAnimation(button);
-            yield return FadeInScreenTransition("in");
+            //yield return ShrinkAnimation(button);
+            //yield return FadeInScreenTransition("in");
             onAnimationsComplete?.Invoke();
-            yield return FadeInScreenTransition("out");
+            //yield return FadeInScreenTransition("out");
+            yield return null;
         }
         
         private static IEnumerator ShrinkAnimation(RectTransform button)
         {
-            if (button == null)
+            /*if (button == null)
             {
                 yield break;
             }
@@ -109,13 +104,14 @@ namespace Game.Shop
             Vector2 originalScale = button.sizeDelta;
             const float duration = 0.1f;
             var startTime = Time.time;
-
+            
             while (Time.time < startTime + duration)
             {
                 button.sizeDelta = Vector2.Lerp(originalScale, originalScale * 0.9f, (Time.time - startTime) / duration);
                 yield return null;
             }
-            button.sizeDelta = originalScale;
+            button.sizeDelta = originalScale;*/
+            yield return null;
         }
         
         private IEnumerator FadeInScreenTransition(string inOut)

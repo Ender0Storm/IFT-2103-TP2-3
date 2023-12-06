@@ -32,11 +32,11 @@ RectTransform:
   - {fileID: 534979991741302949}
   m_Father: {fileID: 5405339068206044686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -49}
-  m_SizeDelta: {x: -100, y: -102}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: 80, y: 40}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &2056251885266760608
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +279,6 @@ GameObject:
   - component: {fileID: 3915522852860679482}
   - component: {fileID: 4972750512758500022}
   - component: {fileID: 2203349440666623689}
-  - component: {fileID: 2719454108045846017}
   m_Layer: 5
   m_Name: Towers
   m_TagString: Untagged
@@ -304,10 +303,10 @@ RectTransform:
   - {fileID: 5004259983323904416}
   m_Father: {fileID: 4371113328751367419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -360.00006, y: 0}
-  m_SizeDelta: {x: -820, y: -280}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 150, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3915522852860679482
 CanvasRenderer:
@@ -390,31 +389,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4972750512758500022}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuPage, Assembly-CSharp
-        m_MethodName: singleplayerButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2719454108045846017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4439471739892747663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85df01652f09473297d9546a3e1647e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+      m_Calls: []
 --- !u!1 &4969980694769783905
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,8 +499,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47.5}
-  m_SizeDelta: {x: 0, y: -95}
+  m_AnchoredPosition: {x: 0, y: 65}
+  m_SizeDelta: {x: 0, y: -130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4272678806201995198
 CanvasRenderer:
@@ -579,7 +554,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4371113328751367419}
   - component: {fileID: 4212444669756686479}
-  - component: {fileID: 5617832926986494637}
   m_Layer: 5
   m_Name: BoardPage
   m_TagString: Untagged
@@ -616,66 +590,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7292109195593366860}
   m_CullTransparentMesh: 1
---- !u!114 &5617832926986494637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7292109195593366860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cce36db6af0ba147b563102b0661ccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onSelectButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onUpButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onDownButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onRightButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onLeftButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onPauseMenuButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onLaunchWaveButtonClick:
-    m_PersistentCalls:
-      m_Calls: []
-  onSaveButtonClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.menu.ControlsInputManager, Assembly-CSharp
-        m_MethodName: SaveControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.menu.Navigation, Assembly-CSharp
-        m_MethodName: GoOptionsPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &8824994164425925381
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,10 +622,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4371113328751367419}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 170.00003}
-  m_SizeDelta: {x: -600.00006, y: -360}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -47}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8352987095991441522
 CanvasRenderer:

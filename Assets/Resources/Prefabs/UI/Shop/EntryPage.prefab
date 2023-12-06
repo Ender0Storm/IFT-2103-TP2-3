@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8673261384519742289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47.5}
-  m_SizeDelta: {x: 0, y: -95}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 170, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &695782226897840880
 CanvasRenderer:
@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 7860071500408735446}
   - component: {fileID: 2498081831934195603}
   - component: {fileID: 1679357669238826879}
-  - component: {fileID: 8260697466819058029}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -114,10 +113,10 @@ RectTransform:
   - {fileID: 1126687705620034630}
   m_Father: {fileID: 448600969994235282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 112.5, y: 0}
-  m_SizeDelta: {x: -825, y: -280}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 110, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7860071500408735446
 CanvasRenderer:
@@ -201,30 +200,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6477723763372455031}
-        m_TargetAssemblyTypeName: MenuPage, Assembly-CSharp
-        m_MethodName: optionsButtonClick
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Shop.ShopNavigation, Assembly-CSharp
+        m_MethodName: GoBoardPage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1248700801399682036}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8260697466819058029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433502898500082492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85df01652f09473297d9546a3e1647e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1448705228021677426
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +222,6 @@ GameObject:
   m_Component:
   - component: {fileID: 448600969994235282}
   - component: {fileID: 6836566469342007721}
-  - component: {fileID: 6477723763372455031}
   m_Layer: 5
   m_Name: EntryPage
   m_TagString: Untagged
@@ -275,78 +261,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448705228021677426}
   m_CullTransparentMesh: 1
---- !u!114 &6477723763372455031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448705228021677426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3209da61a6bbd7842bfdb5edb8aff596, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onSingleplayerButtonClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.menu.Navigation, Assembly-CSharp
-        m_MethodName: GoSingleplayerPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 187273675461693720}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onMultiplayerButtonClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.menu.Navigation, Assembly-CSharp
-        m_MethodName: GoMultiplayerPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 3949912363910976472}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onOptionsButtonClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.menu.Navigation, Assembly-CSharp
-        m_MethodName: GoOptionsPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1248700801399682036}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onBackButtonClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.menu.Navigation, Assembly-CSharp
-        m_MethodName: GoEntryPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8673261384519742289}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &2336836109451034667
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,10 +293,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3949912363910976472}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47.5}
-  m_SizeDelta: {x: 0, y: -95}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20.000008}
+  m_SizeDelta: {x: 170, y: 39.999985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3658843525663478967
 CanvasRenderer:
@@ -460,10 +374,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 187273675461693720}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47.5}
-  m_SizeDelta: {x: 0, y: -95}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 170, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &32079633833859066
 CanvasRenderer:
@@ -519,7 +433,6 @@ GameObject:
   - component: {fileID: 1722719532294143096}
   - component: {fileID: 5225796576501224516}
   - component: {fileID: 6747099583044364403}
-  - component: {fileID: 6559944167746892406}
   m_Layer: 5
   m_Name: Towers
   m_TagString: Untagged
@@ -542,10 +455,10 @@ RectTransform:
   - {fileID: 1985984421482887643}
   m_Father: {fileID: 448600969994235282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -360, y: 0}
-  m_SizeDelta: {x: -820, y: -280}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -330, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1722719532294143096
 CanvasRenderer:
@@ -629,30 +542,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6477723763372455031}
-        m_TargetAssemblyTypeName: MenuPage, Assembly-CSharp
-        m_MethodName: singleplayerButtonClick
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Shop.ShopNavigation, Assembly-CSharp
+        m_MethodName: GoTurretsPage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 187273675461693720}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6559944167746892406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3673062529089789065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85df01652f09473297d9546a3e1647e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5983413519111750489
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,10 +586,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 448600969994235282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 170}
-  m_SizeDelta: {x: -800, y: -360}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -47}
+  m_SizeDelta: {x: 80, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7116412852373267202
 CanvasRenderer:
@@ -744,7 +645,6 @@ GameObject:
   - component: {fileID: 339401871399290624}
   - component: {fileID: 1696478031184542636}
   - component: {fileID: 5949128315590613417}
-  - component: {fileID: 2307656009471564748}
   m_Layer: 5
   m_Name: Ennemies
   m_TagString: Untagged
@@ -767,10 +667,10 @@ RectTransform:
   - {fileID: 7188659521544987809}
   m_Father: {fileID: 448600969994235282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -112.5, y: 0}
-  m_SizeDelta: {x: -825, y: -280}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -110, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &339401871399290624
 CanvasRenderer:
@@ -854,30 +754,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6477723763372455031}
-        m_TargetAssemblyTypeName: MenuPage, Assembly-CSharp
-        m_MethodName: multiplayerButtonClick
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Shop.ShopNavigation, Assembly-CSharp
+        m_MethodName: GoEnnemiesPage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 3949912363910976472}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2307656009471564748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6132058737687911073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85df01652f09473297d9546a3e1647e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6185422207774819250
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,10 +798,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1248700801399682036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 47.5}
-  m_SizeDelta: {x: 0, y: -95}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -20}
+  m_SizeDelta: {x: 170, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6144142910845695284
 CanvasRenderer:
@@ -969,7 +857,6 @@ GameObject:
   - component: {fileID: 2006156096007853689}
   - component: {fileID: 349133260254588217}
   - component: {fileID: 2258813697148892874}
-  - component: {fileID: 5495270694105075345}
   m_Layer: 5
   m_Name: Others
   m_TagString: Untagged
@@ -992,10 +879,10 @@ RectTransform:
   - {fileID: 5495770458396825875}
   m_Father: {fileID: 448600969994235282}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 360, y: 0}
-  m_SizeDelta: {x: -820, y: -280}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 330, y: 0}
+  m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2006156096007853689
 CanvasRenderer:
@@ -1079,27 +966,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6477723763372455031}
-        m_TargetAssemblyTypeName: MenuPage, Assembly-CSharp
-        m_MethodName: backButtonClick
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Game.Shop.ShopNavigation, Assembly-CSharp
+        m_MethodName: GoOthersPage
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 8673261384519742289}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5495270694105075345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8730959364644040733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85df01652f09473297d9546a3e1647e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

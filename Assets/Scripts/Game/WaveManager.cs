@@ -5,6 +5,7 @@ using Game.enemy;
 using Game.menu;
 using Game.pathFinding;
 using Game.playerInformation;
+using Game.Shop;
 using Game.ui;
 using UnityEngine;
 
@@ -42,6 +43,7 @@ namespace Game
         private ControlsManager _controlsManager;
 
         private bool _finishedSummoning;
+        private bool _newWave = false;
         
         public void Start()
         {
@@ -57,6 +59,13 @@ namespace Game
             if (_controlsManager.IsKeyDown("space") && CanBuild() && !PauseMenu.isPaused)
             {
                 StartWave();
+            }
+
+            if (_newWave && CanBuild())
+            {
+                _newWave = false;
+                ShopContent.AddToGems(1);
+                Debug.Log(ShopContent.getGems());
             }
         }
 
@@ -74,6 +83,7 @@ namespace Game
         private IEnumerator SummonWave(List<Tile> path)
         {
             _finishedSummoning = false;
+            _newWave = true;
 
             int modWave = _waveCount % _waves.Count;
             int waveStrength = _waveCount / _waves.Count;

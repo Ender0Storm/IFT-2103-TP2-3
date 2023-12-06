@@ -2,40 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.menu
+namespace Game.Shop
 {
-    public class Navigation : MonoBehaviour
+    public class ShopNavigation : MonoBehaviour
     {
-        public const int MENU_SCENE_INDEX = 0;
-        public const int SINGLEPLAYER_SCENE_INDEX = 1;
-        public const int MULTIPLAYER_SCENE_INDEX = 2;
-
-        private DifficultySelection _difficultySelection;
-        [SerializeField]
-        private SceneLoader _sceneLoader;
-        
         [SerializeField]
         private GameObject _entryPage;
         [SerializeField]
-        private GameObject _menuPage;
+        private GameObject _boardPage;
         [SerializeField]
-        private GameObject _optionsPage;
+        private GameObject _ennemiesPage;
         [SerializeField]
-        private GameObject _singleplayerPage;
+        private GameObject _turretsPage;
         [SerializeField]
-        private GameObject _multiplayerPage;
-        [SerializeField]
-        private GameObject _controlsPage;
-        [SerializeField]
-        private GameObject _loadingScreen;
-        public static string difficulty;
-        public static string joinIP;
-        private List<Image> buttons;
+        private GameObject _othersPage;
         
+        [SerializeField]
+        private GameObject _shopMenuUI;
+        
+        public static string gems;
+        private List<Image> buttons;
         public GameObject transitionView;
         private Image transitionImage;
 
@@ -43,10 +32,6 @@ namespace Game.menu
         {
             transitionImage = transitionView.GetComponentInChildren<Image>();
             transitionView.SetActive(false);
-            difficulty = "";
-            joinIP = "";
-            _difficultySelection = _singleplayerPage.GetComponentInChildren<DifficultySelection>();
-            
             DeactivateAllPages();
             _entryPage.SetActive(true);
         }
@@ -60,100 +45,50 @@ namespace Game.menu
             }));
         }
         
-        public void GoMenuPage(RectTransform button)
+        public void GoBoardPage(RectTransform button)
         {
             StartCoroutine(TransitionAnimation(button, () =>
             {
                 DeactivateAllPages();
-                _menuPage.SetActive(true);
+                _boardPage.SetActive(true);
             }));
         }
         
-        public void GoOptionsPage(RectTransform button = null)
+        public void GoTurretsPage(RectTransform button = null)
         {
             StartCoroutine(TransitionAnimation(button, () =>
             {
                 DeactivateAllPages();
-                _optionsPage.SetActive(true);
+                _turretsPage.SetActive(true);
             }));
         }
 
-        public void GoControlsPage(RectTransform button)
+        public void GoEnnemiesPage(RectTransform button)
         {
             StartCoroutine(TransitionAnimation(button, () =>
             {
                 DeactivateAllPages();
-                _controlsPage.SetActive(true);
+                _ennemiesPage.SetActive(true);
             }));
         }
         
-        public void GoSingleplayerPage(RectTransform button)
+        public void GoOthersPage(RectTransform button)
         {
             StartCoroutine(TransitionAnimation(button, () =>
             {
                 DeactivateAllPages();
-                _singleplayerPage.SetActive(true);
+                _othersPage.SetActive(true);
             }));
-        }
-
-        public void GoMultiplayerPage(RectTransform button)
-        {
-            StartCoroutine(TransitionAnimation(button, () =>
-            {
-                DeactivateAllPages();
-                _multiplayerPage.SetActive(true);
-            }));
-        }
-
-        public void StartSingleplayerGame(RectTransform button)
-        {
-            StartCoroutine(TransitionAnimation(button, () =>
-            {
-                DeactivateAllPages();
-                difficulty = _difficultySelection.GetSelectedDifficulty();
-                _sceneLoader.LoadScene(SINGLEPLAYER_SCENE_INDEX);
-            }));
-        }
-        
-        public void StartMultiplayerHost(RectTransform button)
-        {
-            StartCoroutine(TransitionAnimation(button, () =>
-            {
-                DeactivateAllPages();
-                joinIP = "localhost";
-                _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
-            }));
-        }
-
-        public void StartMultiplayerJoin(RectTransform button)
-        {
-            StartCoroutine(TransitionAnimation(button, () =>
-            {
-                string input = _multiplayerPage.GetComponentInChildren<TMP_InputField>().text;
-                if (input.Length >= 7)
-                {
-                    DeactivateAllPages();
-                    joinIP = input;
-                    _sceneLoader.LoadScene(MULTIPLAYER_SCENE_INDEX);
-                }
-            }));
-        }
-
-        public void Quit(RectTransform button)
-        {
-            Application.Quit();
         }
 
         private void DeactivateAllPages()
         {
             ResetColor();
             _entryPage.SetActive(false);
-            _menuPage.SetActive(false);
-            _optionsPage.SetActive(false);
-            _singleplayerPage.SetActive(false);
-            _multiplayerPage.SetActive(false);
-            _controlsPage.SetActive(false);
-            _loadingScreen.SetActive(false);
+            _boardPage.SetActive(false);
+            _turretsPage.SetActive(false);
+            _ennemiesPage.SetActive(false);
+            _othersPage.SetActive(false);
         }
         
         private IEnumerator TransitionAnimation(RectTransform button, Action onAnimationsComplete)
@@ -185,10 +120,10 @@ namespace Game.menu
         
         private IEnumerator FadeInScreenTransition(string inOut)
         {
-            const float transitionDuration = 0.4f;
+            const float transitionDuration = 0.2f;
             float startTime = Time.time;
             Color startColor = Color.clear;
-            Color targetColor = Color.black;
+            Color targetColor = Color.white;
 
             transitionView.SetActive(true);
 
@@ -215,10 +150,10 @@ namespace Game.menu
 
         private void ResetColor()
         {
-            foreach(var button in gameObject.GetComponentsInChildren<Image>().ToList())
+            /*foreach(var button in gameObject.GetComponentsInChildren<Image>().ToList())
             {
                 button.color = new Color(255,255,255);
-            }
+            }*/
         }
     }
 }

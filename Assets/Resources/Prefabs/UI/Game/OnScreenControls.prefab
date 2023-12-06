@@ -146,7 +146,6 @@ GameObject:
   - component: {fileID: 1309434003726612736}
   - component: {fileID: 7178698028570520351}
   - component: {fileID: 7222098979895509116}
-  - component: {fileID: 1746845016258460802}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -256,9 +255,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1746845016258460802}
-        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
-        m_MethodName: StartWave
+      - m_Target: {fileID: 1314717049037678275}
+        m_TargetAssemblyTypeName: Game.ui.OpenShop, Assembly-CSharp
+        m_MethodName: GoShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -268,31 +267,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 420349674949833181}
-        m_TargetAssemblyTypeName: OnScreenControls, Assembly-CSharp
-        m_MethodName: startWaveButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1746845016258460802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589056487042310027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74901ce2a2894844c94c92849ebc7847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveManager: {fileID: 0}
 --- !u!1 &5428935057821920093
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +571,7 @@ GameObject:
   - component: {fileID: 3850957366239664599}
   - component: {fileID: 2336277561257099005}
   - component: {fileID: 420349674949833181}
+  - component: {fileID: 1314717049037678275}
   m_Layer: 5
   m_Name: OnScreenControls
   m_TagString: Untagged
@@ -649,6 +624,20 @@ MonoBehaviour:
   onStartWaveClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1314717049037678275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8683905342031540304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3e3635f6c249bbb7e8dde46a041b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopMenuUI: {fileID: 1203453401189681962, guid: 09508a1a21958de458683aaee7e3d860, type: 3}
+  controlsManager: {fileID: 0}
 --- !u!1001 &2805834684669692489
 PrefabInstance:
   m_ObjectHideFlags: 0

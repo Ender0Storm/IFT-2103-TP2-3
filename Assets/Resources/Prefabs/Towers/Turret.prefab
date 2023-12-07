@@ -123,6 +123,7 @@ MonoBehaviour:
     m_Bits: 64
   projectilePrefab: {fileID: 823507221646787993, guid: b869bb308fcd89f458fd7bbeed0ce198, type: 3}
   animator: {fileID: 4139375603258367544}
+  pivot: {fileID: 9140755471576839071}
 --- !u!1 &4654775912578399274
 GameObject:
   m_ObjectHideFlags: 0

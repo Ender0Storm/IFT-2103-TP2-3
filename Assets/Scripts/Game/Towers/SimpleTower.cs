@@ -17,6 +17,8 @@ namespace Game.towers
         private GameObject projectilePrefab;
         [SerializeField]
         private Animator animator;
+        [SerializeField]
+        private Transform pivot;
     
         private float cooldownRemaining;
     
@@ -30,6 +32,10 @@ namespace Game.towers
         void Update()
         {
             Collider2D[] enemiesInRange = Physics2D.OverlapCircleAll(transform.position, attackRange, enemyMask);
+            GameObject target = GetFarthestEnemy(enemiesInRange);
+
+            if (target != null) AdjustPivot(target.transform.position);
+
             if (cooldownRemaining > 0)
             {
                 cooldownRemaining = Mathf.Max(cooldownRemaining - Time.deltaTime, 0);
@@ -37,7 +43,7 @@ namespace Game.towers
     
             if (cooldownRemaining == 0 && enemiesInRange.Length > 0)
             {
-                Fire(GetFarthestEnemy(enemiesInRange));
+                Fire(target);
                 cooldownRemaining = attackCooldown;
             }
         }
@@ -61,6 +67,11 @@ namespace Game.towers
             }
     
             return farthestEnemy;
+        }
+
+        private void AdjustPivot(Vector2 targetPos)
+        {
+            pivot.rotation = Quaternion.FromToRotation(Vector2.up, targetPos - (Vector2)transform.position);
         }
     
         private void Fire(GameObject target)

@@ -128,7 +128,7 @@ namespace Game.Shop
             const float duration = 0.1f;
             Time.timeScale = 1f;
             var startTime = Time.time;
-            while (startTime < duration)
+            while (Time.time < startTime + duration)
             {
                 button.sizeDelta = Vector2.Lerp(originalScale, originalScale * 0.95f, (Time.time - startTime) / duration);
                 yield return null;

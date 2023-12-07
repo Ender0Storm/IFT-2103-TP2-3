@@ -15,7 +15,7 @@ namespace Game.Shop
 
         public void SetGemsAmount()
         {
-            gemsText.text = ShopContent.getGems().ToString();
+            gemsText.text = ShopContent.GetGems().ToString();
         }
     }
 }

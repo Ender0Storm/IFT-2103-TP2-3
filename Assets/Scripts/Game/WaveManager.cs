@@ -65,7 +65,7 @@ namespace Game
             {
                 _newWave = false;
                 ShopContent.AddToGems(1);
-                Debug.Log(ShopContent.getGems());
+                Debug.Log(ShopContent.GetGems());
             }
         }
 

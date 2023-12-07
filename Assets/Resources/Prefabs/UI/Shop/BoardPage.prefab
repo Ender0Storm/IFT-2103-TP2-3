@@ -244,10 +244,10 @@ RectTransform:
   - {fileID: 5476496890078911613}
   m_Father: {fileID: 5405339068206044686}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 80, y: 40}
+  m_SizeDelta: {x: -90, y: -130}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &7871353157945954979
 MonoBehaviour:
@@ -298,8 +298,8 @@ MonoBehaviour:
         m_MethodName: BuyWoodButtonClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1848541529344386707}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 5004259983323904416}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -340,10 +340,10 @@ RectTransform:
   - {fileID: 12814798770538974}
   m_Father: {fileID: 6645369141750160211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 5}
-  m_SizeDelta: {x: 80, y: 40}
+  m_SizeDelta: {x: -90, y: -130}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &4871237025621249695
 MonoBehaviour:
@@ -394,8 +394,8 @@ MonoBehaviour:
         m_MethodName: BuyDigitalButtonClick
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2472618779217753072}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 7760090023961718619}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1137,10 +1137,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1083665515289770479}
         m_TargetAssemblyTypeName: Game.Shop.BoardPage, Assembly-CSharp
         m_MethodName: ActiveWoodButtonClick
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5405339068206044686}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1347,10 +1347,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1083665515289770479}
         m_TargetAssemblyTypeName: Game.Shop.BoardPage, Assembly-CSharp
         m_MethodName: ActiveDigitalButtonClick
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 6645369141750160211}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.RectTransform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

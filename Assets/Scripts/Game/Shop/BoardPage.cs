@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,7 @@ namespace Game.Shop
         [SerializeField]
         private Text digitalPrice;
 
-        private Color _green = new Color(0, 200, 0);
+        private readonly Color _green = new Color(0, 200, 0);
 
         private void Start()
         {
@@ -57,44 +58,82 @@ namespace Game.Shop
             }
         }
         
-        public void BuyWoodButtonClick()
+        public void BuyWoodButtonClick(RectTransform button)
         {
-            if (ShopContent.BuyContent(ContentType.Board, "Wood"))
+            StartCoroutine(TransitionAnimation(button, () =>
             {
-                woodBackground.color = new Color(0, 200, 0);
-            }
+                if (ShopContent.BuyContent(ContentType.Board, "Wood"))
+                {
+                    woodBackground.color = new Color(0, 200, 0);
+                }
+            }));
         }
 
-        public void ActiveWoodButtonClick()
+        public void ActiveWoodButtonClick(RectTransform button)
         {
-            if (ShopContent.ActivateContent(ContentType.Board, "Wood"))
+            StartCoroutine(TransitionAnimation(button, () =>
             {
-                SetInactiveFrames();
-                woodFrame.sprite = activeFrame;
-            }
+                if (ShopContent.ActivateContent(ContentType.Board, "Wood"))
+                {
+                    SetInactiveFrames();
+                    woodFrame.sprite = activeFrame;
+                }
+            }));
         }
         
-        public void BuyDigitalButtonClick()
+        public void BuyDigitalButtonClick(RectTransform button)
         {
-            if (ShopContent.BuyContent(ContentType.Board, "Digital"))
+            StartCoroutine(TransitionAnimation(button, () =>
             {
-                digitalBackground.color = new Color(0, 200, 0);
-            }
+                if (ShopContent.BuyContent(ContentType.Board, "Digital"))
+                {
+                    digitalBackground.color = new Color(0, 200, 0);
+                }
+            }));
         }
         
-        public void ActiveDigitalButtonClick()
+        public void ActiveDigitalButtonClick(RectTransform button)
         {
-            if (ShopContent.ActivateContent(ContentType.Board, "Digital"))
+            StartCoroutine(TransitionAnimation(button, () =>
             {
-                SetInactiveFrames();
-                digitalFrame.sprite = activeFrame;
-            }
+                if (ShopContent.ActivateContent(ContentType.Board, "Digital"))
+                {
+                    SetInactiveFrames();
+                    digitalFrame.sprite = activeFrame;
+                }
+            }));
         }
 
         private void SetInactiveFrames()
         {
             digitalFrame.sprite = inactiveFrame;
             woodFrame.sprite = inactiveFrame;
+        }
+        
+        private static IEnumerator TransitionAnimation(RectTransform button, Action onAnimationsComplete)
+        {
+            yield return ShrinkAnimation(button);
+            onAnimationsComplete?.Invoke();
+            Time.timeScale = 0f;
+        }
+        
+        private static IEnumerator ShrinkAnimation(RectTransform button)
+        {
+            if (button == null)
+            {
+                yield break;
+            }
+            
+            Vector2 originalScale = button.sizeDelta;
+            const float duration = 0.1f;
+            Time.timeScale = 1f;
+            var startTime = Time.time;
+            while (startTime < duration)
+            {
+                button.sizeDelta = Vector2.Lerp(originalScale, originalScale * 0.95f, (Time.time - startTime) / duration);
+                yield return null;
+            }
+            button.sizeDelta = originalScale;
         }
     }
 }

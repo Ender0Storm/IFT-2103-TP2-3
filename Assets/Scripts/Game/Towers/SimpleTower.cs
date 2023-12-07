@@ -15,7 +15,7 @@ namespace Game.towers
         private LayerMask enemyMask;
         [SerializeField]
         private GameObject projectilePrefab;
-        
+        [SerializeField]
         private Animator animator;
     
         private float cooldownRemaining;
@@ -24,7 +24,6 @@ namespace Game.towers
         void Start()
         {
             cooldownRemaining = 0;
-            animator = GetComponentInChildren<Animator>();
         }
     
         // Update is called once per frame

@@ -4,7 +4,7 @@
     {
         public readonly string Name;
         public readonly ContentType ContentType;
-        public int Price;
+        public readonly int Price;
         public bool Activated;
         public bool Unlocked;
 

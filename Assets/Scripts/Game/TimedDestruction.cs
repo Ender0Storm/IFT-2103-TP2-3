@@ -7,6 +7,7 @@ public class TimedDestruction : MonoBehaviour
 
     public void DeleteIn(float delay)
     {
+        DontDestroyOnLoad(gameObject);
         StartCoroutine(DestroyAfterDelay(delay));
     }
 
@@ -19,6 +20,6 @@ public class TimedDestruction : MonoBehaviour
             yield return null;
         }
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

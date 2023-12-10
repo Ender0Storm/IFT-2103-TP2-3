@@ -84,6 +84,37 @@ public static class SoundManager
     {
         Initialize();
 
+        GameObject soundGameObject = CreateSound(sound, startAtRandomTime);
+
+        if (soundGameObject != null)
+        {
+            AudioSource audio = soundGameObject.GetComponent<AudioSource>();
+            pausableAudioSources.Add(audio);
+            GameObject.Destroy(soundGameObject, audio.clip.length * GetRepeatTime(sound));
+        }
+        return soundGameObject;
+    }
+
+    public static GameObject PlayUnPausableSound(Sound sound)
+    {
+        Initialize();
+
+        GameObject soundGameObject = CreateSound(sound);
+
+        if (soundGameObject != null)
+        {
+            AudioSource audio = soundGameObject.GetComponent<AudioSource>();
+            TimedDestruction autoDestruction = soundGameObject.AddComponent<TimedDestruction>();
+            unPausableAudioSources.Add(audio);
+            autoDestruction.DeleteIn(audio.clip.length * GetRepeatTime(sound));
+        }
+        return soundGameObject;
+    }
+
+    private static GameObject CreateSound(Sound sound, bool startAtRandomTime = false)
+    {
+        Initialize();
+
         AudioClip clip = GetAudioClip(sound);
         if (clip != null)
         {
@@ -93,33 +124,10 @@ public static class SoundManager
             audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
             if (startAtRandomTime)
             {
-                audio.time = Random.Range(0f, clip.length);
+                audio.time = Random.Range(0f, audio.clip.length);
             }
             audio.Play();
             audio.loop = true;
-            pausableAudioSources.Add(audio);
-            GameObject.Destroy(soundGameObject, clip.length * GetRepeatTime(sound));
-            return soundGameObject;
-        }
-        return null;
-    }
-
-    public static GameObject PlayUnPausableSound(Sound sound)
-    {
-        Initialize();
-
-        AudioClip clip = GetAudioClip(sound);
-        if (clip != null)
-        {
-            GameObject soundGameObject = new GameObject(sound + " Sound");
-            AudioSource audio = soundGameObject.AddComponent<AudioSource>();
-            TimedDestruction autoDestruction = soundGameObject.AddComponent<TimedDestruction>();
-            audio.clip = clip;
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
-            audio.Play();
-            audio.loop = true;
-            unPausableAudioSources.Add(audio);
-            autoDestruction.DeleteIn(clip.length * GetRepeatTime(sound));
             return soundGameObject;
         }
         return null;

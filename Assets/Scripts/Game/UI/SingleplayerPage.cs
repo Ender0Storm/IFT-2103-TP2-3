@@ -13,18 +13,22 @@ public class SingleplayerPage : MonoBehaviour
 
     public void easyButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onEasyButtonClick.Invoke();
     }
     public void hardButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onHardButtonClick.Invoke();
     }
     public void startButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onStartButtonClick.Invoke();
     }    
     public void backButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onBackButtonClick.Invoke();
     }
 }

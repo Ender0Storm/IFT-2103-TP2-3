@@ -11,10 +11,12 @@ public class EntryPage : MonoBehaviour
 
     public void startButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onStartButtonClick.Invoke();
     }
     public void quitButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onQuitButtonClick.Invoke();
     }
 }

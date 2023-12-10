@@ -11,14 +11,17 @@ public class PausePage : MonoBehaviour
 
     public void menuButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onMenuButtonClick.Invoke();
     }
     public void quitButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onQuitButtonClick.Invoke();
     }
     public void resumeButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onResumeButtonClick.Invoke();
     }
 }

@@ -12,14 +12,17 @@ public class MultiplayerPage : MonoBehaviour
 
     public void joinButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onJoinButtonClick.Invoke();
     }    
     public void hostButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onHostButtonClick.Invoke();
     }    
     public void backButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onBackButtonClick.Invoke();
     }
 }

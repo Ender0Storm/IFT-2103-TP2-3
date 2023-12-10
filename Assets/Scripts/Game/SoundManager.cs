@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class SoundManager
@@ -9,7 +10,8 @@ public static class SoundManager
         MenuMusic,
         BuildingMusic,
         WaveMusic,
-        BossWaveMusic
+        BossWaveMusic,
+        MenuSound
     }
 
     private static Dictionary<Sound, float> soundTimerDict;
@@ -17,18 +19,16 @@ public static class SoundManager
     private static AudioSource currentMusic;
     private static AudioSource transitionMusic;
 
-    // TODO: Connect to menus
-    private static float masterVolume;
-    private static float musicVolume;
-    private static float soundVolume;
+    private static bool isInstantiated = false;
 
     public static void Initialize()
     {
-        soundTimerDict = new Dictionary<Sound, float>();
-        audioSources = new List<AudioSource>();
-        masterVolume = 1f;
-        musicVolume = 1f;
-        soundVolume = 1f;
+        if (!isInstantiated)
+        {
+            isInstantiated = true;
+            soundTimerDict = new Dictionary<Sound, float>();
+            audioSources = new List<AudioSource>();
+        }
     }
 
     public static void PlayMusic(Sound sound)
@@ -39,7 +39,7 @@ public static class SoundManager
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = masterVolume * musicVolume;
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f);
             audio.Play();
             currentMusic = audio;
         }
@@ -55,7 +55,7 @@ public static class SoundManager
             soundGameObject.transform.position = position;
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = masterVolume * soundVolume;
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
             audio.maxDistance = maxDistance;
             audio.spatialBlend = spatialBlend;
             audio.rolloffMode = rolloffMode;
@@ -73,9 +73,10 @@ public static class SoundManager
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = masterVolume * soundVolume;
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
             audio.Play();
             audioSources.Add(audio);
+            GameObject.Destroy(soundGameObject, audio.clip.length);
         }
     }
 
@@ -104,6 +105,9 @@ public static class SoundManager
 
     private static void CleanAudioSources()
     {
+        if(!isInstantiated) {
+            Initialize();
+        }
         audioSources.RemoveAll(audioSource => audioSource == null);
         foreach (AudioSource audioSource in audioSources)
         {

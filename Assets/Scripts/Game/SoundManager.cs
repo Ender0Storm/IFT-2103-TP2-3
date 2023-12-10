@@ -21,7 +21,9 @@ public static class SoundManager
         TurretShot,
         SniperShot,
         LoseLife,
-        Walking
+        Walking,
+        Error,
+        Build
     }
 
     private static Dictionary<Sound, float> soundTimerDict;

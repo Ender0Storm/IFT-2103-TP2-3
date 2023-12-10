@@ -75,13 +75,24 @@ namespace Game.playerInformation
             }
             else
             {
+                SoundManager.PlaySound(SoundManager.Sound.Error);
                 Destroy(tower);
             }
         }
 
         protected virtual bool BuildChecks()
         {
-            return _controlsManager.IsKeyDown("select") && _currency >= _chosenTower.GetCost() && _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && _waveManager.CanBuild() && !PauseMenu.isPaused;
+            if( _controlsManager.IsKeyDown("select"))
+            {
+                if (_currency >= _chosenTower.GetCost() &&
+                    _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && 
+                    _waveManager.CanBuild() && !PauseMenu.isPaused)
+                {
+                    return true;
+                }
+                SoundManager.PlaySound(SoundManager.Sound.Error);
+            }
+            return false;
         }
 
         public int GetCurrency()

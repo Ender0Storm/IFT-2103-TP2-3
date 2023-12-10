@@ -78,3 +78,9 @@ MonoBehaviour:
   - sound: 14
     audioClip: {fileID: 8300000, guid: 3f84a8022226eaa4a958d3f7bf78e66c, type: 3}
     repeatTime: 100
+  - sound: 15
+    audioClip: {fileID: 8300000, guid: 23c9d27c6eae355418fa3466c05f9f7c, type: 3}
+    repeatTime: 1
+  - sound: 16
+    audioClip: {fileID: 8300000, guid: 8f9fff12f23e0bd44966afc3fd61830f, type: 3}
+    repeatTime: 1

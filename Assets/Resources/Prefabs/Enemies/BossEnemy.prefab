@@ -216,7 +216,6 @@ MonoBehaviour:
   currencyDrop: 25
   _enemyAnimator: {fileID: 3398266694600477800}
   _enemyLifeBar: {fileID: 174166338809708667}
-  sound: 14
 --- !u!114 &6950957506936543834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _indexPosition: 0
+  sound: 14
 --- !u!1001 &3124702822490114488
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,12 +19,16 @@ namespace Game.enemy
         private Enemy _enemyScript;
         private Player _player;
 
+        [SerializeField]
+        private SoundManager.Sound sound;
+        private GameObject soundEmmiter;
 
         public void Start()
         {
             _enemyScript = GetComponent<Enemy>();
             _player = GameObject.Find("Player Profile").GetComponent<Player>();
             _path = _enemyScript.path;
+            soundEmmiter = SoundManager.PlaySound(sound, true);
         }
 
         public void Update()
@@ -45,6 +49,10 @@ namespace Game.enemy
                 }
                 _indexPosition++;
             }
+        }
+        private void OnDestroy()
+        {
+            Destroy(soundEmmiter);
         }
 
         private void SetDirection()

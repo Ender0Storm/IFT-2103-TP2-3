@@ -16,19 +16,9 @@ namespace Game.enemy
         [SerializeField] private Animator _enemyAnimator;
         [SerializeField] private EnemyLifeBar _enemyLifeBar;
 
-        [SerializeField]
-        private SoundManager.Sound sound;
-        private GameObject soundEmmiter;
-
         public void Start()
         {
             _enemyLifeBar.SetMaxHealth(health);
-            soundEmmiter = SoundManager.PlaySound(sound);
-            Debug.Log("spawn");
-        }
-        private void OnDestroy()
-        {
-            Destroy(soundEmmiter);
         }
 
         public void DealDamage(int damage, BuildController damageDealer)

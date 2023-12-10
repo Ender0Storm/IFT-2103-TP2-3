@@ -75,19 +75,27 @@ public static class SoundManager
         }
     }
 
-    public static GameObject PlaySound(Sound sound)
+    public static GameObject PlaySound(Sound sound, bool startAtRandomTime = false)
     {
-        CleanAudioSources();
-        if (CanPlaySound(sound))
+        if (!isInstantiated)
+        {
+            Initialize();
+        }
+        AudioClip clip = GetAudioClip(sound);
+        if (clip != null)
         {
             GameObject soundGameObject = new GameObject(sound + " Sound");
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
-            audio.clip = GetAudioClip(sound);
+            audio.clip = clip;
             audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
+            if (startAtRandomTime)
+            {
+                audio.time = Random.Range(0f, clip.length);
+            }
             audio.Play();
             audio.loop = true;
             audioSources.Add(audio);
-            GameObject.Destroy(soundGameObject, audio.clip.length * GetRepeatTime(sound));
+            GameObject.Destroy(soundGameObject, clip.length * GetRepeatTime(sound));
             return soundGameObject;
         }
         return null;
@@ -118,9 +126,6 @@ public static class SoundManager
 
     private static void CleanAudioSources()
     {
-        if(!isInstantiated) {
-            Initialize();
-        }
         audioSources.RemoveAll(audioSource => audioSource == null);
         foreach (AudioSource audioSource in audioSources)
         {

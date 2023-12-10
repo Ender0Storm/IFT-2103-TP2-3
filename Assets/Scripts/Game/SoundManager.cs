@@ -28,6 +28,8 @@ public static class SoundManager
 
     private static Dictionary<Sound, float> soundTimerDict;
     private static List<AudioSource> audioSources;
+    private static List<AudioSource> pausableAudioSources;
+    private static List<AudioSource> unPausableAudioSources;
     private static AudioSource currentMusic;
     private static AudioSource transitionMusic;
 
@@ -40,6 +42,8 @@ public static class SoundManager
             isInstantiated = true;
             soundTimerDict = new Dictionary<Sound, float>();
             audioSources = new List<AudioSource>();
+            pausableAudioSources = new List<AudioSource>();
+            unPausableAudioSources = new List<AudioSource>();
         }
     }
 
@@ -76,13 +80,10 @@ public static class SoundManager
             audioSources.Add(audio);
         }
     }
-
     public static GameObject PlaySound(Sound sound, bool startAtRandomTime = false)
     {
-        if (!isInstantiated)
-        {
-            Initialize();
-        }
+        Initialize();
+
         AudioClip clip = GetAudioClip(sound);
         if (clip != null)
         {
@@ -96,12 +97,34 @@ public static class SoundManager
             }
             audio.Play();
             audio.loop = true;
-            audioSources.Add(audio);
+            pausableAudioSources.Add(audio);
             GameObject.Destroy(soundGameObject, clip.length * GetRepeatTime(sound));
             return soundGameObject;
         }
         return null;
     }
+
+    public static GameObject PlayUnPausableSound(Sound sound)
+    {
+        Initialize();
+
+        AudioClip clip = GetAudioClip(sound);
+        if (clip != null)
+        {
+            GameObject soundGameObject = new GameObject(sound + " Sound");
+            AudioSource audio = soundGameObject.AddComponent<AudioSource>();
+            TimedDestruction autoDestruction = soundGameObject.AddComponent<TimedDestruction>();
+            audio.clip = clip;
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
+            audio.Play();
+            audio.loop = true;
+            unPausableAudioSources.Add(audio);
+            autoDestruction.DeleteIn(clip.length * GetRepeatTime(sound));
+            return soundGameObject;
+        }
+        return null;
+    }
+
 
     private static bool CanPlaySound(Sound sound)
     {
@@ -124,6 +147,31 @@ public static class SoundManager
         }
 
         return true;
+    }
+
+    public static void PauseSFX()
+    {
+        Initialize();
+        for (int i = 0; i < pausableAudioSources.Count; i++)
+        {
+            AudioSource audio = pausableAudioSources[i];
+            if (audio != null)
+            {
+            audio.Pause();
+            }
+        }
+    }
+    public static void ResumeSFX()
+    {
+        Initialize();
+        for (int i = 0; i < pausableAudioSources.Count; i++)
+        {
+            AudioSource audio = pausableAudioSources[i];
+            if (audio != null) { 
+
+                audio.Play();
+        }
+        }
     }
 
     private static void CleanAudioSources()

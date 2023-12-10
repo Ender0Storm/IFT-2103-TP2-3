@@ -45,17 +45,19 @@ namespace Game.ui
     
         public void Resume()
         {
-            SoundManager.PlaySound(SoundManager.Sound.UnPause);
+            SoundManager.PlayUnPausableSound(SoundManager.Sound.UnPause);
             _pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
+            SoundManager.ResumeSFX();
             isPaused = false;
         }
     
         private void Pause()
         {
-            SoundManager.PlaySound(SoundManager.Sound.Pause);
+            SoundManager.PlayUnPausableSound(SoundManager.Sound.Pause);
             _pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
+            Time.timeScale = 0f;  
+            SoundManager.PauseSFX();
             isPaused = true;
         }
     

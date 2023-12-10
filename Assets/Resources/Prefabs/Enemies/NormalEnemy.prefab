@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _indexPosition: 0
+  sound: 14
 --- !u!1001 &5929022854656695394
 PrefabInstance:
   m_ObjectHideFlags: 0

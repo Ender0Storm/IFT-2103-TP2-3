@@ -10,10 +10,12 @@ public class EndPage : MonoBehaviour
 
     public void tryAgainButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onTryAgainButtonClick.Invoke();
     }
     public void menuButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onMenuButtonClick.Invoke();
     }
 }

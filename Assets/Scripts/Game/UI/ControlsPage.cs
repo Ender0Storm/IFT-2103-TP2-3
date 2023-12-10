@@ -44,6 +44,7 @@ public class ControlsPage : MonoBehaviour
     }
     public void saveButtonClick()
     {
+        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onSaveButtonClick.Invoke();
     }
 }

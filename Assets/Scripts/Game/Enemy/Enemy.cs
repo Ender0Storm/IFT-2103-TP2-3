@@ -20,10 +20,9 @@ namespace Game.enemy
         {
             _enemyLifeBar.SetMaxHealth(health);
         }
-        
+
         public void DealDamage(int damage, BuildController damageDealer)
         {
-            
             health -= damage;
             _enemyLifeBar.SetHealth(health);
         

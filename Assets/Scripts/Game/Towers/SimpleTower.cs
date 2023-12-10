@@ -1,4 +1,5 @@
 using Game.enemy;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.towers
@@ -19,12 +20,15 @@ namespace Game.towers
         private Animator animator;
         [SerializeField]
         private Transform pivot;
-    
+        [SerializeField]
+        private SoundManager.Sound shootingSound;
+
         private float cooldownRemaining;
     
         // Start is called before the first frame update
         void Start()
         {
+            base.Start();
             cooldownRemaining = 0;
         }
     
@@ -76,6 +80,7 @@ namespace Game.towers
     
         private void Fire(GameObject target)
         {
+            SoundManager.PlaySound(shootingSound);
             animator.SetTrigger("fire");
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Projectile projectileScript = projectile.GetComponent<Projectile>();

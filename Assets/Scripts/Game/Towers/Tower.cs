@@ -10,7 +10,14 @@ namespace Game.towers
         protected int cost;
         [SerializeField]
         protected int size;
+        [SerializeField]
+        private SoundManager.Sound buildingSound;
         protected BuildController owner;
+
+        protected void Start()
+        {
+            SoundManager.PlaySound(buildingSound);
+        }
 
         public Vector2 CenterOnGrid(Vector2 point)
         {

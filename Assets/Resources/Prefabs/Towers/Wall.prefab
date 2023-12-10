@@ -198,3 +198,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 5
   size: 1
+  buildingSound: 16

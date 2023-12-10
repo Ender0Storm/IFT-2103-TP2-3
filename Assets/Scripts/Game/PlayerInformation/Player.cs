@@ -44,6 +44,7 @@ namespace Game.playerInformation
             }
             else
             {
+                SoundManager.PlaySound(SoundManager.Sound.LoseLife);
                 _currentHealth -= health;
             }
         }

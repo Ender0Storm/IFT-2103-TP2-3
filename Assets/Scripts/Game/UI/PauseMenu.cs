@@ -45,20 +45,25 @@ namespace Game.ui
     
         public void Resume()
         {
+            SoundManager.PlayUnPausableSound(SoundManager.Sound.UnPause);
             _pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
+            SoundManager.ResumeSFX();
             isPaused = false;
         }
     
         private void Pause()
         {
+            SoundManager.PlayUnPausableSound(SoundManager.Sound.Pause);
             _pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f;
+            Time.timeScale = 0f;  
+            SoundManager.PauseSFX();
             isPaused = true;
         }
     
         public void EndGame(int waveReached)
         {
+            SoundManager.PlaySound(SoundManager.Sound.GameOver);
             _endMenuUI.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;

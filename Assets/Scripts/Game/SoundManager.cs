@@ -11,7 +11,12 @@ public static class SoundManager
         BuildingMusic,
         WaveMusic,
         BossWaveMusic,
-        MenuSound
+        MenuSound,
+        CheckboxSound,
+        Pause,
+        UnPause,
+        Slider,
+        GameOver
     }
 
     private static Dictionary<Sound, float> soundTimerDict;

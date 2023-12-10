@@ -48,3 +48,18 @@ MonoBehaviour:
   - sound: 4
     audioClip: {fileID: 8300000, guid: eb4a4cfa1766ca941952de19dd144be5, type: 3}
     repeatTime: 0
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: d2fc274b7b906c247aba95cfafd1ecb2, type: 3}
+    repeatTime: 0
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: b0d65e0bfbc87f84682c7cc0e0639993, type: 3}
+    repeatTime: 0
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: 494e4568f3de03a4abfbf952a06afa34, type: 3}
+    repeatTime: 0
+  - sound: 8
+    audioClip: {fileID: 8300000, guid: 52d95a1f49c82c7479d1ecc9a019686c, type: 3}
+    repeatTime: 0
+  - sound: 9
+    audioClip: {fileID: 8300000, guid: 6fc5de9bc1e0af844bc762584b864040, type: 3}
+    repeatTime: 0

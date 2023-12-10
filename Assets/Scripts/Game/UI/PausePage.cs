@@ -21,7 +21,6 @@ public class PausePage : MonoBehaviour
     }
     public void resumeButtonClick()
     {
-        SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onResumeButtonClick.Invoke();
     }
 }

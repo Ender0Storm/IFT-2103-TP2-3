@@ -14,6 +14,8 @@ public class OptionPage : MonoBehaviour
     public UnityEvent onControlsButtonClick;
     public UnityEvent onBackButtonClick;
 
+    private float throttleTime = 0.1f;
+    private float lastSoundInvoke = 1.0f;
 
     private void Start()
     {
@@ -23,11 +25,21 @@ public class OptionPage : MonoBehaviour
 
     public void changeSFXVolume()
     {
+        if (Time.time - lastSoundInvoke >= throttleTime) 
+        { 
+            SoundManager.PlaySound(SoundManager.Sound.Slider);
+            lastSoundInvoke = Time.time;
+        }
         SetVolume(PlayerPrefsKey.SFX_VOLUME_KEY, sfxSlider.value);
         onSFXVolumeChanged.Invoke();
     }
     public void changeMusicVolume()
     {
+        if (Time.time - lastSoundInvoke >= throttleTime)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Slider);
+            lastSoundInvoke = Time.time;
+        }
         SetVolume(PlayerPrefsKey.MUSIC_VOLUME_KEY, musicSlider.value);
         onSFXVolumeChanged.Invoke();
     }

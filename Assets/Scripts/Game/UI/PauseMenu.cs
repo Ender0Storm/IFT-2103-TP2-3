@@ -45,6 +45,7 @@ namespace Game.ui
     
         public void Resume()
         {
+            SoundManager.PlaySound(SoundManager.Sound.UnPause);
             _pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
             isPaused = false;
@@ -52,6 +53,7 @@ namespace Game.ui
     
         private void Pause()
         {
+            SoundManager.PlaySound(SoundManager.Sound.Pause);
             _pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;
@@ -59,6 +61,7 @@ namespace Game.ui
     
         public void EndGame(int waveReached)
         {
+            SoundManager.PlaySound(SoundManager.Sound.GameOver);
             _endMenuUI.SetActive(true);
             Time.timeScale = 0f;
             isPaused = true;

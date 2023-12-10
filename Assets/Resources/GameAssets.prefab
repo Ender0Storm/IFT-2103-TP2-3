@@ -63,3 +63,12 @@ MonoBehaviour:
   - sound: 9
     audioClip: {fileID: 8300000, guid: 6fc5de9bc1e0af844bc762584b864040, type: 3}
     repeatTime: 0
+  - sound: 10
+    audioClip: {fileID: 8300000, guid: 89754bc7a72438f4181135a5e77526d0, type: 3}
+    repeatTime: 0
+  - sound: 11
+    audioClip: {fileID: 8300000, guid: 96778a38174115f489a7e8191567edcd, type: 3}
+    repeatTime: 0
+  - sound: 12
+    audioClip: {fileID: 8300000, guid: b6638713206d9ed48908a8dea4f9f0de, type: 3}
+    repeatTime: 0

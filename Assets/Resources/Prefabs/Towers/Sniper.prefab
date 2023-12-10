@@ -124,6 +124,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 823507221646787993, guid: 42cbe9abb1f80c04c8ead30873cedf87, type: 3}
   animator: {fileID: 3152263024118671368}
   pivot: {fileID: 2466772835307005041}
+  sound: 12
 --- !u!1 &5405230618574894812
 GameObject:
   m_ObjectHideFlags: 0

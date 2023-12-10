@@ -16,7 +16,10 @@ public static class SoundManager
         Pause,
         UnPause,
         Slider,
-        GameOver
+        GameOver,
+        CannonShot,
+        TurretShot,
+        SniperShot
     }
 
     private static Dictionary<Sound, float> soundTimerDict;

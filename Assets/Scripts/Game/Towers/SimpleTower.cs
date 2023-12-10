@@ -19,7 +19,9 @@ namespace Game.towers
         private Animator animator;
         [SerializeField]
         private Transform pivot;
-    
+        [SerializeField]
+        private SoundManager.Sound sound;
+
         private float cooldownRemaining;
     
         // Start is called before the first frame update
@@ -76,6 +78,7 @@ namespace Game.towers
     
         private void Fire(GameObject target)
         {
+            SoundManager.PlaySound(sound);
             animator.SetTrigger("fire");
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Projectile projectileScript = projectile.GetComponent<Projectile>();

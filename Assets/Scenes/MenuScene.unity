@@ -311,6 +311,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2018862507543409772, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3111057182615969277, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -318,6 +322,18 @@ PrefabInstance:
     - target: {fileID: 3734420391132371479, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
       propertyPath: m_Name
       value: UI Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 3952136604474301882, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826153130452623849, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855536955090186228, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6066619234704601171, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
       propertyPath: m_AnchoredPosition.x

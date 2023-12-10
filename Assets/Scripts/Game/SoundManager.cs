@@ -19,7 +19,9 @@ public static class SoundManager
         GameOver,
         CannonShot,
         TurretShot,
-        SniperShot
+        SniperShot,
+        LoseLife,
+        Walking
     }
 
     private static Dictionary<Sound, float> soundTimerDict;
@@ -73,19 +75,22 @@ public static class SoundManager
         }
     }
 
-    public static void PlaySound(Sound sound)
+    public static GameObject PlaySound(Sound sound)
     {
         CleanAudioSources();
         if (CanPlaySound(sound))
         {
-            GameObject soundGameObject = new GameObject("Sound");
+            GameObject soundGameObject = new GameObject(sound + " Sound");
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
             audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
             audio.Play();
+            audio.loop = true;
             audioSources.Add(audio);
-            GameObject.Destroy(soundGameObject, audio.clip.length);
+            GameObject.Destroy(soundGameObject, audio.clip.length * GetRepeatTime(sound));
+            return soundGameObject;
         }
+        return null;
     }
 
     private static bool CanPlaySound(Sound sound)

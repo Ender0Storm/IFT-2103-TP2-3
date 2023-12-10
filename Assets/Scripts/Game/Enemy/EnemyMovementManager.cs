@@ -18,7 +18,7 @@ namespace Game.enemy
 
         private Enemy _enemyScript;
         private Player _player;
-        
+
 
         public void Start()
         {

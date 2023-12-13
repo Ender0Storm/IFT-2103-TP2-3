@@ -5,16 +5,10 @@ namespace Game.playerInformation
 {
     public class SetWorldBounds : MonoBehaviour
     {
-        public bool active;
-        [SerializeField]
-        private Tilemap map;
         void Awake()
         {
-            if (active)
-            {
-                Globals.WorldBounds = map.localBounds;
-            }
-
+            Tilemap map = gameObject.GetComponent<Tilemap>();
+            Globals.WorldBounds = map.localBounds;
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Game.playerInformation
             float width = height * _mainCamera.aspect;
 
             _cameraBounds = new Bounds(_worldBounds.center,
-                new Vector3(_worldBounds.size.x - width * 2, _worldBounds.size.y - height * 2, _worldBounds.size.z));
+                new Vector3(_worldBounds.size.x /*- width*2*/ , _worldBounds.size.y /*- height *2*/, _worldBounds.size.z));
         }
 
         private float RestrainCameraSize(float size)

@@ -1,13 +1,20 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Game.playerInformation
 {
     public class SetWorldBounds : MonoBehaviour
     {
+        public bool active;
+        [SerializeField]
+        private Tilemap map;
         void Awake()
         {
-            Bounds bounds = new Bounds(transform.position, transform.localScale);
-            Globals.WorldBounds = bounds;
+            if (active)
+            {
+                Globals.WorldBounds = map.localBounds;
+            }
+
         }
     }
 }

@@ -7,10 +7,10 @@ public static class SoundManager
 {
     public enum Sound
     {
-        MenuMusic,
-        BuildingMusic,
-        WaveMusic,
-        BossWaveMusic,
+        BackgroundMusic,
+        BassMusic,
+        LeadMusic,
+        PercutionMusic,
         MenuSound,
         CheckboxSound,
         Pause,
@@ -30,8 +30,7 @@ public static class SoundManager
     private static List<AudioSource> audioSources;
     private static List<AudioSource> pausableAudioSources;
     private static List<AudioSource> unPausableAudioSources;
-    private static AudioSource currentMusic;
-    private static AudioSource transitionMusic;
+    private static Dictionary<Sound, AudioSource> musicSources;
 
     private static bool isInstantiated = false;
 
@@ -44,20 +43,21 @@ public static class SoundManager
             audioSources = new List<AudioSource>();
             pausableAudioSources = new List<AudioSource>();
             unPausableAudioSources = new List<AudioSource>();
+            musicSources = new Dictionary<Sound, AudioSource>();
         }
     }
 
     public static void PlayMusic(Sound sound)
     {
         // TODO: Finish music section with stop conditions, looping and transitions
-        if (CanPlaySound(sound))
+        if (!musicSources.ContainsKey(sound))
         {
-            GameObject soundGameObject = new GameObject("Sound");
-            AudioSource audio = soundGameObject.AddComponent<AudioSource>();
+            GameObject musicGameObject = new GameObject("Music");
+            AudioSource audio = musicGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f);
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
             audio.Play();
-            currentMusic = audio;
+            musicSources[sound] = audio;
         }
     }
 
@@ -71,7 +71,7 @@ public static class SoundManager
             soundGameObject.transform.position = position;
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
             audio.maxDistance = maxDistance;
             audio.spatialBlend = spatialBlend;
             audio.rolloffMode = rolloffMode;
@@ -90,7 +90,7 @@ public static class SoundManager
         {
             AudioSource audio = soundGameObject.GetComponent<AudioSource>();
             pausableAudioSources.Add(audio);
-            GameObject.Destroy(soundGameObject, audio.clip.length * GetRepeatTime(sound));
+            Object.Destroy(soundGameObject, audio.clip.length * GetRepeatTime(sound));
         }
         return soundGameObject;
     }
@@ -121,7 +121,7 @@ public static class SoundManager
             GameObject soundGameObject = new GameObject(sound + " Sound");
             AudioSource audio = soundGameObject.AddComponent<AudioSource>();
             audio.clip = clip;
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f);
+            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
             if (startAtRandomTime)
             {
                 audio.time = Random.Range(0f, audio.clip.length);
@@ -165,7 +165,7 @@ public static class SoundManager
             AudioSource audio = pausableAudioSources[i];
             if (audio != null)
             {
-            audio.Pause();
+                audio.Pause();
             }
         }
     }
@@ -175,10 +175,10 @@ public static class SoundManager
         for (int i = 0; i < pausableAudioSources.Count; i++)
         {
             AudioSource audio = pausableAudioSources[i];
-            if (audio != null) { 
-
+            if (audio != null)
+            { 
                 audio.Play();
-        }
+            }
         }
     }
 

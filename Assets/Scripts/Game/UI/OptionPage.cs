@@ -5,12 +5,14 @@ using UnityEngine.UI;
 public class OptionPage : MonoBehaviour
 {
     [SerializeField]
-    private Slider sfxSlider; 
+    private Slider masterSlider;
     [SerializeField]
     private Slider musicSlider;
-    
+    [SerializeField]
+    private Slider sfxSlider;
+
+    public UnityEvent onMasterVolumeChanged;
     public UnityEvent onMusicVolumeChanged;
-    public UnityEvent onSFXVolumeChanged;
     public UnityEvent onControlsButtonClick;
     public UnityEvent onBackButtonClick;
 
@@ -19,35 +21,48 @@ public class OptionPage : MonoBehaviour
 
     private void Start()
     {
-        sfxSlider.value = GetVolume(PlayerPrefsKey.SFX_VOLUME_KEY);
+        masterSlider.value = GetVolume(PlayerPrefsKey.MASTER_VOLUME_KEY);
         musicSlider.value = GetVolume(PlayerPrefsKey.MUSIC_VOLUME_KEY);
+        sfxSlider.value = GetVolume(PlayerPrefsKey.SFX_VOLUME_KEY);
     }
-
-    public void changeSFXVolume()
+    public void changeMasterVolume()
     {
-        if (Time.time - lastSoundInvoke >= throttleTime) 
-        { 
-            SoundManager.PlaySound(SoundManager.Sound.Slider);
-            lastSoundInvoke = Time.time;
-        }
-        SetVolume(PlayerPrefsKey.SFX_VOLUME_KEY, sfxSlider.value);
-        onSFXVolumeChanged.Invoke();
-    }
-    public void changeMusicVolume()
-    {
+        SetVolume(PlayerPrefsKey.MASTER_VOLUME_KEY, masterSlider.value);
         if (Time.time - lastSoundInvoke >= throttleTime)
         {
             SoundManager.PlaySound(SoundManager.Sound.Slider);
             lastSoundInvoke = Time.time;
         }
-        SetVolume(PlayerPrefsKey.MUSIC_VOLUME_KEY, musicSlider.value);
-        onSFXVolumeChanged.Invoke();
+        onMasterVolumeChanged.Invoke();
     }
+
+    public void changeMusicVolume()
+    {
+        SetVolume(PlayerPrefsKey.MUSIC_VOLUME_KEY, musicSlider.value);
+        if (Time.time - lastSoundInvoke >= throttleTime)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Slider);
+            lastSoundInvoke = Time.time;
+        }
+        onMusicVolumeChanged.Invoke();
+    }
+
+    public void changeSFXVolume()
+    {
+        SetVolume(PlayerPrefsKey.SFX_VOLUME_KEY, sfxSlider.value);
+        if (Time.time - lastSoundInvoke >= throttleTime) 
+        { 
+            SoundManager.PlaySound(SoundManager.Sound.Slider);
+            lastSoundInvoke = Time.time;
+        }
+    }
+
     public void controlsButtonClick()
     {
         SoundManager.PlaySound(SoundManager.Sound.MenuSound);
         onControlsButtonClick.Invoke();
-    }   
+    }
+    
     public void backButtonClick()
     {
         SoundManager.PlaySound(SoundManager.Sound.MenuSound);
@@ -59,6 +74,7 @@ public class OptionPage : MonoBehaviour
         float ajustedVolume = Mathf.Lerp(0, 1, Mathf.Pow(volume, 2f));
         PlayerPrefs.SetFloat(key, ajustedVolume);
     }
+
     private float GetVolume(string key)
     {
         float volume = PlayerPrefs.GetFloat(key, 0.15f);

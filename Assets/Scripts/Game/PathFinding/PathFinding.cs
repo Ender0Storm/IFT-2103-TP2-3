@@ -8,10 +8,12 @@ namespace Game.pathFinding
     {
         private Tile _start;
         private Tile _finish;
-        [SerializeField]
-        private Transform _startPosition;
-        [SerializeField]
-        private Transform _finishPosition;
+        //[SerializeField]
+        //private Transform _startPosition;
+        //[SerializeField]
+        //private Transform _finishPosition;
+        [SerializeField] 
+        private MapBuilder map;
         private List<Tile> _activeTiles;
         private List<Tile> _visitedTiles;
         private List<Tile> _foundPath;
@@ -21,8 +23,10 @@ namespace Game.pathFinding
         
         public void Start()
         {
-            _start = new Tile(_startPosition.position);
-            _finish = new Tile(_finishPosition.position);
+           // _start = new Tile(_startPosition.position);
+           // _finish = new Tile(_finishPosition.position);  
+            _start = new Tile(map.getSpawnPosition());
+            _finish = new Tile(map.getTownPosition());
             
             _accessiblePositionsFinder = new AccessiblePositionsFinder();
         }
@@ -81,12 +85,12 @@ namespace Game.pathFinding
 
         public void SetMPPositions(Transform board)
         {
-            Transform boardTransform = GameObject.Find($"BoardP{Globals.PlayerID}").transform;
+            /*Transform boardTransform = GameObject.Find($"BoardP{Globals.PlayerID}").transform;
             _startPosition = boardTransform.Find("Spawn Portal");
             _finishPosition = boardTransform.Find("Town");
 
             _start = new Tile(_startPosition.position);
-            _finish = new Tile(_finishPosition.position);
+            _finish = new Tile(_finishPosition.position);*/
         }
     }
 }

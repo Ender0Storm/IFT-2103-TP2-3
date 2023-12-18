@@ -8,7 +8,7 @@ public class WaveManagerMP : WaveManager
     public void SetMPPositions()
     {
         Transform boardTransform = GameObject.Find($"BoardP{Globals.PlayerID}").transform;
-        _portalTransform = boardTransform.Find("Spawn Portal");
+        _map = boardTransform.Find("MapBuilder").GetComponent<MapBuilder>();
 
         _pathFinding.SetMPPositions(boardTransform);
     }

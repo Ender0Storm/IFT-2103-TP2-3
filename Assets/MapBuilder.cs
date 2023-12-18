@@ -9,21 +9,15 @@ public class MapBuilder : MonoBehaviour
 {
     public Tilemap temporaryMap;
 
-    [SerializeField]
-    private GameObject spawner;
-    [SerializeField]
-    private GameObject town;
-
-    private Vector3Int temporarySpawnPosition = new Vector3Int(1,21,0);
-    private Vector3Int temporaryTownPosition = new Vector3Int(32,4,0);
-    private List<Vector3Int> temporaryCantBuild = new List<Vector3Int>();
-    private List<Vector3Int> temporaryCantWalk = new List<Vector3Int>();
+    private Vector2Int temporarySpawnPosition = new Vector2Int(1,21);
+    private Vector2Int temporaryTownPosition = new Vector2Int(32,4);
     private int temporaryHeight = 23;
     private int temporaryWidth = 38;
+
+    private Tilemap tilemap;
+    private Grid grid;
     void Start()
     {
-        createTempsCantWalk();
-        createTempsCantBuild();
         BuildMap();
     }
 
@@ -31,70 +25,58 @@ public class MapBuilder : MonoBehaviour
     public void BuildMap()
     {
         /***  Temporary before bulding it with code   ***/
-        Tilemap tilemap = Instantiate(temporaryMap);
-        tilemap.transform.parent = transform;
-        Grid grid = tilemap.AddComponent<Grid>();
+        tilemap = Instantiate(temporaryMap,transform);
+        tilemap.name = "Map";
+        grid = tilemap.AddComponent<Grid>();
 
         transform.localPosition += new Vector3(-temporaryWidth /2, -temporaryHeight /2, 0);
 
         tilemap.AddComponent<SetWorldBounds>();
 
-        spawner.transform.localPosition = temporarySpawnPosition + grid.cellSize/2;
-        town.transform.localPosition = temporaryTownPosition + grid.cellSize/ 2;
+        //spawner.transform.localPosition = (Vector3Int)temporarySpawnPosition + grid.cellSize/2;
+        //town.transform.localPosition = (Vector3Int)temporaryTownPosition + grid.cellSize/ 2;
     }
 
-    public bool CanWalk(Vector2Int position)
+    public bool canWalk(Vector2Int position)
     {
-        return IsInMap(position) && !temporaryCantWalk.Contains(((Vector3Int)position));
+        TileBase tile = getTileBase(position);
+        if(tile != null)
+        {
+            return tile.name != "Wall";
+        }
+        return false;
     }
 
-    public bool CanBuild(Vector2Int position)
+    public Vector2Int getSpawnPosition()
     {
-        return IsInMap(position) && !temporaryCantBuild.Contains(((Vector3Int)position));
+        return temporarySpawnPosition;
     }
-
-    public bool IsInMap(Vector2Int position)
+    public Vector2Int getTownPosition()
     {
-        return position.x >= 0 && position.x < temporaryWidth && position.y >= 0 && position.y < temporaryHeight;
+        return temporaryTownPosition;
     }
-    private void createTempsCantBuild()
+
+    public int getMapHeight()
     {
-        temporaryCantBuild = temporaryCantWalk;
-        temporaryCantBuild.Add(new Vector3Int(1,21 , 0));
-        for (int x = 31; x <= 35; x++)
-        {
-            for (int y = 1; y <= 5; y++)
-            {
-                temporaryCantWalk.Add(new Vector3Int(x, y, 0));
-            }
-        }
+        return temporaryHeight;
     }
-    private void createTempsCantWalk()
+
+    public int getMapWidth()
     {
-        for (int x = 8; x <= 10; x++)
-        {
-            for(int y = 18; y <= 20; y++)
-            {
-                temporaryCantWalk.Add(new Vector3Int(x,y,0));
-            }
-        }
-
-        for (int x = 15; x <= 19; x++)
-        {
-            temporaryCantWalk.Add(new Vector3Int(x, 6, 0));
-        }
-
-        for (int y = 8; y <= 13; y++)
-        {
-            temporaryCantWalk.Add(new Vector3Int(26, y, 0));
-            temporaryCantWalk.Add(new Vector3Int(27, y, 0));
-        }
-
-        for (int x = 28; x <= 30; x++)
-        {
-            temporaryCantWalk.Add(new Vector3Int(x, 8, 0));
-            temporaryCantWalk.Add(new Vector3Int(x, 9, 0));
-        }
-
+        return temporaryWidth;
     }
+
+    private TileBase getTileBase(Vector2Int position)
+    {
+        if(position.x >= tilemap.origin.x && 
+            position.y >= tilemap.origin.y &&
+            position.x < tilemap.origin.x + tilemap.size.x &&
+            position.y < tilemap.origin.y + tilemap.size.y)
+        {
+            return tilemap.GetTile((Vector3Int)position);
+        }
+        return null;
+    }
+
+
 }

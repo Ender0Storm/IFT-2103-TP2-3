@@ -32,7 +32,7 @@ namespace Game
 
         [Header("Other")]
         [SerializeField]
-        protected Transform _portalTransform;
+        protected MapBuilder _map;
         [SerializeField]
         [Range(0f, 1f)]
         private float _hardCurrencyRatio;
@@ -91,7 +91,8 @@ namespace Game
 
             for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {
-                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _portalTransform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _map.transform);
+                enemy.transform.localPosition = (Vector3Int)_map.getSpawnPosition();
                 _enemiesAlive.Add(enemy);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));

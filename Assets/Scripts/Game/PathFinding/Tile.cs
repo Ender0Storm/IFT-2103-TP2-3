@@ -33,5 +33,10 @@ namespace Game.pathFinding
         {
             return new Vector2(X + 0.5f, Y + 0.5f);
         }
+
+        public Vector2Int getPosition()
+        {
+            return new Vector2Int(X, Y);
+        }
     }
 }

@@ -7,6 +7,7 @@ public static class SoundManager
 {
     public enum Sound
     {
+        MenuMusic,
         BackgroundMusic,
         BassMusic,
         LeadMusic,
@@ -27,6 +28,7 @@ public static class SoundManager
     }
 
     private static Dictionary<Sound, float> soundTimerDict;
+
     private static List<AudioSource> audioSources;
     private static List<AudioSource> pausableAudioSources;
     private static List<AudioSource> unPausableAudioSources;
@@ -47,15 +49,29 @@ public static class SoundManager
         }
     }
 
-    public static void PlayMusic(Sound sound)
+    public static void InitiateMenuMusic()
     {
-        // TODO: Finish music section with stop conditions, looping and transitions
-        if (!musicSources.ContainsKey(sound))
+        Sound sound = Sound.MenuMusic;
+        GameObject musicGameObject = new GameObject("Music");
+        AudioSource audio = musicGameObject.AddComponent<AudioSource>();
+        audio.clip = GetAudioClip(sound);
+        audio.volume = 0;
+        audio.loop = true;
+        audio.Play();
+        musicSources[sound] = audio;
+    }
+
+    public static void InitiateGameMusic()
+    {
+        Sound[] sounds = { Sound.BassMusic, Sound.BackgroundMusic, Sound.LeadMusic, Sound.PercutionMusic };
+
+        foreach(Sound sound in sounds)
         {
             GameObject musicGameObject = new GameObject("Music");
             AudioSource audio = musicGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+            audio.volume = 0;
+            audio.loop = true;
             audio.Play();
             musicSources[sound] = audio;
         }
@@ -155,6 +171,34 @@ public static class SoundManager
         }
 
         return true;
+    }
+
+    public static IEnumerator MusicVolumeFade(Dictionary<Sound, float> newVolumes)
+    {
+        Dictionary<Sound, float> initialVolumes = new Dictionary<Sound, float>();
+        foreach (Sound sound in newVolumes.Keys)
+        {
+            if (musicSources.ContainsKey(sound) && musicSources[sound]) initialVolumes.Add(sound, musicSources[sound].volume);
+        }
+
+        float time = 0f;
+        while (time < 2f)
+        {
+            time += Time.deltaTime;
+
+            foreach (Sound sound in initialVolumes.Keys)
+            {
+                musicSources[sound].volume = Mathf.Lerp(initialVolumes[sound], newVolumes[sound], time / 2f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+            }
+
+            yield return null;
+        }
+
+        foreach (Sound sound in initialVolumes.Keys)
+        {
+            musicSources[sound].volume = newVolumes[sound] * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+        }
+        yield break;
     }
 
     public static void PauseSFX()

@@ -35,7 +35,7 @@ namespace Game.pathFinding
 
             foreach (var tile in cardinalTiles)
             {
-                if (map.canWalk(new Vector2Int(tile.X, tile.Y)))
+                if (map.CanWalk(new Vector2Int(tile.X, tile.Y)))
                 {
                     _accessibleTiles.Add(tile);
                 }
@@ -92,9 +92,9 @@ namespace Game.pathFinding
             var mapBuild = Globals.IsMultiplayer ? GameObject.Find($"BoardP{Globals.PlayerID}").transform.Find("MapBuilder") : GameObject.Find("MapBuilder").transform;
             map = mapBuild.GetComponent<MapBuilder>();
             _allTiles = new List<Tile>();
-            for (int i = 0; i <= map.getMapWidth(); i++)
+            for (int i = 0; i <= map.GetMapWidth(); i++)
             {
-                for (int j = 0; j <= map.getMapHeight(); j++)
+                for (int j = 0; j <= map.GetMapHeight(); j++)
                 {
                     Tile tile = new Tile(i, j);
                     if (!Physics2D.OverlapPoint(tile.GetCenter(), layerObstacles))

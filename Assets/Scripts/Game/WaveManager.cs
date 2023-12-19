@@ -92,7 +92,7 @@ namespace Game
             for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {
                 GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _map.transform);
-                enemy.transform.localPosition = (Vector3Int)_map.getSpawnPosition();
+                enemy.transform.localPosition = (Vector3Int)_map.GetSpawnPosition();
                 _enemiesAlive.Add(enemy);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));

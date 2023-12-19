@@ -25,8 +25,8 @@ namespace Game.pathFinding
         {
            // _start = new Tile(_startPosition.position);
            // _finish = new Tile(_finishPosition.position);  
-            _start = new Tile(map.getSpawnPosition());
-            _finish = new Tile(map.getTownPosition());
+            _start = new Tile(map.GetSpawnPosition());
+            _finish = new Tile(map.GetTownPosition());
             
             _accessiblePositionsFinder = new AccessiblePositionsFinder();
         }

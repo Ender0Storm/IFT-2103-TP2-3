@@ -18,16 +18,31 @@ public class MapBuilder : MonoBehaviour
     private Grid grid;
 
     private TileData[,] tiles;
+    private Dictionary<string, GameAssets.CustomTile> mapBorderTiles;
 
     void Start()
     {
-        BuildMap(true, 0);
+        mapBorderTiles = new Dictionary<string, GameAssets.CustomTile>
+        {
+            {"town", GameAssets.i.tiles[0]},
+            {"spawn", GameAssets.i.tiles[1]},
+            {"topWall", GameAssets.i.tiles[2]},
+            {"rightWall", GameAssets.i.tiles[3]},
+            {"bottomWall", GameAssets.i.tiles[4]},
+            {"leftWall", GameAssets.i.tiles[5]},
+            {"cornerWall", GameAssets.i.tiles[6]},
+            {"grass", GameAssets.i.tiles[7]},
+        };
+        /*var grass = GetCompatibleTiles(mapBorderTiles["grass"].neighbours);
+        var rock = GetCompatibleTiles(mapBorderTiles["cornerWall"].neighbours);
+        var path = GetCompatibleTiles(GameAssets.i.tiles[8].neighbours);*/
+        BuildMap(false, 0);
     }
 
 
     public void BuildMap(bool hardmode = false, int seed = 0)
     {
-        generateMapStats(hardmode, seed);
+        GenerateMapStats(hardmode, seed);
 
         GameObject map = new GameObject("Map");
         map.transform.parent = transform;
@@ -38,53 +53,46 @@ public class MapBuilder : MonoBehaviour
 
         transform.localPosition += new Vector3(-mapWidth / 2, -mapHeight / 2, 0);
 
-        generateTiles(hardmode);
+        GenerateTiles(hardmode);
 
         generateTilemap();
 
         tilemap.AddComponent<SetWorldBounds>();
     }
-
-    public bool canWalk(Vector2Int position)
+    public bool CanWalk(Vector2Int position)
     {
-        return tileExist(position) && tiles[position.x, position.y].canWalk;
+        return TileExist(position) && tiles[position.x, position.y].canWalk;
     }
-
-    public bool canBuild(Vector2Int position)
+    public bool CanBuild(Vector2Int position)
     {
-        return tileExist(position) && tiles[position.x, position.y].canBuild;
+        return TileExist(position) && tiles[position.x, position.y].canBuild;
     }
-
-    public Vector2Int getSpawnPosition()
+    public Vector2Int GetSpawnPosition()
     {
         return spawnPosition;
     }
-    public Vector2Int getTownPosition()
+    public Vector2Int GetTownPosition()
     {
         return townPosition;
     }
-
-    public int getMapHeight()
+    public int GetMapHeight()
     {
         return mapHeight;
     }
-
-    public int getMapWidth()
+    public int GetMapWidth()
     {
         return mapWidth;
     }
 
-    private bool isInbound(Vector2Int position)
+    private bool IsInbound(Vector2Int position)
     {
         return position.x >= 0 && position.x < mapWidth && position.y >= 0 && position.y < mapHeight;
     }
-
-    private bool tileExist(Vector2Int position)
+    private bool TileExist(Vector2Int position)
     {
-        return isInbound(position) && tiles[position.x, position.y] != null;
+        return IsInbound(position) && tiles[position.x, position.y] != null;
     }
-
-    private void generateMapStats(bool hardmode = false, int seed = 0)
+    private void GenerateMapStats(bool hardmode = false, int seed = 0)
     {
         if (seed != 0)
         {
@@ -95,8 +103,8 @@ public class MapBuilder : MonoBehaviour
 
         if (hardmode)
         {
-            mapHeight -= Random.Range(mapHeight/4, mapHeight/2); 
-            mapWidth -= Random.Range(mapWidth/4, mapHeight/2); 
+            mapHeight -= Random.Range(mapHeight / 4, mapHeight / 2);
+            mapWidth -= Random.Range(mapWidth / 4, mapHeight / 2);
         }
         float minDistanceBetweenSpawnAndVillage = Mathf.Sqrt(mapWidth * mapWidth + mapHeight * mapHeight) / 3; /* 1/3 of the diagonal of the map */
 
@@ -104,11 +112,11 @@ public class MapBuilder : MonoBehaviour
 
         spawnPosition = new Vector2Int(Random.Range(1, (mapWidth - 2) / 2), Random.Range(1, (mapHeight - 2) / 2));
         townPosition = spawnPosition;
-        if(hardmode)
+        if (hardmode)
         {
             float distance = Vector2Int.Distance(spawnPosition, townPosition);
             int minX = Mathf.Max(1, spawnPosition.x - (int)minDistanceBetweenSpawnAndVillage);
-            int maxX = Mathf.Min(mapWidth - 2, spawnPosition.x + (int)minDistanceBetweenSpawnAndVillage);   
+            int maxX = Mathf.Min(mapWidth - 2, spawnPosition.x + (int)minDistanceBetweenSpawnAndVillage);
             int minY = Mathf.Max(1, spawnPosition.y - (int)minDistanceBetweenSpawnAndVillage);
             int maxY = Mathf.Min(mapHeight - 2, spawnPosition.y + (int)minDistanceBetweenSpawnAndVillage);
             while (distance > minDistanceBetweenSpawnAndVillage || distance < 3)
@@ -126,67 +134,69 @@ public class MapBuilder : MonoBehaviour
         }
 
     }
-
-    private void generateTiles(bool hardmode)
+    private void GenerateTiles(bool hardmode)
     {
         //town - spwan
-        tiles[townPosition.x, townPosition.y] = new TileData(townPosition, GameAssets.i.tiles[0]);
-        tiles[spawnPosition.x, spawnPosition.y] = new TileData(spawnPosition, GameAssets.i.tiles[1]);
+        tiles[townPosition.x, townPosition.y] = new TileData(townPosition, mapBorderTiles["town"]);
+        tiles[spawnPosition.x, spawnPosition.y] = new TileData(spawnPosition, mapBorderTiles["spawn"]);
 
         //external walls
-        for (int x = 0; x < mapWidth; x++)
+        for (int x = 1; x < mapWidth - 1; x++)
         {
-            tiles[x, 0] = new TileData(new Vector2Int(x, 0), GameAssets.i.tiles[3]);
-            tiles[x, mapHeight - 1] = new TileData(new Vector2Int(x, mapHeight - 1), GameAssets.i.tiles[3]);
+            tiles[x, 0] = new TileData(new Vector2Int(x, 0), mapBorderTiles["bottomWall"]);
+            tiles[x, mapHeight - 1] = new TileData(new Vector2Int(x, mapHeight - 1), mapBorderTiles["topWall"]);
         }
-        for (int y = 0; y < mapHeight; y++)
+        for (int y = 1; y < mapHeight - 1; y++)
         {
-            tiles[0, y] = new TileData(new Vector2Int(0, y), GameAssets.i.tiles[3]);
-            tiles[mapWidth - 1, y] = new TileData(new Vector2Int(mapWidth - 1, y), GameAssets.i.tiles[3]);
+            tiles[0, y] = new TileData(new Vector2Int(0, y), mapBorderTiles["leftWall"]);
+            tiles[mapWidth - 1, y] = new TileData(new Vector2Int(mapWidth - 1, y), mapBorderTiles["rightWall"]);
         }
+        tiles[0, 0] = new TileData(new Vector2Int(0, 0), mapBorderTiles["cornerWall"]);
+        tiles[0, mapHeight - 1] = new TileData(new Vector2Int(0, mapHeight - 1), mapBorderTiles["cornerWall"]);
+        tiles[mapWidth - 1, 0] = new TileData(new Vector2Int(mapWidth - 1, 0), mapBorderTiles["cornerWall"]);
+        tiles[mapWidth - 1, mapHeight - 1] = new TileData(new Vector2Int(mapWidth - 1, mapHeight - 1), mapBorderTiles["cornerWall"]);
 
         //rest of map
-        exploreTileForGeneration(spawnPosition);
+        ExploreTileForGeneration(spawnPosition);
     }
-
-    private TileData generateRandomTile(Vector2Int position)
+    private TileData GenerateRandomTile(Vector2Int position)
     {
         GameAssets.CustomTile.Neighbours neighbours = new GameAssets.CustomTile.Neighbours(GameAssets.CustomTile.TileType.Any);
 
-        if(tileExist(position + new Vector2Int(1,0))) 
+        if (TileExist(position + new Vector2Int(1, 0)))
         {
-            neighbours.up = GetTile(position + new Vector2Int(1, 0)).neighbours.down;
+            neighbours.right = GetTile(position + new Vector2Int(1, 0)).neighbours.left;
         }
-        if (tileExist(position + new Vector2Int(-1, 0)))
+        if (TileExist(position + new Vector2Int(-1, 0)))
         {
-            neighbours.down = GetTile(position + new Vector2Int(-1, 0)).neighbours.up;
+            neighbours.left = GetTile(position + new Vector2Int(-1, 0)).neighbours.right;
         }
-        if (tileExist(position + new Vector2Int(0, 1)))
+        if (TileExist(position + new Vector2Int(0, 1)))
         {
-            neighbours.right = GetTile(position + new Vector2Int(0, 1)).neighbours.left;
+            neighbours.up = GetTile(position + new Vector2Int(0, 1)).neighbours.down;
         }
-        if (tileExist(position + new Vector2Int(0, -1)))
+        if (TileExist(position + new Vector2Int(0, -1)))
         {
-            neighbours.left = GetTile(position + new Vector2Int(0, -1)).neighbours.right;
+            neighbours.down = GetTile(position + new Vector2Int(0, -1)).neighbours.up;
         }
-        List<GameAssets.CustomTile> compatibleTiles = getCompatibleTiles(neighbours);
-        if(compatibleTiles.Count == 0)
+        List<GameAssets.CustomTile> compatibleTiles = GetCompatibleTiles(neighbours);
+        if (compatibleTiles.Count == 0)
         {
             Debug.LogError("no compatible tiles at pos " + position);
-            return new TileData(position, GameAssets.i.tiles[3]);
+            return new TileData(position, mapBorderTiles["grass"]);
         }
         else
         {
-            return new TileData(position, compatibleTiles[Random.Range(0,compatibleTiles.Count)]);
+            return new TileData(position, compatibleTiles[Random.Range(0, compatibleTiles.Count)]);
         }
     }
 
-    private List<GameAssets.CustomTile> getCompatibleTiles(GameAssets.CustomTile.Neighbours neighbours)
+    private List<GameAssets.CustomTile> GetCompatibleTiles(GameAssets.CustomTile.Neighbours neighbours)
     {
-        List<GameAssets.CustomTile> compatibleTiles = new List<GameAssets.CustomTile> ();
-        foreach(GameAssets.CustomTile tile in GameAssets.i.tiles)
+        List<GameAssets.CustomTile> compatibleTiles = new List<GameAssets.CustomTile>();
+        foreach (GameAssets.CustomTile tile in GameAssets.i.tiles)
         {
-            if((tile.tileType != GameAssets.CustomTile.TileType.Town && tile.tileType != GameAssets.CustomTile.TileType.Spawner) &&
+            if ((tile.tileType != GameAssets.CustomTile.TileType.Town && tile.tileType != GameAssets.CustomTile.TileType.Spawner) &&
                 (tile.neighbours.up == GameAssets.CustomTile.TileType.Any || neighbours.up == GameAssets.CustomTile.TileType.Any || tile.neighbours.up == neighbours.up) &&
                 (tile.neighbours.down == GameAssets.CustomTile.TileType.Any || neighbours.down == GameAssets.CustomTile.TileType.Any || tile.neighbours.down == neighbours.down) &&
                 (tile.neighbours.left == GameAssets.CustomTile.TileType.Any || neighbours.left == GameAssets.CustomTile.TileType.Any || tile.neighbours.left == neighbours.left) &&
@@ -198,7 +208,7 @@ public class MapBuilder : MonoBehaviour
         return compatibleTiles;
     }
 
-    private void exploreTileForGeneration(Vector2Int position)
+    private void ExploreTileForGeneration(Vector2Int position)
     {
         if (position == townPosition)
         {
@@ -207,17 +217,17 @@ public class MapBuilder : MonoBehaviour
         }
         if (position != spawnPosition)
         {
-            if (!isInbound(position) || tileExist(position))
+            if (!IsInbound(position) || TileExist(position))
             {
                 return;
             }
             if (!pathCreated)
             {
-                tiles[position.x, position.y] = new TileData(position, GameAssets.i.tiles[2]);
+                tiles[position.x, position.y] = new TileData(position, mapBorderTiles["grass"]);
             }
             else
             {
-                tiles[position.x, position.y] = generateRandomTile(position);
+                tiles[position.x, position.y] = GenerateRandomTile(position);
             }
         }
 
@@ -231,16 +241,16 @@ public class MapBuilder : MonoBehaviour
             switch (side)
             {
                 case 0:
-                    exploreTileForGeneration(position + new Vector2Int(1, 0));
+                    ExploreTileForGeneration(position + new Vector2Int(1, 0));
                     break;
                 case 1:
-                    exploreTileForGeneration(position + new Vector2Int(-1, 0));
+                    ExploreTileForGeneration(position + new Vector2Int(-1, 0));
                     break;
                 case 2:
-                    exploreTileForGeneration(position + new Vector2Int(0, 1));
+                    ExploreTileForGeneration(position + new Vector2Int(0, 1));
                     break;
                 case 3:
-                    exploreTileForGeneration(position + new Vector2Int(0, -1));
+                    ExploreTileForGeneration(position + new Vector2Int(0, -1));
                     break;
             }
         }

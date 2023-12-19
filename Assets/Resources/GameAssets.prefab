@@ -105,6 +105,56 @@ MonoBehaviour:
       down: 1
       left: 1
       right: 1
+  - name: RockB
+    tileBase: {fileID: 11400000, guid: 46393ce9891e48148bbcab2c242a77f7, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 0
+      left: 2
+      right: 2
+  - name: RockL
+    tileBase: {fileID: 11400000, guid: 4a99870c25fad184e979f219eb070eb4, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 0
+      right: 2
+  - name: RockT
+    tileBase: {fileID: 11400000, guid: 76c72f7391b29dc419a640895b94bd75, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 2
+      left: 2
+      right: 2
+  - name: RockR
+    tileBase: {fileID: 11400000, guid: 0d3e72b31c9a603418c81c30f5a9b975, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 2
+      right: 0
+  - name: RockC
+    tileBase: {fileID: 11400000, guid: ccf08bd3c30f126418492ac0efc110e0, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 2
+      right: 2
   - name: Grass
     tileBase: {fileID: 11400000, guid: 7e9fe42793418ae46aab1b40682fb5a9, type: 2}
     tileType: 0
@@ -112,6 +162,16 @@ MonoBehaviour:
     canBuild: 1
     neighbours:
       up: 0
+      down: 0
+      left: 0
+      right: 0
+  - name: PathEndB
+    tileBase: {fileID: 11400000, guid: edfdc946898d7ae46bc13e8ff9565488, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
       down: 0
       left: 0
       right: 0
@@ -125,26 +185,6 @@ MonoBehaviour:
       down: 0
       left: 0
       right: 0
-  - name: RockB
-    tileBase: {fileID: 11400000, guid: 46393ce9891e48148bbcab2c242a77f7, type: 2}
-    tileType: 2
-    canWalk: 0
-    canBuild: 0
-    neighbours:
-      up: 2
-      down: 0
-      left: 2
-      right: 2
-  - name: RockC
-    tileBase: {fileID: 11400000, guid: ccf08bd3c30f126418492ac0efc110e0, type: 2}
-    tileType: 2
-    canWalk: 0
-    canBuild: 0
-    neighbours:
-      up: 2
-      down: 2
-      left: 2
-      right: 2
   - name: RockCornerBL
     tileBase: {fileID: 11400000, guid: 68d6025dd77a6b1459a3544770f1dffe, type: 2}
     tileType: 2
@@ -233,36 +273,6 @@ MonoBehaviour:
     neighbours:
       up: 0
       down: 0
-      left: 2
-      right: 2
-  - name: RockL
-    tileBase: {fileID: 11400000, guid: 4a99870c25fad184e979f219eb070eb4, type: 2}
-    tileType: 2
-    canWalk: 0
-    canBuild: 0
-    neighbours:
-      up: 2
-      down: 2
-      left: 0
-      right: 2
-  - name: RockR
-    tileBase: {fileID: 11400000, guid: 0d3e72b31c9a603418c81c30f5a9b975, type: 2}
-    tileType: 2
-    canWalk: 0
-    canBuild: 0
-    neighbours:
-      up: 2
-      down: 2
-      left: 2
-      right: 0
-  - name: RockT
-    tileBase: {fileID: 11400000, guid: 76c72f7391b29dc419a640895b94bd75, type: 2}
-    tileType: 2
-    canWalk: 0
-    canBuild: 0
-    neighbours:
-      up: 0
-      down: 2
       left: 2
       right: 2
   - name: RockV
@@ -364,16 +374,6 @@ MonoBehaviour:
       up: 0
       down: 1
       left: 1
-      right: 0
-  - name: PathEndB
-    tileBase: {fileID: 11400000, guid: edfdc946898d7ae46bc13e8ff9565488, type: 2}
-    tileType: 1
-    canWalk: 1
-    canBuild: 0
-    neighbours:
-      up: 1
-      down: 0
-      left: 0
       right: 0
   - name: PathEndL
     tileBase: {fileID: 11400000, guid: c27f0302b0b2da448b355e54f4c5c2cc, type: 2}

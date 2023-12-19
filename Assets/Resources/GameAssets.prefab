@@ -84,3 +84,44 @@ MonoBehaviour:
   - sound: 16
     audioClip: {fileID: 8300000, guid: 8f9fff12f23e0bd44966afc3fd61830f, type: 3}
     repeatTime: 1
+  tiles:
+  - name: Town
+    tileBase: {fileID: 11400000, guid: c6340bd30ea502e45affa62e69f7b9c0, type: 2}
+    tileType: 4
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 3
+      down: 3
+      left: 3
+      right: 3
+  - name: Spawn
+    tileBase: {fileID: 11400000, guid: d11971650ee46c448b0b09348a5c4684, type: 2}
+    tileType: 5
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 3
+      down: 3
+      left: 3
+      right: 3
+  - name: Grass
+    tileBase: {fileID: 11400000, guid: d8304c3cdca74984bbd68113b43fd765, type: 2}
+    tileType: 0
+    canWalk: 1
+    canBuild: 1
+    neighbours:
+      up: 3
+      down: 3
+      left: 3
+      right: 3
+  - name: Wall
+    tileBase: {fileID: 11400000, guid: dc4b10eae81041445adbef144aaf972e, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 3
+      down: 3
+      left: 3
+      right: 3

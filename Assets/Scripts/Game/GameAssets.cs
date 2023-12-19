@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GameAssets : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameAssets : MonoBehaviour
     }
 
     public SoundAudioClip[] soundAudioClips;
+    public CustomTile[] tiles;
 
     [System.Serializable]
     public class SoundAudioClip
@@ -28,5 +30,33 @@ public class GameAssets : MonoBehaviour
         public SoundManager.Sound sound;
         public AudioClip audioClip;
         public float repeatTime;
+    }
+    [System.Serializable]
+    public class CustomTile
+    {
+        public string name;
+        public TileBase tileBase;
+        public TileType tileType;
+        public bool canWalk;
+        public bool canBuild;
+        public Neighbours neighbours;
+
+        [System.Serializable]
+        public class Neighbours
+        {
+            public TileType up;
+            public TileType down;
+            public TileType left;
+            public TileType right;
+        };
+        public enum TileType
+        {
+            Grass,
+            Path,
+            Cliff,
+            Any,
+            Village,
+            Portal
+        }
     }
 }

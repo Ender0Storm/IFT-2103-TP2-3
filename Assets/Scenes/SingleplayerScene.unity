@@ -772,7 +772,7 @@ MonoBehaviour:
     enemyInterval: 1
   strengthMod: 3
   player: {fileID: 719817236}
-  _map: {fileID: 1306443313}
+  _map: {fileID: 0}
   _hardCurrencyRatio: 0.65
 --- !u!114 &1113374443
 MonoBehaviour:
@@ -786,7 +786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000acfa59bff4755b8aa38ddc23e168c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 1306443313}
+  map: {fileID: 0}
   _layerObstacles:
     serializedVersion: 2
     m_Bits: 264
@@ -940,17 +940,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8183522413474729699, guid: 4d469b0452980ca45b8d027ca90d1702, type: 3}
   m_PrefabInstance: {fileID: 247281302}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1306443313 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6989416521042229903, guid: 4d469b0452980ca45b8d027ca90d1702, type: 3}
-  m_PrefabInstance: {fileID: 247281302}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff387084124c7874ab7bd2cfa6eb25ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1428797647 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8960829654226439040, guid: f46e4d3b73ac4b141b99409023505e21, type: 3}

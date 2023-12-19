@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_0
+      name: RockCornerTL
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -135,7 +135,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_1
+      name: RockT
       rect:
         serializedVersion: 2
         x: 128
@@ -143,7 +143,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_2
+      name: RockCornerTR
       rect:
         serializedVersion: 2
         x: 256
@@ -168,7 +168,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_3
+      name: RockEndT
       rect:
         serializedVersion: 2
         x: 384
@@ -193,7 +193,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -210,15 +210,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_4
+      name: RockL
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1152
+        x: 0
+        y: 1024
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -235,15 +235,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_5
+      name: RockC
       rect:
         serializedVersion: 2
-        x: 640
-        y: 1152
+        x: 128
+        y: 1024
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -260,15 +260,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_6
+      name: RockR
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 1024
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -285,15 +285,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_7
+      name: RockV
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 1024
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -310,15 +310,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_8
+      name: RockCornerBL
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1024
+        x: 0
+        y: 896
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -335,15 +335,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_9
+      name: RockB
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1024
+        x: 128
+        y: 896
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -360,40 +360,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall
+      name: RockEndB
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1024
+        x: 384
+        y: 896
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -64, y: 64}
-        - {x: -64, y: -64}
-        - {x: 64, y: -64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd8fc0766fb165042aa9648890d9ff7d
-      internalID: -1603623314
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_11
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 1024
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -410,15 +385,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_12
+      name: RockEndL
       rect:
         serializedVersion: 2
         x: 0
-        y: 896
+        y: 768
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -435,15 +410,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_13
+      name: RockH
       rect:
         serializedVersion: 2
         x: 128
-        y: 896
+        y: 767
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -460,15 +435,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_14
+      name: RockEndR
       rect:
         serializedVersion: 2
         x: 256
-        y: 896
+        y: 768
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -485,15 +460,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_15
+      name: RockS
       rect:
         serializedVersion: 2
         x: 384
-        y: 896
+        y: 769
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -510,15 +485,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_16
+      name: Grass
       rect:
         serializedVersion: 2
-        x: 512
-        y: 896
+        x: 0
+        y: 640
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -535,15 +510,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_17
+      name: PathEndL
       rect:
         serializedVersion: 2
-        x: 640
-        y: 896
+        x: 128
+        y: 640
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -560,15 +535,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_18
+      name: PathH
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
+        x: 256
+        y: 640
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -585,15 +560,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_19
+      name: PathEndR
       rect:
         serializedVersion: 2
-        x: 128
-        y: 768
+        x: 384
+        y: 640
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -610,15 +585,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_20
+      name: Path3TRB
       rect:
         serializedVersion: 2
-        x: 256
-        y: 768
+        x: 0
+        y: 512
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -635,15 +610,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_21
+      name: Path3LRB
       rect:
         serializedVersion: 2
-        x: 384
-        y: 768
+        x: 128
+        y: 512
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -660,15 +635,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_22
+      name: Path4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 768
+        x: 256
+        y: 512
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -685,15 +660,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_23
+      name: Town
       rect:
         serializedVersion: 2
-        x: 640
-        y: 768
+        x: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -710,15 +685,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_24
+      name: Path3TLR
       rect:
         serializedVersion: 2
         x: 0
-        y: 640
+        y: 384
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -735,15 +710,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_25
+      name: Path3TLB
       rect:
         serializedVersion: 2
         x: 128
-        y: 640
+        y: 384
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -760,15 +735,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_26
+      name: PathEndT
       rect:
         serializedVersion: 2
         x: 256
-        y: 640
+        y: 384
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -785,15 +760,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_27
+      name: Spawn
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 640
+        x: 384
+        y: 384
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -810,15 +785,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_28
+      name: PathCornerTL
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
+        y: 256
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -835,15 +810,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_29
+      name: PathCornerTR
       rect:
         serializedVersion: 2
         x: 128
-        y: 512
+        y: 256
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -860,15 +835,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_30
+      name: PathV
       rect:
         serializedVersion: 2
         x: 256
-        y: 512
+        y: 256
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -885,40 +860,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Village
+      name: PathCornerBR
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 512
+        x: 128
+        y: 128
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b5bf9c3b87fe0441b80aaa6737a8b71
-      internalID: -1824563583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_32
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -935,15 +885,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_33
+      name: PathEndB
       rect:
         serializedVersion: 2
-        x: 128
-        y: 384
+        x: 256
+        y: 128
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -960,282 +910,28 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_34
+      name: RockCornerBR
       rect:
         serializedVersion: 2
         x: 256
-        y: 384
+        y: 896
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49daf86a8271bfd48b6d8433293f1e3f
-      internalID: -1732306778
+      spriteID: 3388b89ff1627274dac19d3ba2600aa1
+      internalID: -651123541
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_35
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a95f75b835736cd4397a58239919f156
-      internalID: 2008666527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_36
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: e075bc9a09a6ae94eb14254b8af3d29c
-      internalID: 461114040
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_37
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e9d7865955ac7a478bea0a1abb25f94
-      internalID: 1909449382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_38
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d10cc7f99b7aaf45b01c39efd2adcbf
-      internalID: -535523924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_39
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: c61833b5dbaee24429d6da9fa20e5d9e
-      internalID: 632858105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_40
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: d2366561c5d152d478b888a4d220f1e7
-      internalID: -1064916557
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_41
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87c29413397529c4a859cb06bdc2d0f5
-      internalID: 979781658
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_42
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5af3f19d9ed4bd348bbb8c8e13eb3734
-      internalID: -348813151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_43
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5660af19c550e594ebc165b74ff9679a
-      internalID: 1640705743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spawn
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: e9d64d828d0f8e5429ce5cd8cdec739a
-      internalID: -286323688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_45
+      name: PathCornerBL
       rect:
         serializedVersion: 2
         x: 0
@@ -1243,293 +939,14 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8af5ace4578ed0745826e7ff8cc449ed
-      internalID: 2082182884
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_46
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ed201108c5763a4b96792eb4a4ef938
-      internalID: 700148857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_47
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: e2b06a512adadff41ace970ca19514de
-      internalID: 332094363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_48
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 765281b866650304fb442473b11e1013
-      internalID: 1689245781
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_49
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b0f29a2e0a1ebc4b81ea26ebfbe0a54
-      internalID: -1121292348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_50
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: daf3729c6e955114ab84c31afcb8e6fc
-      internalID: 781503050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_51
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0cab3fa80cd288846ac1994f0f7951f0
-      internalID: 1928932510
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_52
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16101a97c551e624aa7ec7cef881ec20
-      internalID: 1441039460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_53
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a268db7ab8fb41841956fb4ed9d88fbc
-      internalID: -1211281879
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_54
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75c3e78b73b13324c8dbd9e1e0beff93
-      internalID: 965634094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_55
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4cb9f10a97dafa4aabf80ca8e2386ba
-      internalID: 1121435970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: path_tiles(OpenGameArt)_56
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-        - {x: 64, y: 64}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5152c0230385e7c4ea4762497e77eccc
-      internalID: 2075390272
+      spriteID: 2543d1c0135cdf44c8d122cf4d21d0a5
+      internalID: 1567608931
       vertices: []
       indices: 
       edges: []
@@ -1545,63 +962,40 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Spawn: -286323688
-      Village: -1824563583
-      Wall: -1603623314
-      path_tiles(OpenGameArt)_0: -695269173
-      path_tiles(OpenGameArt)_1: -1508862880
-      path_tiles(OpenGameArt)_11: 1415137400
-      path_tiles(OpenGameArt)_12: 345686199
-      path_tiles(OpenGameArt)_13: -1999869411
-      path_tiles(OpenGameArt)_14: -104147139
-      path_tiles(OpenGameArt)_15: -1957503646
-      path_tiles(OpenGameArt)_16: -1430943035
-      path_tiles(OpenGameArt)_17: 52495050
-      path_tiles(OpenGameArt)_18: -1722440769
-      path_tiles(OpenGameArt)_19: 1398094032
-      path_tiles(OpenGameArt)_2: -2099028259
-      path_tiles(OpenGameArt)_20: -1837924675
-      path_tiles(OpenGameArt)_21: 1846759723
-      path_tiles(OpenGameArt)_22: 307758424
-      path_tiles(OpenGameArt)_23: -474628500
-      path_tiles(OpenGameArt)_24: 1467422573
-      path_tiles(OpenGameArt)_25: -179735205
-      path_tiles(OpenGameArt)_26: 1722342836
-      path_tiles(OpenGameArt)_27: -1035601863
-      path_tiles(OpenGameArt)_28: 222223039
-      path_tiles(OpenGameArt)_29: 857950604
-      path_tiles(OpenGameArt)_3: -265553404
-      path_tiles(OpenGameArt)_30: 1779627346
-      path_tiles(OpenGameArt)_32: 337028197
-      path_tiles(OpenGameArt)_33: -1881929141
-      path_tiles(OpenGameArt)_34: -1732306778
-      path_tiles(OpenGameArt)_35: 2008666527
-      path_tiles(OpenGameArt)_36: 461114040
-      path_tiles(OpenGameArt)_37: 1909449382
-      path_tiles(OpenGameArt)_38: -535523924
-      path_tiles(OpenGameArt)_39: 632858105
-      path_tiles(OpenGameArt)_4: -1129603551
-      path_tiles(OpenGameArt)_40: -1064916557
-      path_tiles(OpenGameArt)_41: 979781658
-      path_tiles(OpenGameArt)_42: -348813151
-      path_tiles(OpenGameArt)_43: 1640705743
-      path_tiles(OpenGameArt)_45: 2082182884
-      path_tiles(OpenGameArt)_46: 700148857
-      path_tiles(OpenGameArt)_47: 332094363
-      path_tiles(OpenGameArt)_48: 1689245781
-      path_tiles(OpenGameArt)_49: -1121292348
-      path_tiles(OpenGameArt)_5: -450401242
-      path_tiles(OpenGameArt)_50: 781503050
-      path_tiles(OpenGameArt)_51: 1928932510
-      path_tiles(OpenGameArt)_52: 1441039460
-      path_tiles(OpenGameArt)_53: -1211281879
-      path_tiles(OpenGameArt)_54: 965634094
-      path_tiles(OpenGameArt)_55: 1121435970
-      path_tiles(OpenGameArt)_56: 2075390272
-      path_tiles(OpenGameArt)_6: -1718353758
-      path_tiles(OpenGameArt)_7: -1405725433
-      path_tiles(OpenGameArt)_8: 1121622325
-      path_tiles(OpenGameArt)_9: -108707963
+      Grass: -1430943035
+      Path3LRB: 1846759723
+      Path3TLB: -179735205
+      Path3TLR: 1467422573
+      Path3TRB: -1837924675
+      Path4: 307758424
+      PathCornerBL: 1567608931
+      PathCornerBR: 337028197
+      PathCornerTL: 222223039
+      PathCornerTR: 857950604
+      PathEndB: -1881929141
+      PathEndL: 52495050
+      PathEndR: 1398094032
+      PathEndT: 1722342836
+      PathH: -1722440769
+      PathV: 1779627346
+      RockB: -108707963
+      RockC: -450401242
+      RockCornerBL: 1121622325
+      RockCornerBR: -651123541
+      RockCornerTL: -695269173
+      RockCornerTR: -2099028259
+      RockEndB: 1415137400
+      RockEndL: 345686199
+      RockEndR: -104147139
+      RockEndT: -265553404
+      RockH: -1999869411
+      RockL: -1129603551
+      RockR: -1718353758
+      RockS: -1957503646
+      RockT: -1508862880
+      RockV: -1405725433
+      Spawn: -1035601863
+      Town: -474628500
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

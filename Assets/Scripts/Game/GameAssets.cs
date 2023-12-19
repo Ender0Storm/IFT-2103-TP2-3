@@ -61,10 +61,10 @@ public class GameAssets : MonoBehaviour
         {
             Grass,
             Path,
-            Cliff,
+            Rock,
             Any,
-            Village,
-            Portal
+            Town,
+            Spawner
         }
     }
 }

@@ -48,6 +48,14 @@ public class GameAssets : MonoBehaviour
             public TileType down;
             public TileType left;
             public TileType right;
+
+            public Neighbours(TileType defaultType)
+            {
+                up = defaultType;
+                down = defaultType;
+                left = defaultType;
+                right = defaultType;
+            }
         };
         public enum TileType
         {

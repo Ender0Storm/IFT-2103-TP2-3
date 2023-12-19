@@ -32,9 +32,6 @@ public class MapBuilder : MonoBehaviour
         transform.localPosition += new Vector3(-temporaryWidth /2, -temporaryHeight /2, 0);
 
         tilemap.AddComponent<SetWorldBounds>();
-
-        //spawner.transform.localPosition = (Vector3Int)temporarySpawnPosition + grid.cellSize/2;
-        //town.transform.localPosition = (Vector3Int)temporaryTownPosition + grid.cellSize/ 2;
     }
 
     public bool canWalk(Vector2Int position)
@@ -45,6 +42,11 @@ public class MapBuilder : MonoBehaviour
             return tile.name != "Wall";
         }
         return false;
+    }
+
+    public bool canBuild(Vector2Int position)
+    {
+        return canWalk(position);
     }
 
     public Vector2Int getSpawnPosition()

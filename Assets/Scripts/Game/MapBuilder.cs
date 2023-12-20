@@ -92,10 +92,7 @@ public class MapBuilder : MonoBehaviour
     }
     private void GenerateMapStats(bool hardmode = false, int seed = 0)
     {
-        if (seed != 0)
-        {
-            Random.InitState(seed);
-        }
+        Random.InitState(seed);
         mapHeight = Random.Range(20, 30);
         mapWidth = Random.Range(20, 30);
 

@@ -45,42 +45,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundAudioClips:
-  - sound: 4
+  - sound: 5
     audioClip: {fileID: 8300000, guid: eb4a4cfa1766ca941952de19dd144be5, type: 3}
     repeatTime: 1
-  - sound: 5
+  - sound: 6
     audioClip: {fileID: 8300000, guid: d2fc274b7b906c247aba95cfafd1ecb2, type: 3}
     repeatTime: 1
-  - sound: 6
+  - sound: 7
     audioClip: {fileID: 8300000, guid: b0d65e0bfbc87f84682c7cc0e0639993, type: 3}
     repeatTime: 1
-  - sound: 7
+  - sound: 8
     audioClip: {fileID: 8300000, guid: 494e4568f3de03a4abfbf952a06afa34, type: 3}
     repeatTime: 1
-  - sound: 8
+  - sound: 9
     audioClip: {fileID: 8300000, guid: 52d95a1f49c82c7479d1ecc9a019686c, type: 3}
     repeatTime: 1
-  - sound: 9
+  - sound: 10
     audioClip: {fileID: 8300000, guid: 6fc5de9bc1e0af844bc762584b864040, type: 3}
     repeatTime: 1
-  - sound: 10
+  - sound: 11
     audioClip: {fileID: 8300000, guid: 89754bc7a72438f4181135a5e77526d0, type: 3}
     repeatTime: 1
-  - sound: 11
+  - sound: 12
     audioClip: {fileID: 8300000, guid: 96778a38174115f489a7e8191567edcd, type: 3}
     repeatTime: 1
-  - sound: 12
+  - sound: 13
     audioClip: {fileID: 8300000, guid: b6638713206d9ed48908a8dea4f9f0de, type: 3}
     repeatTime: 1
-  - sound: 13
+  - sound: 14
     audioClip: {fileID: 8300000, guid: 2aab72bc73570694c9f2ae3516f94a22, type: 3}
     repeatTime: 1
-  - sound: 14
+  - sound: 15
     audioClip: {fileID: 8300000, guid: 3f84a8022226eaa4a958d3f7bf78e66c, type: 3}
     repeatTime: 100
-  - sound: 15
+  - sound: 16
     audioClip: {fileID: 8300000, guid: 23c9d27c6eae355418fa3466c05f9f7c, type: 3}
     repeatTime: 1
-  - sound: 16
+  - sound: 17
     audioClip: {fileID: 8300000, guid: 8f9fff12f23e0bd44966afc3fd61830f, type: 3}
+    repeatTime: 1
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: 065aebca55255e340a98d81f455455e2, type: 3}
+    repeatTime: 1
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: d1e38f2b5fe3ccf41a8d7985b6753f35, type: 3}
+    repeatTime: 1
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 0fa400971c5bcdc4ba99f1404c983b74, type: 3}
+    repeatTime: 1
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: a271709733867b847905e06f1b9c6ee8, type: 3}
+    repeatTime: 1
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: 835de01ed99c6d64bb98dbe578c1ee6e, type: 3}
     repeatTime: 1

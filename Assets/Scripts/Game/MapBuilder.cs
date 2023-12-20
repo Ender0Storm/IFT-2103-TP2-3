@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class MapBuilder : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class MapBuilder : MonoBehaviour
         /*var grass = GetCompatibleTiles(mapBorderTiles["grass"].neighbours);
         var rock = GetCompatibleTiles(mapBorderTiles["cornerWall"].neighbours);
         var path = GetCompatibleTiles(GameAssets.i.tiles[8].neighbours);*/
-        BuildMap(false, 0);
+        BuildMap(true, 10);
     }
 
 
@@ -159,7 +160,7 @@ public class MapBuilder : MonoBehaviour
         //rest of map
         ExploreTileForGeneration(spawnPosition);
     }
-    private TileData GenerateRandomTile(Vector2Int position)
+    private TileData GenerateRandomTile(Vector2Int position, bool hasToBeWalkable = false, bool hasToBeBuildable = false)
     {
         GameAssets.CustomTile.Neighbours neighbours = new GameAssets.CustomTile.Neighbours(GameAssets.CustomTile.TileType.Any);
 
@@ -179,24 +180,22 @@ public class MapBuilder : MonoBehaviour
         {
             neighbours.down = GetTile(position + new Vector2Int(0, -1)).neighbours.up;
         }
-        List<GameAssets.CustomTile> compatibleTiles = GetCompatibleTiles(neighbours);
+        List<GameAssets.CustomTile> compatibleTiles = GetCompatibleTiles(neighbours, hasToBeWalkable, hasToBeBuildable);
         if (compatibleTiles.Count == 0)
         {
             Debug.LogError("no compatible tiles at pos " + position);
             return new TileData(position, mapBorderTiles["grass"]);
         }
-        else
-        {
-            return new TileData(position, compatibleTiles[Random.Range(0, compatibleTiles.Count)]);
-        }
+        return new TileData(position, compatibleTiles[Random.Range(0, compatibleTiles.Count)]);
     }
 
-    private List<GameAssets.CustomTile> GetCompatibleTiles(GameAssets.CustomTile.Neighbours neighbours)
+    private List<GameAssets.CustomTile> GetCompatibleTiles(GameAssets.CustomTile.Neighbours neighbours, bool hasToBeWalkable = false, bool hasToBeBuildable = false)
     {
         List<GameAssets.CustomTile> compatibleTiles = new List<GameAssets.CustomTile>();
         foreach (GameAssets.CustomTile tile in GameAssets.i.tiles)
         {
-            if ((tile.tileType != GameAssets.CustomTile.TileType.Town && tile.tileType != GameAssets.CustomTile.TileType.Spawner) &&
+            if ((!hasToBeWalkable || tile.canWalk) && (!hasToBeBuildable || tile.canBuild) &&
+                (tile.tileType != GameAssets.CustomTile.TileType.Town && tile.tileType != GameAssets.CustomTile.TileType.Spawner) &&
                 (tile.neighbours.up == GameAssets.CustomTile.TileType.Any || neighbours.up == GameAssets.CustomTile.TileType.Any || tile.neighbours.up == neighbours.up) &&
                 (tile.neighbours.down == GameAssets.CustomTile.TileType.Any || neighbours.down == GameAssets.CustomTile.TileType.Any || tile.neighbours.down == neighbours.down) &&
                 (tile.neighbours.left == GameAssets.CustomTile.TileType.Any || neighbours.left == GameAssets.CustomTile.TileType.Any || tile.neighbours.left == neighbours.left) &&
@@ -204,6 +203,13 @@ public class MapBuilder : MonoBehaviour
             {
                 compatibleTiles.Add(tile);
             }
+        }
+        Debug.Log(Random.Range(0f, 1f));
+        if (compatibleTiles.Contains(mapBorderTiles["grass"]) &&
+            (hasToBeWalkable && Random.Range(0f, 1f) < 0.7 ||    //increase the chances of grass if needs walkable (70%)
+            (!hasToBeWalkable && Random.Range(0f, 1f) < 0.95)))  //else increase the chances of grass with 30%
+        {
+            return new List<GameAssets.CustomTile> { mapBorderTiles["grass"] };
         }
         return compatibleTiles;
     }
@@ -221,38 +227,26 @@ public class MapBuilder : MonoBehaviour
             {
                 return;
             }
-            if (!pathCreated)
-            {
-                tiles[position.x, position.y] = new TileData(position, mapBorderTiles["grass"]);
-            }
-            else
-            {
-                tiles[position.x, position.y] = GenerateRandomTile(position);
-            }
+            tiles[position.x, position.y] = GenerateRandomTile(position, !pathCreated);
         }
+        Vector2Int up = position + new Vector2Int(0, 1);
+        Vector2Int down = position + new Vector2Int(0, -1);
+        Vector2Int left = position + new Vector2Int(-1, 0);
+        Vector2Int right = position + new Vector2Int(1, 0);
 
-        List<int> sideToExplore = new List<int> { 0, 1, 2, 3 };
-
-        while (sideToExplore.Count() > 0)
+        Dictionary<Vector2Int, float> distances = new Dictionary<Vector2Int, float>
         {
-            int side = sideToExplore[Random.Range(0, sideToExplore.Count)];
-            sideToExplore.Remove(side);
+            { up,Vector2.Distance(up, townPosition)},
+            { down, Vector2.Distance(down, townPosition)},
+            { left,Vector2.Distance(left, townPosition)},
+            { right,Vector2.Distance(right, townPosition)}
+        };
 
-            switch (side)
-            {
-                case 0:
-                    ExploreTileForGeneration(position + new Vector2Int(1, 0));
-                    break;
-                case 1:
-                    ExploreTileForGeneration(position + new Vector2Int(-1, 0));
-                    break;
-                case 2:
-                    ExploreTileForGeneration(position + new Vector2Int(0, 1));
-                    break;
-                case 3:
-                    ExploreTileForGeneration(position + new Vector2Int(0, -1));
-                    break;
-            }
+        while (distances.Count() > 0)
+        {
+            Vector2Int best = distances.OrderBy(pos => pos.Value).First().Key;
+            distances.Remove(best);
+            ExploreTileForGeneration(best);
         }
 
 

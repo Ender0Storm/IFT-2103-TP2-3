@@ -96,3 +96,6 @@ MonoBehaviour:
   - sound: 4
     audioClip: {fileID: 8300000, guid: a271709733867b847905e06f1b9c6ee8, type: 3}
     repeatTime: 1
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: 835de01ed99c6d64bb98dbe578c1ee6e, type: 3}
+    repeatTime: 1

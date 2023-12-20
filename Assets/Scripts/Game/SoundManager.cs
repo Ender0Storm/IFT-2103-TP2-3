@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static SoundManager;
 
 public static class SoundManager
 {
@@ -51,6 +52,8 @@ public static class SoundManager
 
     public static void InitiateMenuMusic()
     {
+        Initialize();
+
         Sound sound = Sound.MenuMusic;
         GameObject musicGameObject = new GameObject("Music");
         AudioSource audio = musicGameObject.AddComponent<AudioSource>();
@@ -63,6 +66,8 @@ public static class SoundManager
 
     public static void InitiateGameMusic()
     {
+        Initialize();
+
         Sound[] sounds = { Sound.BassMusic, Sound.BackgroundMusic, Sound.LeadMusic, Sound.PercutionMusic };
 
         foreach(Sound sound in sounds)
@@ -173,7 +178,7 @@ public static class SoundManager
         return true;
     }
 
-    public static IEnumerator MusicVolumeFade(Dictionary<Sound, float> newVolumes)
+    public static IEnumerator MusicVolumeFade(Dictionary<Sound, float> newVolumes, float fadeTime = 2f)
     {
         Dictionary<Sound, float> initialVolumes = new Dictionary<Sound, float>();
         foreach (Sound sound in newVolumes.Keys)
@@ -182,13 +187,13 @@ public static class SoundManager
         }
 
         float time = 0f;
-        while (time < 2f)
+        while (time < fadeTime)
         {
             time += Time.deltaTime;
 
             foreach (Sound sound in initialVolumes.Keys)
             {
-                musicSources[sound].volume = Mathf.Lerp(initialVolumes[sound], newVolumes[sound], time / 2f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+                musicSources[sound].volume = Mathf.Lerp(initialVolumes[sound], newVolumes[sound], time / fadeTime) * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
             }
 
             yield return null;
@@ -201,7 +206,7 @@ public static class SoundManager
         yield break;
     }
 
-    public static void PauseSFX()
+    public static void PauseSounds()
     {
         Initialize();
         for (int i = 0; i < pausableAudioSources.Count; i++)
@@ -212,8 +217,17 @@ public static class SoundManager
                 audio.Pause();
             }
         }
+
+        foreach (Sound sound in musicSources.Keys)
+        {
+            if (musicSources[sound] != null)
+            {
+                musicSources[sound].Pause();
+            }
+        }
     }
-    public static void ResumeSFX()
+
+    public static void ResumeSounds()
     {
         Initialize();
         for (int i = 0; i < pausableAudioSources.Count; i++)
@@ -222,6 +236,14 @@ public static class SoundManager
             if (audio != null)
             { 
                 audio.Play();
+            }
+        }
+
+        foreach (Sound sound in musicSources.Keys)
+        {
+            if (musicSources[sound] != null)
+            {
+                musicSources[sound].Play();
             }
         }
     }

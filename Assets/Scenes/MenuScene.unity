@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5770439596215566201, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6066619234704601171, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.4749756
@@ -431,6 +435,10 @@ PrefabInstance:
       propertyPath: _sceneLoader
       value: 
       objectReference: {fileID: 1672412636}
+    - target: {fileID: 8903929041700583965, guid: 43a2961de7d1c1349a0ffcbffac0bc6f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

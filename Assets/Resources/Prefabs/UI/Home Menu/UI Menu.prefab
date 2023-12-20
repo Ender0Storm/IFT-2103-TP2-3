@@ -532,8 +532,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -38}
-  m_SizeDelta: {x: 513.8665, y: 295.3569}
+  m_AnchoredPosition: {x: 0, y: -68}
+  m_SizeDelta: {x: 513.8665, y: 334.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3313423314989189077
 CanvasRenderer:
@@ -1422,7 +1422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 833712449497362040, guid: 4dfef78298774db4283a47c37d579a58, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2886082070630076906, guid: 4dfef78298774db4283a47c37d579a58, type: 3}
       propertyPath: onBackButtonClick.m_PersistentCalls.m_Calls.Array.size
@@ -1792,11 +1792,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131489639399796946, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886690120121662122, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4118770846821459823, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550072337965918662, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5835982280312691579, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6808639093684319910, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
       propertyPath: onBackButtonClick.m_PersistentCalls.m_Calls.Array.size
@@ -1862,9 +1874,13 @@ PrefabInstance:
       propertyPath: onControlsButtonClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.RectTransform, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7481974531561173738, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8060070026607097099, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8093837442015101286, guid: 3e803b50d40401249bc98f9ef05424c2, type: 3}
       propertyPath: m_Pivot.x

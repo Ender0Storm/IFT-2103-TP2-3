@@ -34,10 +34,7 @@ public class MapBuilder : MonoBehaviour
             {"cornerWall", GameAssets.i.tiles[6]},
             {"grass", GameAssets.i.tiles[7]},
         };
-        /*var grass = GetCompatibleTiles(mapBorderTiles["grass"].neighbours);
-        var rock = GetCompatibleTiles(mapBorderTiles["cornerWall"].neighbours);
-        var path = GetCompatibleTiles(GameAssets.i.tiles[8].neighbours);*/
-        BuildMap(true, 10);
+        BuildMap(bool.Parse(PlayerPrefs.GetString(PlayerPrefsKey.HARD_MODE, "false")), PlayerPrefs.GetInt(PlayerPrefsKey.SEED_KEY, 0));
     }
 
 
@@ -204,7 +201,6 @@ public class MapBuilder : MonoBehaviour
                 compatibleTiles.Add(tile);
             }
         }
-        Debug.Log(Random.Range(0f, 1f));
         if (compatibleTiles.Contains(mapBorderTiles["grass"]) &&
             (hasToBeWalkable && Random.Range(0f, 1f) < 0.7 ||    //increase the chances of grass if needs walkable (70%)
             (!hasToBeWalkable && Random.Range(0f, 1f) < 0.95)))  //else increase the chances of grass with 30%

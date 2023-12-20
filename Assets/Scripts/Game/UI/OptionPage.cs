@@ -9,10 +9,10 @@ public class OptionPage : MonoBehaviour
     [SerializeField]
     private Slider musicSlider;
     [SerializeField]
+    private Slider foleySlider;
+    [SerializeField]
     private Slider sfxSlider;
 
-    public UnityEvent onMasterVolumeChanged;
-    public UnityEvent onMusicVolumeChanged;
     public UnityEvent onControlsButtonClick;
     public UnityEvent onBackButtonClick;
 
@@ -23,6 +23,7 @@ public class OptionPage : MonoBehaviour
     {
         masterSlider.value = GetVolume(PlayerPrefsKey.MASTER_VOLUME_KEY);
         musicSlider.value = GetVolume(PlayerPrefsKey.MUSIC_VOLUME_KEY);
+        foleySlider.value = GetVolume(PlayerPrefsKey.FOLEY_VOLUME_KEY);
         sfxSlider.value = GetVolume(PlayerPrefsKey.SFX_VOLUME_KEY);
     }
     public void changeMasterVolume()
@@ -33,7 +34,7 @@ public class OptionPage : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.Slider);
             lastSoundInvoke = Time.time;
         }
-        onMasterVolumeChanged.Invoke();
+        SoundManager.SetMusicVolume(SoundManager.Sound.MenuMusic, 0.75f);
     }
 
     public void changeMusicVolume()
@@ -44,7 +45,17 @@ public class OptionPage : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.Slider);
             lastSoundInvoke = Time.time;
         }
-        onMusicVolumeChanged.Invoke();
+        SoundManager.SetMusicVolume(SoundManager.Sound.MenuMusic, 0.75f);
+    }
+
+    public void changeFoleyVolume()
+    {
+        SetVolume(PlayerPrefsKey.FOLEY_VOLUME_KEY, foleySlider.value);
+        if (Time.time - lastSoundInvoke >= throttleTime)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.Slider);
+            lastSoundInvoke = Time.time;
+        }
     }
 
     public void changeSFXVolume()

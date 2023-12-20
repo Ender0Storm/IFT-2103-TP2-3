@@ -99,3 +99,6 @@ MonoBehaviour:
   - sound: 0
     audioClip: {fileID: 8300000, guid: 835de01ed99c6d64bb98dbe578c1ee6e, type: 3}
     repeatTime: 1
+  - sound: 18
+    audioClip: {fileID: 8300000, guid: c07d5682020adab49abd6203ed4ca659, type: 3}
+    repeatTime: 1

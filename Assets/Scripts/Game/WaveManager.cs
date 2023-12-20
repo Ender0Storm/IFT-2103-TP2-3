@@ -55,6 +55,7 @@ namespace Game
 
             SoundManager.InitiateGameMusic();
             StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.BassMusic, 1f }, { SoundManager.Sound.PercutionMusic, 1f } }));
+            SoundManager.PlayFoley(SoundManager.Sound.TownFoley, _pathFinding._finishPosition.position);
         }
 
         public void Update()
@@ -103,7 +104,7 @@ namespace Game
 
             for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {
-                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _portalTransform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _pathFinding._startPosition.position, Quaternion.identity);
                 _enemiesAlive.Add(enemy);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));

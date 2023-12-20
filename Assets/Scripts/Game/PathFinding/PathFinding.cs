@@ -8,10 +8,8 @@ namespace Game.pathFinding
     {
         private Tile _start;
         private Tile _finish;
-        [SerializeField]
-        private Transform _startPosition;
-        [SerializeField]
-        private Transform _finishPosition;
+        public Transform _startPosition;
+        public Transform _finishPosition;
         private List<Tile> _activeTiles;
         private List<Tile> _visitedTiles;
         private List<Tile> _foundPath;

@@ -28,13 +28,8 @@ namespace Game.playerInformation
 
             _maxHealth = _maxHealth * (Navigation.difficulty == "hard" ? _hardHealthRatio : 1);
             _currentHealth = _maxHealth;
-        }
-
-        public void Update()
-        {
             _healthBar.SetHealth(_maxHealth, _currentHealth);
         }
-
         public void LoseHealthPoints(float health)
         {
             if (_currentHealth - health <= 0)
@@ -47,6 +42,7 @@ namespace Game.playerInformation
                 SoundManager.PlaySound(SoundManager.Sound.LoseLife);
                 _currentHealth -= health;
             }
+            _healthBar.LoseHealth(health);
         }
     }
 }

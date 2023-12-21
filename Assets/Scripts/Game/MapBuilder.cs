@@ -106,8 +106,8 @@ public class MapBuilder : MonoBehaviour
     private void GenerateMapStats(bool hardmode = false, int seed = 0)
     {
         Random.InitState(seed);
-        mapHeight = Random.Range(20, 40);
-        mapWidth = Random.Range(20, 40);
+        mapHeight = Random.Range(20, 30);
+        mapWidth = Random.Range(30, 40);
 
         if (hardmode)
         {
@@ -207,7 +207,7 @@ public class MapBuilder : MonoBehaviour
         List<GameAssets.CustomTile> compatibleTiles = GetCompatibleTiles(neighbours, hasToBeWalkable, hasToBeBuildable);
         if (compatibleTiles.Count == 0)
         {
-            Debug.LogError("no compatible tiles at pos " + position);
+            //Debug.LogError("no compatible tiles at pos " + position);
             return new TileData(position, mapBorderTiles["grass"]);
         }
         return new TileData(position, compatibleTiles[Random.Range(0, compatibleTiles.Count)]);

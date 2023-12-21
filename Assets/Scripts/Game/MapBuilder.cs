@@ -44,10 +44,22 @@ public class MapBuilder : MonoBehaviour
         GenerateMapStats(hardmode, seed);
 
         GameObject map = new GameObject("Map");
+        map.layer = 8;
         map.transform.parent = transform;
-        map.AddComponent<TilemapRenderer>();
+        TilemapRenderer renderer = map.AddComponent<TilemapRenderer>();
+        renderer.sortingLayerName = "Background";
 
         tilemap = map.GetComponent<Tilemap>();
+
+        TilemapCollider2D collider = map.AddComponent<TilemapCollider2D>();
+
+        CompositeCollider2D compositeCollider = map.AddComponent<CompositeCollider2D>();
+        compositeCollider.geometryType = CompositeCollider2D.GeometryType.Polygons;
+        collider.usedByComposite = true;
+
+        Rigidbody2D rigidbody = map.GetComponent<Rigidbody2D>();
+        rigidbody.bodyType = RigidbodyType2D.Static;
+
         grid = map.AddComponent<Grid>();
 
         transform.localPosition += new Vector3(-mapWidth / 2, -mapHeight / 2, 0);
@@ -94,14 +106,15 @@ public class MapBuilder : MonoBehaviour
     private void GenerateMapStats(bool hardmode = false, int seed = 0)
     {
         Random.InitState(seed);
-        mapHeight = Random.Range(20, 30);
-        mapWidth = Random.Range(20, 30);
+        mapHeight = Random.Range(20, 40);
+        mapWidth = Random.Range(20, 40);
 
         if (hardmode)
         {
-            mapHeight -= Random.Range(mapHeight / 4, mapHeight / 2);
-            mapWidth -= Random.Range(mapWidth / 4, mapHeight / 2);
+            mapHeight -= Random.Range(mapHeight / 2, mapHeight);
+            mapWidth -= Random.Range(mapWidth / 2, mapWidth);
         }
+
         float minDistanceBetweenSpawnAndVillage = Mathf.Sqrt(mapWidth * mapWidth + mapHeight * mapHeight) / 3; /* 1/3 of the diagonal of the map */
 
         tiles = new TileData[mapWidth, mapHeight];
@@ -129,6 +142,21 @@ public class MapBuilder : MonoBehaviour
             }
         }
 
+        GameObject spawn = new GameObject("Spawn");
+        spawn.layer = 7;
+        spawn.transform.parent = transform;
+        spawn.transform.position = new Vector3(spawnPosition.x + 0.5f, spawnPosition.y + 0.5f);
+        spawn.AddComponent<BoxCollider2D>();
+        BoxCollider2D spawnCollider = spawn.AddComponent<BoxCollider2D>();
+        spawnCollider.size = new Vector2(0.95f, 0.95f);
+
+        GameObject town = new GameObject("Town");
+        town.layer = 7;
+        town.transform.parent = transform;
+        town.transform.position = new Vector3(townPosition.x + 0.5f, townPosition.y + 0.5f);
+        BoxCollider2D townCollider = town.AddComponent<BoxCollider2D>();
+        townCollider.size = new Vector2(0.95f, 0.95f);
+        SoundManager.PlayFoley(SoundManager.Sound.TownFoley, new Vector3(townPosition.x + 0.5f - mapWidth/2, townPosition.y + 0.5f - mapHeight / 2));
     }
     private void GenerateTiles(bool hardmode)
     {

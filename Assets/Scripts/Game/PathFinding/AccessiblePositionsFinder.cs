@@ -2,14 +2,13 @@
 using  System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 namespace Game.pathFinding
 {
     public class AccessiblePositionsFinder
     {
         private List<Tile> _accessibleTiles;
-        private List<Tile> _allTiles;
+        private Tile[,] _allTiles;
         private const int TileRange = 1;
         private MapBuilder map;
 
@@ -35,7 +34,7 @@ namespace Game.pathFinding
 
             foreach (var tile in cardinalTiles)
             {
-                if (map.CanWalk(new Vector2Int(tile.X, tile.Y)))
+                if (_allTiles[tile.X, tile.Y] != null)
                 {
                     _accessibleTiles.Add(tile);
                 }
@@ -44,13 +43,8 @@ namespace Game.pathFinding
 
         private void DiagonalPositions(Tile currentTile)
         {
-           /* var diagonalTiles = new List<Tile>();
+            var diagonalTiles = new List<Tile>();
             var diagonalCost = currentTile.Cost + TileRange * (float)Math.Sqrt(2);
-
-            if(map.canWalk(new Vector2Int(currentTile.X + TileRange, currentTile.Y)))
-            {
-
-            }
             
 
             if (_accessibleTiles.Any(x => x.X == currentTile.X + TileRange && x.Y == currentTile.Y) && //N
@@ -80,26 +74,26 @@ namespace Game.pathFinding
             
             foreach (var tile in diagonalTiles)
             {
-                if (_allTiles.Any(x => x.X == tile.X && x.Y == tile.Y))
+                if (_allTiles[tile.X, tile.Y] != null)
                 {
                     _accessibleTiles.Add(tile);
                 }
-            }*/
+            }
         }
 
         public void SetupTiles(LayerMask layerObstacles)
         {
             var mapBuild = Globals.IsMultiplayer ? GameObject.Find($"BoardP{Globals.PlayerID}").transform.Find("MapBuilder") : GameObject.Find("MapBuilder").transform;
             map = mapBuild.GetComponent<MapBuilder>();
-            _allTiles = new List<Tile>();
-            for (int i = 0; i <= map.GetMapWidth(); i++)
+            _allTiles = new Tile[map.GetMapWidth(), map.GetMapHeight()];
+            for (int i = 0; i < map.GetMapWidth(); i++)
             {
-                for (int j = 0; j <= map.GetMapHeight(); j++)
+                for (int j = 0; j < map.GetMapHeight(); j++)
                 {
                     Tile tile = new Tile(i, j);
-                    if (!Physics2D.OverlapPoint(tile.GetCenter(), layerObstacles))
+                    if (!Physics2D.OverlapPoint(tile.GetCenter() - new Vector2(map.GetMapWidth() / 2, map.GetMapHeight() / 2), layerObstacles))
                     {
-                        _allTiles.Add(tile);
+                        _allTiles[i, j] = tile;
                     }
                 }
             }

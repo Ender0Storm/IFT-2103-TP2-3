@@ -68,7 +68,7 @@ namespace Game.playerInformation
         protected virtual void Build()
         {
             GameObject tower = Instantiate(_chosenTower.GetPrefab(), _chosenTower.CenterOnGrid(Camera.main.ScreenToWorldPoint(Input.mousePosition)), Quaternion.identity);
-            if (_pathFinding.FindPath() != null)
+            if (_pathFinding.FindPath(_waveManager.GetMap().GetSpawnPosition(), _waveManager.GetMap().GetTownPosition()) != null)
             {
                 tower.GetComponent<Tower>().SetOwner(this);
                 _currency -= _chosenTower.GetCost();
@@ -82,10 +82,10 @@ namespace Game.playerInformation
 
         protected virtual bool BuildChecks()
         {
-            if( _controlsManager.IsKeyDown("select"))
+            if(_controlsManager.IsKeyDown("select"))
             {
                 if (_currency >= _chosenTower.GetCost() &&
-                    _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() && 
+                    _hoverHighlight.GetComponent<HighlightChecks>().CheckIfClear() &&
                     _waveManager.CanBuild() && !PauseMenu.isPaused)
                 {
                     return true;

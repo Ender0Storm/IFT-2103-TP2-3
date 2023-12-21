@@ -30,6 +30,7 @@ namespace Game.enemy
             _path = _enemyScript.path;
             soundEmmiter = SoundManager.PlaySound(sound, Vector3.zero, true);
             soundEmmiter.transform.parent = transform;
+            soundEmmiter.transform.localPosition = Vector3.zero;
         }
 
         public void Update()

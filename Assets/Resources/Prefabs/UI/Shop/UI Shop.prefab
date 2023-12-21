@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -214}
+  m_AnchoredPosition: {x: 0, y: 40}
   m_SizeDelta: {x: 125, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &414368192387975232
@@ -235,10 +235,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entryPage: {fileID: 5613906712405988604}
-  _boardPage: {fileID: 0}
-  _ennemiesPage: {fileID: 0}
-  _towersPage: {fileID: 0}
-  _othersPage: {fileID: 0}
+  _boardPage: {fileID: 6530210190909194407}
+  _ennemiesPage: {fileID: 7796370083565754032}
+  _towersPage: {fileID: 7993012081498373990}
+  _othersPage: {fileID: 5477775473713255831}
   transitionView: {fileID: 7180643846476928686}
 --- !u!1 &1256573219838201899
 GameObject:
@@ -275,7 +275,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.000015258789, y: -0.000014038291}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6371896493317821331
 CanvasRenderer:
@@ -677,6 +677,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemiesPage
       objectReference: {fileID: 0}
+    - target: {fileID: 9185321477198654695, guid: 864bd36c6a25e934c9014dde77df0b9d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4848971851151792975}
+    - target: {fileID: 9185321477198654695, guid: 864bd36c6a25e934c9014dde77df0b9d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoEntryPage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -685,6 +693,11 @@ PrefabInstance:
 --- !u!224 &3866854357415476999 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 851590355098022368, guid: 864bd36c6a25e934c9014dde77df0b9d, type: 3}
+  m_PrefabInstance: {fileID: 4501531886001032935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7796370083565754032 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5929800549976561751, guid: 864bd36c6a25e934c9014dde77df0b9d, type: 3}
   m_PrefabInstance: {fileID: 4501531886001032935}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4588377730931031531
@@ -824,6 +837,11 @@ RectTransform:
 --- !u!224 &6060809356276830896 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7760090023961718619, guid: 094a462266fc97149981c6cbca83d02e, type: 3}
+  m_PrefabInstance: {fileID: 4588377730931031531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6530210190909194407 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7292109195593366860, guid: 094a462266fc97149981c6cbca83d02e, type: 3}
   m_PrefabInstance: {fileID: 4588377730931031531}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &8853939207380255819 stripped
@@ -1070,6 +1088,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8128385787027168179, guid: 396d16058820d2542963822a53aea5b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4848971851151792975}
+    - target: {fileID: 8128385787027168179, guid: 396d16058820d2542963822a53aea5b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoEntryPage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1078,6 +1104,11 @@ PrefabInstance:
 --- !u!224 &1558070653511695392 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5663589451072726153, guid: 396d16058820d2542963822a53aea5b9, type: 3}
+  m_PrefabInstance: {fileID: 6559068000531552425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5477775473713255831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1658039744918326590, guid: 396d16058820d2542963822a53aea5b9, type: 3}
   m_PrefabInstance: {fileID: 6559068000531552425}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7210799011938549380
@@ -1180,6 +1211,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6736854541183701875, guid: b99204815dfad864a813c08f09c46b51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4848971851151792975}
+    - target: {fileID: 6736854541183701875, guid: b99204815dfad864a813c08f09c46b51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoEntryPage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1188,5 +1227,10 @@ PrefabInstance:
 --- !u!224 &3996791733569279697 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6009653037403531349, guid: b99204815dfad864a813c08f09c46b51, type: 3}
+  m_PrefabInstance: {fileID: 7210799011938549380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7993012081498373990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 791795004837724642, guid: b99204815dfad864a813c08f09c46b51, type: 3}
   m_PrefabInstance: {fileID: 7210799011938549380}
   m_PrefabAsset: {fileID: 0}

@@ -68,7 +68,6 @@ namespace Game
             {
                 _newWave = false;
                 ShopContent.AddToGems(1);
-                Debug.Log(ShopContent.GetGems());
                 StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.LeadMusic, 0f }, { SoundManager.Sound.BackgroundMusic, 0f } }));
             }
         }

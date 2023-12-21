@@ -358,6 +358,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8128385787027168179, guid: 396d16058820d2542963822a53aea5b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1809832506}
+    - target: {fileID: 8128385787027168179, guid: 396d16058820d2542963822a53aea5b9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoEntryPage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -787,7 +795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000acfa59bff4755b8aa38ddc23e168c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 1306443313}
   _layerObstacles:
     serializedVersion: 2
     m_Bits: 264
@@ -926,6 +933,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemiesPage
       objectReference: {fileID: 0}
+    - target: {fileID: 9185321477198654695, guid: 864bd36c6a25e934c9014dde77df0b9d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1809832506}
+    - target: {fileID: 9185321477198654695, guid: 864bd36c6a25e934c9014dde77df0b9d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoEntryPage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1062,6 +1077,14 @@ PrefabInstance:
     - target: {fileID: 6009653037403531349, guid: b99204815dfad864a813c08f09c46b51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736854541183701875, guid: b99204815dfad864a813c08f09c46b51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1809832506}
+    - target: {fileID: 6736854541183701875, guid: b99204815dfad864a813c08f09c46b51, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoEntryPage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

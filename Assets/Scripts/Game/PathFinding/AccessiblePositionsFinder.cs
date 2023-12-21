@@ -45,28 +45,28 @@ namespace Game.pathFinding
         {
             var diagonalTiles = new List<Tile>();
             var diagonalCost = currentTile.Cost + TileRange * (float)Math.Sqrt(2);
-            
 
-            if (_accessibleTiles.Any(x => x.X == currentTile.X + TileRange && x.Y == currentTile.Y) && //N
-                _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y + TileRange)) //E
+
+            if (_allTiles[currentTile.X + TileRange, currentTile.Y] != null && //N
+                _allTiles[currentTile.X, currentTile.Y + TileRange] != null) //E
             {
                 diagonalTiles.Add(new Tile(currentTile.X + TileRange, currentTile.Y + TileRange)
                     { Parent = currentTile, Cost = diagonalCost }); //N-E
             }
-            if (_accessibleTiles.Any(x => x.X == currentTile.X + TileRange && x.Y == currentTile.Y) && //N
-                _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y - TileRange)) //W
+            if (_allTiles[currentTile.X + TileRange, currentTile.Y] != null && //N
+                _allTiles[currentTile.X, currentTile.Y - TileRange] != null) //W
             {
                 diagonalTiles.Add(new Tile(currentTile.X + TileRange, currentTile.Y - TileRange)
                     { Parent = currentTile, Cost = diagonalCost }); //N-W
             }
-            if (_accessibleTiles.Any(x => x.X == currentTile.X - TileRange && x.Y == currentTile.Y) && //S
-                _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y + TileRange)) //E
+            if (_allTiles[currentTile.X - TileRange, currentTile.Y] != null && //S
+                _allTiles[currentTile.X, currentTile.Y + TileRange] != null) //E
             {
                 diagonalTiles.Add(new Tile(currentTile.X - TileRange, currentTile.Y + TileRange)
                     { Parent = currentTile, Cost = diagonalCost }); //S-E
             }
-            if (_accessibleTiles.Any(x => x.X == currentTile.X - TileRange && x.Y == currentTile.Y) && //S
-                _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y - TileRange)) //W
+            if (_allTiles[currentTile.X - TileRange, currentTile.Y] != null && //S
+                _allTiles[currentTile.X, currentTile.Y - TileRange] != null) //W
             { 
                 diagonalTiles.Add(new Tile(currentTile.X - TileRange, currentTile.Y - TileRange)
                     { Parent = currentTile, Cost = diagonalCost }); //S-W

@@ -27,7 +27,7 @@ namespace Game.enemy
                 deathParticles.transform.position = transform.position;
                 deathParticles.emission.SetBurst(0, new ParticleSystem.Burst(0, 50));
                 deathParticles.Play();
-                timedDestruction.DeleteIn(deathParticles.startLifetime + 1);
+                timedDestruction.DeleteIn(deathParticles.main.startLifetime.constant + 1);
             }
         }
     }

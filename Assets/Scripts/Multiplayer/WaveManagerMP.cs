@@ -9,7 +9,5 @@ public class WaveManagerMP : WaveManager
     {
         Transform boardTransform = GameObject.Find($"BoardP{Globals.PlayerID}").transform;
         _map = boardTransform.Find("MapBuilder").GetComponent<MapBuilder>();
-
-        _pathFinding.SetMPPositions(boardTransform);
     }
 }

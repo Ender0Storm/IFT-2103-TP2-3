@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Game.playerInformation
 {
@@ -6,8 +7,8 @@ namespace Game.playerInformation
     {
         void Awake()
         {
-            Bounds bounds = new Bounds(transform.position, transform.localScale);
-            Globals.WorldBounds = bounds;
+            Tilemap map = gameObject.GetComponent<Tilemap>();
+            Globals.WorldBounds = map.localBounds;
         }
     }
 }

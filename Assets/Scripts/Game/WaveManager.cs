@@ -32,7 +32,7 @@ namespace Game
 
         [Header("Other")]
         [SerializeField]
-        protected Transform _portalTransform;
+        protected MapBuilder _map;
         [SerializeField]
         [Range(0f, 1f)]
         private float _hardCurrencyRatio;
@@ -55,7 +55,6 @@ namespace Game
 
             SoundManager.InitiateGameMusic();
             StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.BassMusic, 1f }, { SoundManager.Sound.PercutionMusic, 1f } }));
-            SoundManager.PlayFoley(SoundManager.Sound.TownFoley, _pathFinding._finishPosition.position);
         }
 
         public void Update()
@@ -76,7 +75,7 @@ namespace Game
 
         public void StartWave()
         {
-            List<Tile> path = _pathFinding.FindPath();
+            List<Tile> path = _pathFinding.FindPath(_map.GetSpawnPosition(), _map.GetTownPosition());
             StartCoroutine(SummonWave(path));
         }
 
@@ -104,7 +103,8 @@ namespace Game
 
             for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {
-                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _pathFinding._startPosition.position, Quaternion.identity);
+                GameObject enemy = Instantiate(_waves[modWave].enemyPrefab, _map.transform);
+                enemy.transform.localPosition = new Vector3(_map.GetSpawnPosition().x + 0.5f, _map.GetSpawnPosition().y + 0.5f);
                 _enemiesAlive.Add(enemy);
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 enemyScript.health = Mathf.FloorToInt(enemyScript.health * Mathf.Pow(strengthMod, waveStrength));
@@ -127,6 +127,11 @@ namespace Game
         public int GetWave()
         {
             return _waveCount;
+        }
+
+        public MapBuilder GetMap()
+        {
+            return _map;
         }
     }
 }

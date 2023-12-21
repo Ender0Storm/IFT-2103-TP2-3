@@ -8,8 +8,9 @@ namespace Game.pathFinding
     public class AccessiblePositionsFinder
     {
         private List<Tile> _accessibleTiles;
-        private List<Tile> _allTiles;
+        private Tile[,] _allTiles;
         private const int TileRange = 1;
+        private MapBuilder map;
 
         public List<Tile> GetAccessibleTiles(Tile currentTile, Tile targetTile)
         {
@@ -33,7 +34,7 @@ namespace Game.pathFinding
 
             foreach (var tile in cardinalTiles)
             {
-                if (_allTiles.Any(x => x.X == tile.X && x.Y == tile.Y))
+                if (_allTiles[tile.X, tile.Y] != null)
                 {
                     _accessibleTiles.Add(tile);
                 }
@@ -44,6 +45,7 @@ namespace Game.pathFinding
         {
             var diagonalTiles = new List<Tile>();
             var diagonalCost = currentTile.Cost + TileRange * (float)Math.Sqrt(2);
+            
 
             if (_accessibleTiles.Any(x => x.X == currentTile.X + TileRange && x.Y == currentTile.Y) && //N
                 _accessibleTiles.Any(x => x.X == currentTile.X && x.Y == currentTile.Y + TileRange)) //E
@@ -72,7 +74,7 @@ namespace Game.pathFinding
             
             foreach (var tile in diagonalTiles)
             {
-                if (_allTiles.Any(x => x.X == tile.X && x.Y == tile.Y))
+                if (_allTiles[tile.X, tile.Y] != null)
                 {
                     _accessibleTiles.Add(tile);
                 }
@@ -81,17 +83,17 @@ namespace Game.pathFinding
 
         public void SetupTiles(LayerMask layerObstacles)
         {
-            var ground = Globals.IsMultiplayer ? GameObject.Find($"BoardP{Globals.PlayerID}").transform.Find("Ground") : GameObject.Find("Ground").transform;
-            SpriteRenderer groundLimits = ground.GetComponent<SpriteRenderer>();
-            _allTiles = new List<Tile>();
-            for (int i = Mathf.CeilToInt(groundLimits.bounds.min.x); i <= groundLimits.bounds.max.x; i++)
+            var mapBuild = Globals.IsMultiplayer ? GameObject.Find($"BoardP{Globals.PlayerID}").transform.Find("MapBuilder") : GameObject.Find("MapBuilder").transform;
+            map = mapBuild.GetComponent<MapBuilder>();
+            _allTiles = new Tile[map.GetMapWidth(), map.GetMapHeight()];
+            for (int i = 0; i < map.GetMapWidth(); i++)
             {
-                for (int j = Mathf.CeilToInt(groundLimits.bounds.min.y); j <= groundLimits.bounds.max.y; j++)
+                for (int j = 0; j < map.GetMapHeight(); j++)
                 {
                     Tile tile = new Tile(i, j);
-                    if (!Physics2D.OverlapPoint(tile.GetCenter(), layerObstacles))
+                    if (!Physics2D.OverlapPoint(tile.GetCenter() - new Vector2(map.GetMapWidth() / 2, map.GetMapHeight() / 2), layerObstacles))
                     {
-                        _allTiles.Add(tile);
+                        _allTiles[i, j] = tile;
                     }
                 }
             }

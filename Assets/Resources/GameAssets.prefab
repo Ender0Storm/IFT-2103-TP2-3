@@ -102,3 +102,344 @@ MonoBehaviour:
   - sound: 18
     audioClip: {fileID: 8300000, guid: c07d5682020adab49abd6203ed4ca659, type: 3}
     repeatTime: 1
+  tiles:
+  - name: Town
+    tileBase: {fileID: 11400000, guid: 0f840f054a4ab3d499c50bfe8af711e1, type: 2}
+    tileType: 4
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 1
+      left: 1
+      right: 1
+  - name: Spawn
+    tileBase: {fileID: 11400000, guid: d11971650ee46c448b0b09348a5c4684, type: 2}
+    tileType: 5
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 1
+      left: 1
+      right: 1
+  - name: RockB
+    tileBase: {fileID: 11400000, guid: 46393ce9891e48148bbcab2c242a77f7, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 0
+      left: 2
+      right: 2
+  - name: RockL
+    tileBase: {fileID: 11400000, guid: 4a99870c25fad184e979f219eb070eb4, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 0
+      right: 2
+  - name: RockT
+    tileBase: {fileID: 11400000, guid: 76c72f7391b29dc419a640895b94bd75, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 2
+      left: 2
+      right: 2
+  - name: RockR
+    tileBase: {fileID: 11400000, guid: 0d3e72b31c9a603418c81c30f5a9b975, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 2
+      right: 0
+  - name: RockC
+    tileBase: {fileID: 11400000, guid: ccf08bd3c30f126418492ac0efc110e0, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 2
+      right: 2
+  - name: Grass
+    tileBase: {fileID: 11400000, guid: 7e9fe42793418ae46aab1b40682fb5a9, type: 2}
+    tileType: 0
+    canWalk: 1
+    canBuild: 1
+    neighbours:
+      up: 0
+      down: 0
+      left: 0
+      right: 0
+  - name: PathEndB
+    tileBase: {fileID: 11400000, guid: edfdc946898d7ae46bc13e8ff9565488, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 0
+      left: 0
+      right: 0
+  - name: RockS
+    tileBase: {fileID: 11400000, guid: 0bcd8bde50ad7a04292ec9ad68cafa09, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 0
+      right: 0
+  - name: RockCornerBL
+    tileBase: {fileID: 11400000, guid: 68d6025dd77a6b1459a3544770f1dffe, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 0
+      left: 0
+      right: 2
+  - name: RockCornerBR
+    tileBase: {fileID: 11400000, guid: d7f35b1ca8de1c64399c801d4ea3ed3b, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 0
+      left: 2
+      right: 0
+  - name: RockCornerTL
+    tileBase: {fileID: 11400000, guid: 1958698920ea3db419a8c04157ec9b9c, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 2
+      left: 0
+      right: 2
+  - name: RockCornerTR
+    tileBase: {fileID: 11400000, guid: bc0df54e8ff04cb46a555ad11339ea93, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 2
+      left: 2
+      right: 0
+  - name: RockEndB
+    tileBase: {fileID: 11400000, guid: 71d720fa63d91534ead1c80554ed063e, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 0
+      left: 0
+      right: 0
+  - name: RockEndL
+    tileBase: {fileID: 11400000, guid: fe6884d838ca722468cbaac82b1886cd, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 0
+      right: 2
+  - name: RockEndR
+    tileBase: {fileID: 11400000, guid: 72f1eb7b5da2cd44f93a94438672d4c4, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 2
+      right: 0
+  - name: RockEndT
+    tileBase: {fileID: 11400000, guid: 87afb97e523bf3f4dae57f5acc88f45a, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 2
+      left: 0
+      right: 0
+  - name: RockH
+    tileBase: {fileID: 11400000, guid: 5bd4b9b8b41e5654b9a5e87485e78b48, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 2
+      right: 2
+  - name: RockV
+    tileBase: {fileID: 11400000, guid: af07f104038464f44b55904af6409091, type: 2}
+    tileType: 2
+    canWalk: 0
+    canBuild: 0
+    neighbours:
+      up: 2
+      down: 2
+      left: 0
+      right: 0
+  - name: Path3LRB
+    tileBase: {fileID: 11400000, guid: b0fcecc736a9cd941a0dfb70b72d90cf, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 1
+      left: 1
+      right: 1
+  - name: Path3TBL
+    tileBase: {fileID: 11400000, guid: 0cff7748fb186ef49a20e9300f49d300, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 1
+      left: 1
+      right: 0
+  - name: Path3TLR
+    tileBase: {fileID: 11400000, guid: 441bec95237710844848c98ec4c39f34, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 0
+      left: 1
+      right: 1
+  - name: Path3TRB
+    tileBase: {fileID: 11400000, guid: b5ff65d196a33bd458b7dde0c3b151d4, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 1
+      left: 0
+      right: 1
+  - name: Path4
+    tileBase: {fileID: 11400000, guid: c0e8e94faf0e2c742b9162c4729dd426, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 1
+      left: 1
+      right: 1
+  - name: PathCornerBL
+    tileBase: {fileID: 11400000, guid: 8ca52e55d56a4f84a8d2cc1f814fc207, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 0
+      left: 0
+      right: 1
+  - name: PathCornerBR
+    tileBase: {fileID: 11400000, guid: b1b1ea85e8ff8fc4690bdb9fb3a7992c, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 0
+      left: 1
+      right: 0
+  - name: PathCornerTL
+    tileBase: {fileID: 11400000, guid: 37562864fcdb6774b9e13ebf83d707fe, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 1
+      left: 0
+      right: 1
+  - name: PathCornerTR
+    tileBase: {fileID: 11400000, guid: b04b7f97c0d5d8943b7c19138f40c57c, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 1
+      left: 1
+      right: 0
+  - name: PathEndL
+    tileBase: {fileID: 11400000, guid: c27f0302b0b2da448b355e54f4c5c2cc, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 0
+      right: 1
+  - name: PathEndR
+    tileBase: {fileID: 11400000, guid: 379f01be5a2f7ff40ad3492e64c4038a, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 1
+      right: 0
+  - name: PathEndT
+    tileBase: {fileID: 11400000, guid: 2c15647accb24794db0fa3157332cc5a, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 1
+      left: 0
+      right: 0
+  - name: PathH
+    tileBase: {fileID: 11400000, guid: a1af436828d47ee40b22e39535651180, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 0
+      down: 0
+      left: 1
+      right: 1
+  - name: PathV
+    tileBase: {fileID: 11400000, guid: 526ecbe65067b074ab384ea390591297, type: 2}
+    tileType: 1
+    canWalk: 1
+    canBuild: 0
+    neighbours:
+      up: 1
+      down: 1
+      left: 0
+      right: 0

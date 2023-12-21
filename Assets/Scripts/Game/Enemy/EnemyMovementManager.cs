@@ -30,17 +30,18 @@ namespace Game.enemy
             _path = _enemyScript.path;
             soundEmmiter = SoundManager.PlaySound(sound, Vector3.zero, true);
             soundEmmiter.transform.parent = transform;
+            soundEmmiter.transform.localPosition = Vector3.zero;
         }
 
         public void Update()
         {
             SetDirection();
-            transform.position = (Vector2)transform.position + _direction * Time.deltaTime;
+            transform.localPosition = (Vector2)transform.localPosition +  _direction * Time.deltaTime;
 
-            if (transform.position.x >= _nextPosition.x - PRECISION
-                && transform.position.y >= _nextPosition.y - PRECISION
-                && transform.position.x <= _nextPosition.x + PRECISION
-                && transform.position.y <= _nextPosition.y + PRECISION)
+            if (transform.localPosition.x >= _nextPosition.x - PRECISION
+                && transform.localPosition.y >= _nextPosition.y - PRECISION
+                && transform.localPosition.x <= _nextPosition.x + PRECISION
+                && transform.localPosition.y <= _nextPosition.y + PRECISION)
             {
                 if (_indexPosition == _path.Count - 1)
                 {
@@ -60,12 +61,12 @@ namespace Game.enemy
         {
             _nextTile = _path[_indexPosition];
             _nextPosition = _nextTile.GetCenter();
-            _direction = (_nextPosition - (Vector2)transform.position).normalized * _enemyScript.speed;
+            _direction = (_nextPosition - (Vector2)transform.localPosition).normalized * _enemyScript.speed;
         }
 
         public float GetProgress()
         {
-            return _indexPosition + 1 - Mathf.Clamp01(((Vector2)transform.position - _nextPosition).sqrMagnitude);
+            return _indexPosition + 1 - Mathf.Clamp01(((Vector2)transform.localPosition - _nextPosition).sqrMagnitude);
         }
     }
 }

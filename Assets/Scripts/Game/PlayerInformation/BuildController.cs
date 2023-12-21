@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using Game.pathFinding;
+using Game.Shop;
 using Game.towers;
 using Game.ui;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,6 +29,11 @@ namespace Game.playerInformation
         private Player _player;
 
         private ControlsManager _controlsManager;
+
+        [SerializeField]
+        private Sprite thinCanon;
+        [SerializeField]
+        private Sprite bigCanon;
 
         public void Start()
         {
@@ -77,6 +85,7 @@ namespace Game.playerInformation
             {
                 Destroy(tower);
             }
+            CustomTowers(tower);
         }
 
         protected virtual bool BuildChecks()
@@ -92,6 +101,24 @@ namespace Game.playerInformation
         public void AddCurrency(int ammount)
         {
             _currency += ammount;
+        }
+
+        private void CustomTowers(GameObject tower)
+        {
+            List<Content> towers = ShopContent.GetContentsByType(ContentType.Tower);
+            foreach (Content content in towers)
+            {
+                if (content.Activated)
+                {
+                    Debug.Log("YOUHOUUU");
+                    if (content.Name == "ThinCanon")
+                    {
+                        Debug.Log("C'est NON");
+                        Transform canon = tower.transform.Find("Canon");
+                        canon.GetComponent<SpriteRenderer>().sprite = thinCanon;
+                    }
+                }
+            }
         }
     }
 }

@@ -34,11 +34,35 @@ namespace Game.Shop
         {
             _contentsStorage.Add(new Content("Wood", ContentType.Board, 0));
             _contentsStorage.Add(new Content("Digital", ContentType.Board, 0));
+            _contentsStorage.Add(new Content("ThinCanon", ContentType.Tower, ContentSubType.Turret, 0));
+            _contentsStorage.Add(new Content("BigCanon", ContentType.Tower, ContentSubType.Turret, 0));
+            _contentsStorage.Add(new Content("SphereBase", ContentType.Tower, ContentSubType.Turret,0));
+            _contentsStorage.Add(new Content("TriangleBase", ContentType.Tower, ContentSubType.Turret,0));
+            _contentsStorage.Add(new Content("YellowCanon", ContentType.Tower, ContentSubType.Turret));
+            _contentsStorage.Add(new Content("GreenCanon", ContentType.Tower, ContentSubType.Turret));
+            _contentsStorage.Add(new Content("BlueCanon", ContentType.Tower, ContentSubType.Turret));
+            _contentsStorage.Add(new Content("RedCanon", ContentType.Tower, ContentSubType.Turret));
+            _contentsStorage.Add(new Content("BlackBase", ContentType.Tower, ContentSubType.Turret));
+            _contentsStorage.Add(new Content("WhiteBase", ContentType.Tower, ContentSubType.Turret));
         }
 
         public static bool BuyContent(ContentType contentType, string name)
         {
-            var contentIndex = GetContentIndex(contentType, name);
+            var contentIndex = GetContentIndexByType(contentType, name);
+            
+            if (!_contentsStorage[contentIndex].Unlocked && _contentsStorage[contentIndex].Price <= _gems)
+            {
+                _contentsStorage[contentIndex].Unlocked = true;
+                _gems -=_contentsStorage[contentIndex].Price;
+                return true;
+            }
+
+            return false;
+        }
+        
+        public static bool BuyContent(ContentType contentType, ContentSubType contentSubType, string name)
+        {
+            var contentIndex = GetContentIndexByTypeAndSubtype(contentType, contentSubType, name);
             
             if (!_contentsStorage[contentIndex].Unlocked && _contentsStorage[contentIndex].Price <= _gems)
             {
@@ -52,11 +76,27 @@ namespace Game.Shop
 
         public static bool ActivateContent(ContentType contentType, string name)
         {
-            var contentIndex = GetContentIndex(contentType, name);
+            var contentIndex = GetContentIndexByType(contentType, name);
+            Debug.Log(contentIndex);
             if (_contentsStorage[contentIndex].Unlocked && !_contentsStorage[contentIndex].Activated)
             {
                 DisableContents(contentType);
                 _contentsStorage[contentIndex].Activated = true;
+                return true;
+            }
+
+            return false;
+        }
+        
+        public static bool ActivateContent(ContentType contentType, ContentSubType contentSubType, string name)
+        {
+            var contentIndex = GetContentIndexByTypeAndSubtype(contentType, contentSubType, name);
+            Debug.Log(contentIndex);
+            if (_contentsStorage[contentIndex].Unlocked && !_contentsStorage[contentIndex].Activated)
+            {
+                DisableContents(contentType);
+                _contentsStorage[contentIndex].Activated = true;
+                Debug.Log(_contentsStorage[contentIndex].Name);
                 return true;
             }
 
@@ -70,11 +110,35 @@ namespace Game.Shop
                 .ToList()
                 .ForEach(content => content.Activated = false);
         }
+        
+        private static void DisableContents(ContentType contentType, ContentSubType contentSubType)
+        {
+            _contentsStorage
+                .Where(content => content.ContentType == contentType)
+                .Where(content => content.ContentSubType == contentSubType)
+                .ToList()
+                .ForEach(content => content.Activated = false);
+        }
 
-        private static int GetContentIndex(ContentType contentType, string name)
+        private static int GetContentIndexByType(ContentType contentType, string name)
+        {
+            Debug.Log(name);
+            Debug.Log(contentType);
+            Debug.Log(_contentsStorage
+                .Where(content => content.ContentType == contentType)
+                .ToList().ToString());
+            Debug.Log(name);
+            return _contentsStorage
+                .Where(content => content.ContentType == contentType && content.ContentSubType == ContentSubType.Turret)
+                .ToList()
+                .FindIndex(content => string.Equals(content.Name,name));
+        }
+        
+        private static int GetContentIndexByTypeAndSubtype(ContentType contentType, ContentSubType contentSubType, string name)
         {
             return _contentsStorage
                 .Where(content => content.ContentType == contentType)
+                .Where(content => content.ContentSubType == contentSubType)
                 .ToList()
                 .FindIndex(content => content.Name == name);
         }

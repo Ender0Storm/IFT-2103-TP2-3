@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.Shop;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Game.ui
 {

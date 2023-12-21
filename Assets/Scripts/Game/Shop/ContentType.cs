@@ -5,6 +5,7 @@
         Board,
         Tower,
         Enemy,
-        Other
+        Other,
+        Null
     }
 }

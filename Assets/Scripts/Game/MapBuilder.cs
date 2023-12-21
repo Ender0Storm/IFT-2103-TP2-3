@@ -9,6 +9,7 @@ using UnityEngine.UIElements;
 public class MapBuilder : MonoBehaviour
 {
     private bool pathCreated = false;
+    public bool generationDone = false;
 
     private Vector2Int spawnPosition;
     private Vector2Int townPosition;
@@ -53,9 +54,9 @@ public class MapBuilder : MonoBehaviour
 
         GenerateTiles(hardmode);
 
-        generateTilemap();
+        GenerateTilemap();
 
-        tilemap.AddComponent<SetWorldBounds>();
+        generationDone = true;
     }
     public bool CanWalk(Vector2Int position)
     {
@@ -174,6 +175,7 @@ public class MapBuilder : MonoBehaviour
         {
             neighbours.down = GetTile(position + new Vector2Int(0, -1)).neighbours.up;
         }
+
         List<GameAssets.CustomTile> compatibleTiles = GetCompatibleTiles(neighbours, hasToBeWalkable, hasToBeBuildable);
         if (compatibleTiles.Count == 0)
         {
@@ -250,7 +252,7 @@ public class MapBuilder : MonoBehaviour
         return tiles[position.x, position.y];
     }
 
-    private void generateTilemap()
+    private void GenerateTilemap()
     {
         foreach (TileData tile in tiles)
         {

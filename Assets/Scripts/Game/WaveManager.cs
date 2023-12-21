@@ -55,7 +55,7 @@ namespace Game
 
             SoundManager.InitiateGameMusic();
             StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.BassMusic, 1f }, { SoundManager.Sound.PercutionMusic, 1f } }));
-            SoundManager.PlayFoley(SoundManager.Sound.TownFoley, _pathFinding._finishPosition.position);
+            SoundManager.PlayFoley(SoundManager.Sound.TownFoley, new Vector3(_map.GetTownPosition().x, _map.GetTownPosition().y));
         }
 
         public void Update()

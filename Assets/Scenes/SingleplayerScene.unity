@@ -638,6 +638,7 @@ MonoBehaviour:
   _cameraSpeed: 12
   _scrollSpeed: 5
   _cameraMinSize: 3
+  _map: {fileID: 1306443313}
 --- !u!114 &719817240
 MonoBehaviour:
   m_ObjectHideFlags: 0

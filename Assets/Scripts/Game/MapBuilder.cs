@@ -111,8 +111,8 @@ public class MapBuilder : MonoBehaviour
 
         if (hardmode)
         {
-            mapHeight -= Random.Range(mapHeight / 2, mapHeight);
-            mapWidth -= Random.Range(mapWidth / 2, mapWidth);
+            mapHeight = Random.Range(mapHeight / 2, mapHeight);
+            mapWidth = Random.Range(mapWidth / 2, mapWidth);
         }
 
         float minDistanceBetweenSpawnAndVillage = Mathf.Sqrt(mapWidth * mapWidth + mapHeight * mapHeight) / 3; /* 1/3 of the diagonal of the map */

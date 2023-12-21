@@ -49,6 +49,9 @@ namespace Game.menu
             
             DeactivateAllPages();
             _entryPage.SetActive(true);
+
+            SoundManager.InitiateMenuMusic();
+            StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.MenuMusic, 0.75f } }));
         }
 
         public void GoEntryPage(RectTransform button)

@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public static class SoundManager
 {
     public enum Sound
     {
+        MenuMusic,
         BackgroundMusic,
         BassMusic,
         LeadMusic,
@@ -23,11 +23,10 @@ public static class SoundManager
         LoseLife,
         Walking,
         Error,
-        Build
+        Build,
+        TownFoley,
     }
 
-    private static Dictionary<Sound, float> soundTimerDict;
-    private static List<AudioSource> audioSources;
     private static List<AudioSource> pausableAudioSources;
     private static List<AudioSource> unPausableAudioSources;
     private static Dictionary<Sound, AudioSource> musicSources;
@@ -39,47 +38,82 @@ public static class SoundManager
         if (!isInstantiated)
         {
             isInstantiated = true;
-            soundTimerDict = new Dictionary<Sound, float>();
-            audioSources = new List<AudioSource>();
             pausableAudioSources = new List<AudioSource>();
             unPausableAudioSources = new List<AudioSource>();
             musicSources = new Dictionary<Sound, AudioSource>();
         }
     }
 
-    public static void PlayMusic(Sound sound)
+    public static void InitiateMenuMusic()
     {
-        // TODO: Finish music section with stop conditions, looping and transitions
-        if (!musicSources.ContainsKey(sound))
+        Initialize();
+
+        Sound sound = Sound.MenuMusic;
+        GameObject musicGameObject = new GameObject("Music");
+        AudioSource audio = musicGameObject.AddComponent<AudioSource>();
+        audio.clip = GetAudioClip(sound);
+        audio.volume = 0;
+        audio.loop = true;
+        audio.Play();
+        musicSources[sound] = audio;
+    }
+
+    public static void InitiateGameMusic()
+    {
+        Initialize();
+
+        Sound[] sounds = { Sound.BassMusic, Sound.BackgroundMusic, Sound.LeadMusic, Sound.PercutionMusic };
+
+        foreach(Sound sound in sounds)
         {
             GameObject musicGameObject = new GameObject("Music");
             AudioSource audio = musicGameObject.AddComponent<AudioSource>();
             audio.clip = GetAudioClip(sound);
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+            audio.volume = 0;
+            audio.loop = true;
             audio.Play();
             musicSources[sound] = audio;
         }
     }
 
-    public static void PlaySound(Sound sound, Vector3 position, float maxDistance = 100f, float spatialBlend = 1f,
+    public static void PlayFoley(Sound sound, Vector3 position, float maxDistance = 25f, float spatialBlend = 1f,
                                  AudioRolloffMode rolloffMode = AudioRolloffMode.Linear, float dopplerLevel = 0f)
     {
-        CleanAudioSources();
-        if (CanPlaySound(sound))
+        Initialize();
+
+        GameObject foleyGameObject = CreateSound(sound);
+
+        foleyGameObject.transform.position = position;
+        AudioSource audio = foleyGameObject.GetComponent<AudioSource>();
+        audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.FOLEY_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+        audio.maxDistance = maxDistance;
+        audio.spatialBlend = spatialBlend;
+        audio.rolloffMode = rolloffMode;
+        audio.dopplerLevel = dopplerLevel;
+        musicSources[sound] = audio;
+    }
+
+    public static GameObject PlaySound(Sound sound, Vector3 position, bool startAtRandomTime = false, float maxDistance = 25f, float spatialBlend = 1f,
+                                       AudioRolloffMode rolloffMode = AudioRolloffMode.Linear, float dopplerLevel = 0f)
+    {
+        Initialize();
+
+        GameObject soundGameObject = CreateSound(sound, startAtRandomTime);
+
+        if (soundGameObject != null)
         {
-            GameObject soundGameObject = new GameObject("Sound");
             soundGameObject.transform.position = position;
-            AudioSource audio = soundGameObject.AddComponent<AudioSource>();
-            audio.clip = GetAudioClip(sound);
-            audio.volume = PlayerPrefs.GetFloat(PlayerPrefsKey.SFX_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+            AudioSource audio = soundGameObject.GetComponent<AudioSource>();
             audio.maxDistance = maxDistance;
             audio.spatialBlend = spatialBlend;
             audio.rolloffMode = rolloffMode;
             audio.dopplerLevel = dopplerLevel;
-            audio.Play();
-            audioSources.Add(audio);
+            pausableAudioSources.Add(audio);
+            Object.Destroy(soundGameObject, audio.clip.length * GetRepeatTime(sound));
         }
+        return soundGameObject;
     }
+
     public static GameObject PlaySound(Sound sound, bool startAtRandomTime = false)
     {
         Initialize();
@@ -133,31 +167,41 @@ public static class SoundManager
         return null;
     }
 
-
-    private static bool CanPlaySound(Sound sound)
+    public static IEnumerator MusicVolumeFade(Dictionary<Sound, float> newVolumes, float fadeTime = 2f)
     {
-        float repeatTime = GetRepeatTime(sound);
-
-        if (repeatTime > 0)
+        Dictionary<Sound, float> initialVolumes = new Dictionary<Sound, float>();
+        foreach (Sound sound in newVolumes.Keys)
         {
-            if (!soundTimerDict.ContainsKey(sound))
-            {
-                soundTimerDict.Add(sound, Time.time - (2 * repeatTime));
-            }
-
-            if (soundTimerDict[sound] + repeatTime <= Time.time)
-            {
-                soundTimerDict[sound] = Time.time;
-                return true;
-            }
-
-            return false;
+            if (musicSources != null && musicSources.ContainsKey(sound) && musicSources[sound]) initialVolumes.Add(sound, musicSources[sound].volume);
         }
 
-        return true;
+        float time = 0f;
+        while (time < fadeTime && initialVolumes.Keys.Count > 0)
+        {
+            time += Time.deltaTime;
+
+            foreach (Sound sound in initialVolumes.Keys)
+            {
+                musicSources[sound].volume = Mathf.Lerp(initialVolumes[sound], newVolumes[sound], time / fadeTime) * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+            }
+
+            yield return null;
+        }
+
+        foreach (Sound sound in initialVolumes.Keys)
+        {
+            musicSources[sound].volume = newVolumes[sound] * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+        }
+        yield break;
     }
 
-    public static void PauseSFX()
+    public static void SetMusicVolume(Sound sound, float newVolume)
+    {
+        float adjustedNewVolume = newVolume * PlayerPrefs.GetFloat(PlayerPrefsKey.MUSIC_VOLUME_KEY, 0.15f) * PlayerPrefs.GetFloat(PlayerPrefsKey.MASTER_VOLUME_KEY, 1f);
+        if (musicSources != null && musicSources.ContainsKey(sound) && musicSources[sound] != null) musicSources[sound].volume = adjustedNewVolume;
+    }
+
+    public static void PauseSounds()
     {
         Initialize();
         for (int i = 0; i < pausableAudioSources.Count; i++)
@@ -168,8 +212,17 @@ public static class SoundManager
                 audio.Pause();
             }
         }
+
+        foreach (Sound sound in musicSources.Keys)
+        {
+            if (musicSources[sound] != null)
+            {
+                musicSources[sound].Pause();
+            }
+        }
     }
-    public static void ResumeSFX()
+
+    public static void ResumeSounds()
     {
         Initialize();
         for (int i = 0; i < pausableAudioSources.Count; i++)
@@ -180,14 +233,13 @@ public static class SoundManager
                 audio.Play();
             }
         }
-    }
 
-    private static void CleanAudioSources()
-    {
-        audioSources.RemoveAll(audioSource => audioSource == null);
-        foreach (AudioSource audioSource in audioSources)
+        foreach (Sound sound in musicSources.Keys)
         {
-            if (!audioSource.isPlaying) Object.Destroy(audioSource.gameObject);
+            if (musicSources[sound] != null)
+            {
+                musicSources[sound].Play();
+            }
         }
     }
 

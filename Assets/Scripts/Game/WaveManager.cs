@@ -52,6 +52,10 @@ namespace Game
             _finishedSummoning = true;
             _waveCount = 0;
             _pathFinding = gameObject.GetComponent<PathFinding>();
+
+            SoundManager.InitiateGameMusic();
+            StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.BassMusic, 1f }, { SoundManager.Sound.PercutionMusic, 1f } }));
+            SoundManager.PlayFoley(SoundManager.Sound.TownFoley, _pathFinding._finishPosition.position);
         }
 
         public void Update()
@@ -66,6 +70,7 @@ namespace Game
                 _newWave = false;
                 ShopContent.AddToGems(1);
                 Debug.Log(ShopContent.GetGems());
+                StartCoroutine(SoundManager.MusicVolumeFade(new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.LeadMusic, 0f }, { SoundManager.Sound.BackgroundMusic, 0f } }));
             }
         }
 
@@ -88,6 +93,14 @@ namespace Game
             int modWave = _waveCount % _waves.Count;
             int waveStrength = _waveCount / _waves.Count;
             _waveCount += 1;
+
+            Dictionary<SoundManager.Sound, float> newVolumes = new Dictionary<SoundManager.Sound, float> { { SoundManager.Sound.LeadMusic, 0.85f } };
+            if (_waveCount % _waves.Count == 0)
+            {
+                newVolumes[SoundManager.Sound.LeadMusic] = 1f;
+                newVolumes.Add(SoundManager.Sound.BackgroundMusic, 1f);
+            }
+            StartCoroutine(SoundManager.MusicVolumeFade(newVolumes));
 
             for (int i = 0; i < _waves[modWave].enemyCount; i++)
             {

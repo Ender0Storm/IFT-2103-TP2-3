@@ -1,5 +1,6 @@
 using Game.menu;
 using Game.playerInformation;
+using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -48,7 +49,7 @@ namespace Game.ui
             SoundManager.PlayUnPausableSound(SoundManager.Sound.UnPause);
             _pauseMenuUI.SetActive(false);
             Time.timeScale = 1f;
-            SoundManager.ResumeSFX();
+            SoundManager.ResumeSounds();
             isPaused = false;
         }
     
@@ -57,7 +58,7 @@ namespace Game.ui
             SoundManager.PlayUnPausableSound(SoundManager.Sound.Pause);
             _pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;  
-            SoundManager.PauseSFX();
+            SoundManager.PauseSounds();
             isPaused = true;
         }
     

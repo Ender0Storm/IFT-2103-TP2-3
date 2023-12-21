@@ -28,7 +28,8 @@ namespace Game.enemy
             _enemyScript = GetComponent<Enemy>();
             _player = GameObject.Find("Player Profile").GetComponent<Player>();
             _path = _enemyScript.path;
-            soundEmmiter = SoundManager.PlaySound(sound, true);
+            soundEmmiter = SoundManager.PlaySound(sound, Vector3.zero, true);
+            soundEmmiter.transform.parent = transform;
         }
 
         public void Update()

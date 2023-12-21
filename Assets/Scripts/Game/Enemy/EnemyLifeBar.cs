@@ -24,7 +24,7 @@ namespace Game.enemy
             {
                 ParticleSystem deathParticles = Instantiate(particles);
                 TimedDestruction timedDestruction = deathParticles.gameObject.AddComponent<TimedDestruction>();
-                deathParticles.transform.position = transform.position;
+                deathParticles.transform.position = particles.transform.position;
                 deathParticles.emission.SetBurst(0, new ParticleSystem.Burst(0, 50));
                 deathParticles.Play();
                 timedDestruction.DeleteIn(deathParticles.main.startLifetime.constant + 1);

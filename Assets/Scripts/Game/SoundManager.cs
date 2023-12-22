@@ -161,7 +161,7 @@ public static class SoundManager
                 audio.time = Random.Range(0f, audio.clip.length);
             }
             audio.Play();
-            audio.loop = true;
+            audio.loop = false;
             return soundGameObject;
         }
         return null;

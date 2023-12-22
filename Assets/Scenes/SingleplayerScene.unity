@@ -420,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 20
   _hardHealthRatio: 0.5
+  _particlesPrefab: {fileID: 2065297325498520691, guid: f1fa175ae84114c4c80df4896ef227f1, type: 3}
   _healthBar: {fileID: 1428797647}
   _pauseMenu: {fileID: 1227277582}
   _waveManager: {fileID: 1113374442}

@@ -15,6 +15,9 @@ namespace Game.playerInformation
         private float _hardHealthRatio;
 
         [SerializeField]
+        private GameObject _particlesPrefab;
+
+        [SerializeField]
         private HealthBar _healthBar;
 
         [SerializeField]
@@ -40,6 +43,14 @@ namespace Game.playerInformation
             else
             {
                 SoundManager.PlaySound(SoundManager.Sound.LoseLife);
+                GameObject particles = Instantiate(_particlesPrefab);
+                TimedDestruction timedDestruction = particles.AddComponent<TimedDestruction>();
+                Vector2Int townPosition = _waveManager.GetMap().GetTownPosition();
+                particles.transform.position = new Vector3(townPosition.x + _waveManager.GetMap().transform.position.x + 0.5f, townPosition.y + _waveManager.GetMap().transform.position.y + 0.5f);
+                ParticleSystem PS = particles.GetComponent<ParticleSystem>();
+                PS.Play();
+                timedDestruction.DeleteIn(PS.main.startLifetime.constant + 1);
+
                 _currentHealth -= health;
             }
             _healthBar.LoseHealth(health);

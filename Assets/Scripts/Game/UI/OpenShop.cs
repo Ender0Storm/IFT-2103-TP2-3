@@ -29,7 +29,15 @@ namespace Game.ui
     
         public void Resume()
         {
-            UpdateContent();
+            try
+            {
+                UpdateContent();
+            }
+            catch
+            {
+                Debug.Log("content error");
+            }
+            
             shopMenuUI.SetActive(false);
             Time.timeScale = 1f;
             isShopping = false;
